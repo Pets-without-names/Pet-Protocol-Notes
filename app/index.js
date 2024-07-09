@@ -7,13 +7,12 @@ const Home = () => {
 
   return (
     <SafeAreaView>
-      <Stack.Screen options={{ headerTitle: 'Protocol Notes' }}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View>
-            <Text>Sample Notes</Text>
-          </View>
-        </ScrollView>
-      </Stack.Screen>
+      <Stack.Screen options={{ headerTitle: 'Protocol Notes' }} />
+      <ScrollView showsVerticalScrollIndicator={true}>
+        <View>
+          <Text style={{ textAlign: 'center' }}>Sample Notes</Text>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
