@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { View, Text, ScrollView, SafeAreaView } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
+import Protocol from '../components/protocol';
 
 const Home = () => {
   const router = useRouter();
@@ -9,9 +10,10 @@ const Home = () => {
     <SafeAreaView>
       <Stack.Screen options={{ headerTitle: 'Protocol Notes' }} />
       <ScrollView showsVerticalScrollIndicator={true}>
-        <View>
+        {/* <View>
           <Text style={{ textAlign: 'center' }}>Sample Notes</Text>
-        </View>
+        </View> */}
+        <Protocol />
       </ScrollView>
     </SafeAreaView>
   );
