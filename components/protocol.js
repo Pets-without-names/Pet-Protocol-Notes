@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { StyleSheet, Text } from 'react-native';
-import { Card, Button, ListItem } from '@rneui/themed';
+import { Card } from '@rneui/themed';
 import { ScrollView } from 'react-native';
 
 const dogInfo = {
@@ -9,7 +9,7 @@ const dogInfo = {
   note2: 'Resource Garder',
   note3: 'Place Routine',
   note4: 'Dog Reactive',
-  note5: 'Practice door routine',
+  note5: 'Practice door routine.  OK to walk past strangers',
 };
 
 const infoArray = Object.entries(dogInfo);
@@ -18,17 +18,19 @@ const Protocol = () => {
   return (
     <>
       <ScrollView>
-        <Card>
-          <Card.Title>{dogInfo.name}</Card.Title>
+        <Card style={styles.container}>
+          <Card.Title style={styles.name}>{dogInfo.name}</Card.Title>
           <Card.Divider />
           <Card.Image
-            style={{ padding: 0 }}
-            source={{
-              uri: `${dogInfo.image}`,
-            }}
+            style={styles.image}
+            source={require('../assets/images/artie.png')}
           />
           {infoArray.map((dog, index) => {
-            return <Text key={index}>{dog[1]}</Text>;
+            return (
+              <Text style={styles.notes} key={index}>
+                {dog[1]}
+              </Text>
+            );
           })}
         </Card>
       </ScrollView>
@@ -36,13 +38,21 @@ const Protocol = () => {
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   name: {
-    fontSize: 16,
+    fontSize: 36,
+  },
+  notes: {
+    fontSize: 18,
+    textAlign: 'center',
   },
   image: {
-    width: 30,
-    height: 30,
+    width: '100%',
+    height: 250,
   },
 });
 
