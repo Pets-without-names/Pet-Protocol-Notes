@@ -1,4 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { FontAwesome6 } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
@@ -18,7 +19,7 @@ export default function TabLayout() {
         options={{
           title: 'Protocol',
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name='cog' color={color} />
+            <FontAwesome6 size={28} name='dog' color={color} />
           ),
         }}
       />
@@ -27,7 +28,7 @@ export default function TabLayout() {
         options={{
           title: 'Protocol +',
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name='cog' color={color} />
+            <FontAwesome size={28} name='plus' color={color} />
           ),
         }}
       />

@@ -13,7 +13,7 @@ const dogInfo = {
 
 const infoArray = Object.entries(dogInfo);
 
-const Protocol = () => {
+const DogNotes = () => {
   return (
     <>
       <ScrollView>
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Protocol;
+export default DogNotes;
