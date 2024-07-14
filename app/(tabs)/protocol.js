@@ -1,6 +1,7 @@
 import { React } from 'react';
-import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, SafeAreaView, FlatList, Pressable } from 'react-native';
 import { Text, Card, Divider } from '@rneui/themed';
+import { router } from 'expo-router';
 
 const dogData = [
   {
@@ -36,19 +37,25 @@ const dogData = [
 ];
 
 const Dog = ({ name }) => (
-  <Card>
-    <Card.Title>{name}</Card.Title>
-  </Card>
+  <Pressable
+    onPress={() => {
+      router.push('/dogs/1');
+    }}
+  >
+    <Card containerStyle={styles.card}>
+      <Card.Title style={styles.name}>{name}</Card.Title>
+    </Card>
+  </Pressable>
 );
 
 const ProtocolView = () => {
   return (
     <>
       <SafeAreaView>
-        <Text h2 style={styles.text}>
+        {/* <Text h2 style={styles.text}>
           Protocol Dogs
         </Text>
-        <Divider width={3} color='darkgray' />
+        <Divider width={3} color='darkgray' /> */}
         <FlatList
           data={dogData}
           renderItem={({ item }) => <Dog name={item.name} />}
@@ -65,5 +72,14 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
   },
-  card: {},
+  card: {
+    backgroundColor: 'lightblue',
+    cornerRadius: '10',
+    borderColor: 'black',
+    borderWidth: '1',
+    borderRadius: '10',
+  },
+  name: {
+    fontSize: '16',
+  },
 });
