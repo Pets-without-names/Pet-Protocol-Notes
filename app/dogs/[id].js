@@ -1,7 +1,6 @@
 import { React } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 import { Card } from '@rneui/themed';
-import { ScrollView } from 'react-native';
 
 const dogInfo = {
   name: 'Artie',
@@ -23,7 +22,7 @@ const Protocol = () => {
           <Card.Divider />
           <Card.Image
             style={styles.image}
-            source={require('../assets/images/artie.png')}
+            source={require('../../assets/images/artie.png')}
           />
           {infoArray.map((dog, index) => {
             return (
