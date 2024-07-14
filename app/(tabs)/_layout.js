@@ -24,7 +24,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='protocolPlus'
+        name='protocol_plus'
         options={{
           title: 'Protocol +',
           tabBarIcon: ({ color }) => (

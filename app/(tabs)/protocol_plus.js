@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import { Text, Card, Divider } from '@rneui/themed';
 
 const dogData = [
@@ -40,30 +40,26 @@ const Dog = ({ name }) => (
     <Card.Title>{name}</Card.Title>
   </Card>
 );
-
-const ProtocolView = () => {
+const ProtocolPlusView = () => {
   return (
     <>
-      <SafeAreaView>
-        <Text h2 style={styles.text}>
-          Protocol Dogs
-        </Text>
-        <Divider width={3} color='darkgray' />
-        <FlatList
-          data={dogData}
-          renderItem={({ item }) => <Dog name={item.name} />}
-          keyExtractor={(item) => item.id}
-        />
-      </SafeAreaView>
+      <Text h2 style={styles.text}>
+        Protocol+ Dogs
+      </Text>
+      <Divider width={3} />
+      <FlatList
+        data={dogData}
+        renderItem={({ item }) => <Dog name={item.name} />}
+        keyExtractor={(item) => item.id}
+      />
     </>
   );
 };
 
-export default ProtocolView;
+export default ProtocolPlusView;
 
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
   },
-  card: {},
 });

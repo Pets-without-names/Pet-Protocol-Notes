@@ -5,7 +5,9 @@ export default function Tab() {
   return (
     <SafeAreaView>
       <View>
-        <Text style={styles.text}>Home Screen</Text>
+        <Text h2 style={styles.text}>
+          Protocol Notes
+        </Text>
       </View>
     </SafeAreaView>
   );
