@@ -39,7 +39,7 @@ const dogData = [
 const Dog = ({ name }) => (
   <Pressable
     onPress={() => {
-      router.push('/dogs/1');
+      router.push('../details/1');
     }}
   >
     <Card containerStyle={styles.card}>

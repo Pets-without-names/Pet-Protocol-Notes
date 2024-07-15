@@ -27,6 +27,7 @@ export default function TabLayout() {
         name='protocol_plus'
         options={{
           title: 'Protocol +',
+          headerTitle: 'Protocol +',
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name='plus' color={color} />
           ),
