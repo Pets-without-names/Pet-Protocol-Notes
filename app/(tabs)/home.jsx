@@ -1,7 +1,7 @@
 import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { Text } from '@rneui/themed';
 
-export default function Tab() {
+const Home = () => {
   return (
     <SafeAreaView>
       <View>
@@ -11,7 +11,8 @@ export default function Tab() {
       </View>
     </SafeAreaView>
   );
-}
+};
+export default Home;
 
 const styles = StyleSheet.create({
   text: {
