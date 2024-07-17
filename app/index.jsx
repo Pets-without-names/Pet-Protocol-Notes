@@ -1,14 +1,37 @@
-import { View, Text } from 'react-native';
+import { View, SafeAreaView, StyleSheet } from 'react-native';
+import { Text } from '@rneui/themed';
 import { Link } from 'expo-router';
 import React from 'react';
 
-const index = () => {
+export default function App() {
   return (
-    <View>
-      <Text h2>Index Page</Text>
-      <Link href={'./app/(tabs)/home'}>Go to Home Page</Link>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text h2 style={styles.text}>
+          Landing Page
+        </Text>
+        <Link href='/home' style={styles.link}>
+          Go to Home Page
+        </Link>
+      </View>
+    </SafeAreaView>
   );
-};
+}
 
-export default index;
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    textAlign: 'center',
+  },
+  link: {
+    textAlign: 'center',
+    color: 'blue',
+    fontSize: 16,
+    marginTop: 10,
+  },
+});
