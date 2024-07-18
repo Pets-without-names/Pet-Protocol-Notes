@@ -1,29 +1,49 @@
-import { View, SafeAreaView, StyleSheet } from 'react-native';
-import { Text } from '@rneui/themed';
-import { Link } from 'expo-router';
+import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
+import { Text, Button } from '@rneui/themed';
+import { Link, router } from 'expo-router';
 import React from 'react';
+import { CustomButton } from '../components/CustomButton';
 
 export default function App() {
   return (
     <SafeAreaView>
-      <View>
+      <View style={styles.view}>
         <Text h2 style={styles.text}>
           Landing Page
         </Text>
-        <Link href='/home' style={styles.link}>
+        {/* <Link href='/home' style={styles.link}>
           Go to Home Page
-        </Link>
+        </Link> */}
+        <Button
+          title='Log In'
+          titleStyle={{
+            fontStyle: 'italic',
+          }}
+          buttonStyle={{
+            backgroundColor: 'darkgreen',
+            borderWidth: 2,
+            borderColor: 'black',
+            borderRadius: 20,
+          }}
+          containerStyle={{
+            width: '60%',
+            marginHorizontal: 10,
+            marginVertical: 10,
+          }}
+          onPress={() => router.push('/home')}
+        />
       </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex: 1,
+  view: {
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 10,
+    backgroundColor: 'lightblue',
+    height: '100%',
   },
   text: {
     textAlign: 'center',
@@ -31,7 +51,7 @@ const styles = StyleSheet.create({
   link: {
     textAlign: 'center',
     color: 'blue',
-    fontSize: 16,
+    fontSize: 26,
     marginTop: 10,
   },
 });
