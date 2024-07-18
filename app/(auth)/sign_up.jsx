@@ -1,12 +1,17 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import { Text } from '@rneui/themed';
+import React from 'react';
 
 const SignUp = () => {
   return (
-    <View>
-      <Text> SignUp</Text>
-    </View>
-  )
-}
+    <SafeAreaView>
+      <ScrollView>
+        <View>
+          <Text> Sign Up Page</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
-export default SignUp
+export default SignUp;

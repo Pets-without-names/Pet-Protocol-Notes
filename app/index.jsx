@@ -2,7 +2,6 @@ import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
 import { Text, Button } from '@rneui/themed';
 import { Link, router } from 'expo-router';
 import React from 'react';
-import { CustomButton } from '../components/CustomButton';
 
 export default function App() {
   return (
@@ -26,11 +25,11 @@ export default function App() {
             borderRadius: 20,
           }}
           containerStyle={{
-            width: '60%',
+            width: '70%',
             marginHorizontal: 10,
             marginVertical: 10,
           }}
-          onPress={() => router.push('/home')}
+          onPress={() => router.push('/sign_in')}
         />
       </View>
     </SafeAreaView>
