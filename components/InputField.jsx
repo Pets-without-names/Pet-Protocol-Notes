@@ -2,14 +2,7 @@ import { View, StyleSheet } from 'react-native';
 import { Text, Input } from '@rneui/themed';
 import React, { useState } from 'react';
 
-const FormField = ({
-  title,
-  value,
-  placeholder,
-  handleChangeText,
-  otherStyles,
-  ...props
-}) => {
+const InputField = ({ title, value, placeholder, otherStyles, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
@@ -21,9 +14,8 @@ const FormField = ({
           <Input
             value={value}
             placeholder={placeholder}
-            onChangeText={handleChangeText}
             secureTextEntry={title === 'Password' && !showPassword}
-            style={styles.input}
+            style={styles.basic}
           />
         </View>
       </View>
@@ -31,7 +23,7 @@ const FormField = ({
   );
 };
 
-export default FormField;
+export default InputField;
 
 const styles = StyleSheet.create({
   outer: { alignItems: 'center' },
@@ -44,5 +36,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  input: {},
+  basic: {},
 });

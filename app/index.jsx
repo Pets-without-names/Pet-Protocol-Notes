@@ -1,18 +1,16 @@
 import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
 import { Text, Button } from '@rneui/themed';
-import { Link, router } from 'expo-router';
-import React from 'react';
+import { router, useNavigation } from 'expo-router';
+import SignIn from './(auth)/sign_in';
+import { React, useEffect } from 'react';
 
 export default function App() {
   return (
     <SafeAreaView>
-      <View style={styles.view}>
+      <View style={styles.container}>
         <Text h2 style={styles.text}>
           Landing Page
         </Text>
-        {/* <Link href='/home' style={styles.link}>
-          Go to Home Page
-        </Link> */}
         <Button
           title='Log In'
           titleStyle={{
@@ -37,15 +35,14 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  view: {
-    justifyContent: 'center',
+  container: {
     alignItems: 'center',
     padding: 10,
     backgroundColor: 'lightblue',
     height: '100%',
   },
   text: {
-    textAlign: 'center',
+    marginTop: 50,
   },
   link: {
     textAlign: 'center',
