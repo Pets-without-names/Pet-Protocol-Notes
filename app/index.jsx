@@ -1,7 +1,8 @@
-import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
-import { Text } from '@rneui/themed';
+import { View, SafeAreaView, StyleSheet } from 'react-native';
+import { Text, Button } from '@rneui/themed';
 import SignIn from './(auth)/sign_in';
 import { React } from 'react';
+import { router } from 'expo-router';
 
 export default function App() {
   return (
@@ -12,6 +13,14 @@ export default function App() {
         </Text>
         <Text h3>Welcome message & disclaimer</Text>
         <SignIn />
+        <Button
+          title='Create an account'
+          buttonStyle={styles.button}
+          containerStyle={styles.buttonContainer}
+          onPress={() => {
+            router.push('/sign_up');
+          }}
+        />
       </View>
     </SafeAreaView>
   );
@@ -33,4 +42,6 @@ const styles = StyleSheet.create({
     fontSize: 26,
     marginTop: 10,
   },
+  button: { backgroundColor: 'blue' },
+  buttonContainer: { marginTop: 20 },
 });

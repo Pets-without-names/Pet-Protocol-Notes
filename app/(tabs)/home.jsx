@@ -1,25 +1,34 @@
-import { View, StyleSheet, SafeAreaView } from 'react-native';
-import { Text, Button, ButtonGroup } from '@rneui/themed';
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  Dimensions,
+  ImageBackground,
+} from 'react-native';
+import { Text, Button } from '@rneui/themed';
 
 const Home = () => {
   return (
     <SafeAreaView>
-      <View style={styles.center}>
+      <View style={styles.container}>
         <Text h2 style={styles.text}>
           Protocol Notes
         </Text>
         <Text h3 style={styles.text}>
-          Information to check in with the staff
+          Staff check-in reminder!
         </Text>
+        <ImageBackground
+          style={styles.image}
+          resizeMode='contain'
+          source={require('../../assets/images/pawprint200.png')}
+        />
         <Button
           title='Add Protocol'
           buttonStyle={{
             borderRadius: 10,
             width: 250,
           }}
-          onPress={() => {
-            console.log('protocol button pressed');
-          }}
+          onPress={() => {}}
         />
       </View>
     </SafeAreaView>
@@ -27,12 +36,22 @@ const Home = () => {
 };
 export default Home;
 
+const windowWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    alignItems: 'center',
+  },
+
   text: {
     textAlign: 'center',
     padding: 10,
   },
-  center: {
-    alignItems: 'center',
+
+  image: {
+    height: 200,
+    width: 200,
+    resizeMode: 'contain',
+    opacity: 0.6,
   },
 });
