@@ -10,7 +10,7 @@ const RootLayout = () => {
       }}
     >
       <Stack.Screen name='index' />
-      {/* <Stack.Screen name='(auth)' /> */}
+      <Stack.Screen name='(auth)' />
     </Stack>
   );
 };

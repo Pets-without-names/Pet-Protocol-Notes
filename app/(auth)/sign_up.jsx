@@ -52,7 +52,7 @@ const SignUp = () => {
           title='Create an account'
           style={styles.button}
           onPress={() => {
-            router.replace('/home');
+            router.replace('/');
           }}
         />
       </View>
