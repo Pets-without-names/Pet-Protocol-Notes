@@ -9,6 +9,7 @@ export default function TabLayout() {
         name='home'
         options={{
           title: 'Home',
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name='home' color={color} />
           ),
@@ -18,6 +19,7 @@ export default function TabLayout() {
         name='protocol'
         options={{
           title: 'Protocol',
+          headerTitle: 'Protocol',
           tabBarIcon: ({ color }) => (
             <FontAwesome6 size={28} name='dog' color={color} />
           ),

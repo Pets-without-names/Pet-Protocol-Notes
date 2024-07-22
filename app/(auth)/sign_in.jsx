@@ -1,7 +1,7 @@
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { Input, Button } from '@rneui/themed';
-import { router} from 'expo-router';
-import React, { useState} from 'react';
+import { SafeAreaView, StyleSheet, View, Pressable } from 'react-native';
+import { Input, Text } from '@rneui/themed';
+import { Link } from 'expo-router';
+import React, { useState } from 'react';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -48,12 +48,11 @@ const SignIn = () => {
             borderColor: pwordFocused ? 'orange' : 'black',
           }}
         />
-        <Button
-          title='Log in'
-          buttonStyle={styles.button}
-          raised
-          onPress={router.push('/home')}
-        />
+        <Pressable>
+          <Link replace href='/(tabs)/home' style={styles.button}>
+            <Text h4>Log in</Text>
+          </Link>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -68,10 +67,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 10,
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
     width: '100%',
     padding: 10,
-    marginTop: 10,
+    marginTop: 50,
   },
   container: {
     alignItems: 'center',
@@ -80,5 +83,11 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 24,
   },
-  button: { padding: 10, width: '100%' },
+  button: {
+    padding: 10,
+    width: '100%',
+    backgroundColor: 'green',
+    borderColor: 'black',
+    borderWidth: 2,
+  },
 });

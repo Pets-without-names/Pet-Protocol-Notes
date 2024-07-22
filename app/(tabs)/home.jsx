@@ -8,6 +8,9 @@ const Home = () => {
         <Text h2 style={styles.text}>
           Protocol Notes
         </Text>
+        <Text h3 style={styles.text}>
+          Information to check in with the staff
+        </Text>
         <Button
           title='Add Protocol'
           buttonStyle={{
@@ -27,6 +30,7 @@ export default Home;
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
+    padding: 10,
   },
   center: {
     alignItems: 'center',

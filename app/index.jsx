@@ -1,8 +1,7 @@
 import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
-import { Text, Button } from '@rneui/themed';
-import { router, useNavigation } from 'expo-router';
+import { Text } from '@rneui/themed';
 import SignIn from './(auth)/sign_in';
-import { React, useEffect } from 'react';
+import { React } from 'react';
 
 export default function App() {
   return (
@@ -11,24 +10,8 @@ export default function App() {
         <Text h2 style={styles.text}>
           Landing Page
         </Text>
-        <Button
-          title='Log In'
-          titleStyle={{
-            fontStyle: 'italic',
-          }}
-          buttonStyle={{
-            backgroundColor: 'darkgreen',
-            borderWidth: 2,
-            borderColor: 'black',
-            borderRadius: 20,
-          }}
-          containerStyle={{
-            width: '70%',
-            marginHorizontal: 10,
-            marginVertical: 10,
-          }}
-          onPress={() => router.push('/sign_in')}
-        />
+        <Text h3>Welcome message & disclaimer</Text>
+        <SignIn />
       </View>
     </SafeAreaView>
   );

@@ -1,28 +1,17 @@
-import { Slot, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 
 const RootLayout = () => {
   return (
-    <Slot>
-      <Stack
-        screenOptions={{
-          headerBackTitle: 'back',
-          headerShown: true,
-        }}
-      >
-        <Stack.Screen
-          name='index'
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name='(auth)'
-          options={{
-            iheaderShown: false,
-          }}
-        />
-      </Stack>
-    </Slot>
+    <Stack
+      screenOptions={{
+        headerTitle: '',
+        headerBackTitle: 'back',
+        headerShown: true,
+      }}
+    >
+      <Stack.Screen name='index' />
+      {/* <Stack.Screen name='(auth)' /> */}
+    </Stack>
   );
 };
 
