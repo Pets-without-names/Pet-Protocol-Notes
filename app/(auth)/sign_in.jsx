@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, View, Pressable } from 'react-native';
-import { Input, Text } from '@rneui/themed';
-import { Link } from 'expo-router';
+import { Input, Button } from '@rneui/themed';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 
 const SignIn = () => {
@@ -48,11 +48,13 @@ const SignIn = () => {
             borderColor: pwordFocused ? 'orange' : 'black',
           }}
         />
-        <Pressable>
-          <Link replace href='/(tabs)/home' style={styles.button}>
-            <Text h4>Log in</Text>
-          </Link>
-        </Pressable>
+        <Button
+          title='Log in'
+          style={styles.button}
+          onPress={() => {
+            router.replace('/home');
+          }}
+        />
       </View>
     </SafeAreaView>
   );
@@ -85,9 +87,10 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    width: '100%',
-    backgroundColor: 'green',
-    borderColor: 'black',
-    borderWidth: 2,
+    width: 190,
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
   },
 });

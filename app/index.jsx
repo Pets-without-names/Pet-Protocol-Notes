@@ -42,6 +42,12 @@ const styles = StyleSheet.create({
     fontSize: 26,
     marginTop: 10,
   },
-  button: { backgroundColor: 'blue' },
+  button: {
+    backgroundColor: 'blue',
+    shadowColor: 'gray',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+  },
   buttonContainer: { marginTop: 20 },
 });

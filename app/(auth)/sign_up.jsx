@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, View, Pressable } from 'react-native';
-import { Text, Input } from '@rneui/themed';
+import { Input, Button } from '@rneui/themed';
 import { React, useState } from 'react';
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -48,11 +48,13 @@ const SignUp = () => {
             borderColor: pwordFocused ? 'orange' : 'black',
           }}
         />
-        <Pressable>
-          <Link replace href='/(tabs)/home' style={styles.button}>
-            <Text h4>Create Account</Text>
-          </Link>
-        </Pressable>
+        <Button
+          title='Create an account'
+          style={styles.button}
+          onPress={() => {
+            router.replace('/home');
+          }}
+        />
       </View>
     </SafeAreaView>
   );
@@ -86,8 +88,5 @@ const styles = StyleSheet.create({
   button: {
     padding: 10,
     width: '100%',
-    backgroundColor: 'green',
-    borderColor: 'black',
-    borderWidth: 2,
   },
 });
