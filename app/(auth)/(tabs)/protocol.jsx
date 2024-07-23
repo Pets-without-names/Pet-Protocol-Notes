@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { StyleSheet, SafeAreaView, FlatList, Pressable } from 'react-native';
-import { Text, Card, Divider } from '@rneui/themed';
+import { Card } from '@rneui/themed';
 import { router } from 'expo-router';
 
 const dogData = [
@@ -39,7 +39,7 @@ const dogData = [
 const Dog = ({ name }) => (
   <Pressable
     onPress={() => {
-      router.push('../details/1');
+      router.push('../../details/1');
     }}
   >
     <Card containerStyle={styles.card}>

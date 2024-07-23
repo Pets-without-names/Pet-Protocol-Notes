@@ -1,6 +1,6 @@
 import { View, SafeAreaView, StyleSheet } from 'react-native';
 import { Text, Button } from '@rneui/themed';
-import SignIn from './(auth)/sign_in';
+import SignIn from '../components/sign_in';
 import { React } from 'react';
 import { router } from 'expo-router';
 
