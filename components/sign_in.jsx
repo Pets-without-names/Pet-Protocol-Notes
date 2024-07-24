@@ -1,22 +1,47 @@
-import { SafeAreaView, StyleSheet, View, Pressable } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
 import { Input, Button } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
+import { signIn } from '../lib/appwrite';
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
   const [inputFocused, setInputFocus] = useState(false);
   const [pwordFocused, setPwordFocus] = useState(false);
+  const [isSubmitting, setSubmitting] = useState(false);
+
+  const submit = async () => {
+    if (form.email === '' || form.password === '') {
+      Alert.alert('Error', 'Please fill in all fields');
+    }
+    setSubmitting(true);
+    try {
+      await signIn(form.email, form.password);
+      // const result = await getCurrentUser();
+      // setUser(result);
+      // setIsLogged(true);
+
+      Alert.alert('Success', 'User signed in successfully');
+      router.replace('/home');
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Error ' + error.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <SafeAreaView>
       <View style={styles.outer}>
         <Input
-          value={email}
+          value={form.email}
           label='email'
           labelStyle={styles.label}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={(text) => setForm({ ...form, email: text })}
           placeholder='email address'
           onFocus={() => {
             setInputFocus(true);
@@ -32,10 +57,10 @@ const SignIn = () => {
           }}
         />
         <Input
-          value={password}
+          value={form.password}
           label='Password'
           labelStyle={styles.label}
-          onChangeText={(text) => setPassword(text)}
+          onChangeText={(text) => setForm({ ...form, password: text })}
           placeholder='password'
           onFocus={() => setPwordFocus(true)}
           onBlur={() => setPwordFocus(false)}
@@ -52,7 +77,7 @@ const SignIn = () => {
           title='Log in'
           style={styles.button}
           onPress={() => {
-            router.replace('/home');
+            submit();
           }}
         />
       </View>
