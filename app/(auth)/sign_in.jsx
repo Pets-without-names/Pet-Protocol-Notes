@@ -2,9 +2,11 @@ import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
 import { Input, Button } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { signIn } from '../lib/appwrite';
+import { getCurrentAccount, signIn } from '../../lib/appwrite';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignIn = () => {
+  const { setUser, setIsLogged } = useGlobalContext();
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -16,13 +18,14 @@ const SignIn = () => {
   const submit = async () => {
     if (form.email === '' || form.password === '') {
       Alert.alert('Error', 'Please fill in all fields');
+      return;
     }
     setSubmitting(true);
     try {
       await signIn(form.email, form.password);
-      // const result = await getCurrentUser();
-      // setUser(result);
-      // setIsLogged(true);
+      const result = await getCurrentAccount();
+      setUser(result);
+      setIsLogged(true);
 
       Alert.alert('Success', 'User signed in successfully');
       router.replace('/home');

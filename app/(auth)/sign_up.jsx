@@ -2,7 +2,7 @@ import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
 import { Input, Button } from '@rneui/themed';
 import { React, useState } from 'react';
 import { router } from 'expo-router';
-import { createUser } from '../../lib/appwrite';
+import { createAccount } from '../../lib/appwrite';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -27,7 +27,7 @@ const SignUp = () => {
     }
     setSubmitting(true);
     try {
-      const result = await createUser(
+      const result = await createAccount(
         form.firstName,
         form.lastName,
         form.email,

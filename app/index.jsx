@@ -1,27 +1,37 @@
-import { View, SafeAreaView, StyleSheet } from 'react-native';
+import { View, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import { Text, Button } from '@rneui/themed';
-import SignIn from '../components/sign_in';
+import SignIn from './(auth)/sign_in';
 import { React } from 'react';
-import { router } from 'expo-router';
+import { Redirect, router } from 'expo-router';
+import { useGlobalContext } from '../context/GlobalProvider';
 
 export default function App() {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+  console.log('isLoading: ' + isLoading); //undefined
+  console.log('isLoggedIn: ' + isLoggedIn); //undefined
+
+  if (!isLoading && isLoggedIn) return <Redirect href='/home' />;
+
   return (
     <SafeAreaView>
-      <View style={styles.container}>
-        <Text h2 style={styles.text}>
-          Landing Page
-        </Text>
-        <Text h3>Welcome message & disclaimer</Text>
-        <SignIn />
-        <Button
-          title='Create an account'
-          buttonStyle={styles.button}
-          containerStyle={styles.buttonContainer}
-          onPress={() => {
-            router.push('/sign_up');
-          }}
-        />
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text h2 style={styles.text}>
+            Landing Page
+          </Text>
+          <Text h3>Welcome message & disclaimer</Text>
+          <SignIn />
+          <Button
+            title='Create an account'
+            buttonStyle={styles.button}
+            containerStyle={styles.buttonContainer}
+            onPress={() => {
+              router.push('/sign_up');
+            }}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
