@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import { getCurrentAccount } from '../lib/appwrite';
+import { getAccount } from '../lib/appwrite';
 
 const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
@@ -11,7 +11,7 @@ const GlobalProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getCurrentAccount()
+    getAccount()
       .then((res) => {
         if (res) {
           setIsLogged(true);

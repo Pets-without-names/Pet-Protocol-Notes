@@ -18,8 +18,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name='protocol'
         options={{
+          headerShown: true,
           title: 'Protocol',
-          headerTitle: 'Protocol',
           tabBarIcon: ({ color }) => (
             <FontAwesome6 size={28} name='dog' color={color} />
           ),
@@ -28,8 +28,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name='protocol_plus'
         options={{
+          headerShown: true,
           title: 'Protocol +',
-          headerTitle: 'Protocol +',
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name='plus' color={color} />
           ),

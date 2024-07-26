@@ -24,8 +24,10 @@ const SignUp = () => {
       form.password === ''
     ) {
       Alert.alert('Please fill in all fields');
+      return;
     }
     setSubmitting(true);
+
     try {
       const result = await createAccount(
         form.firstName,
