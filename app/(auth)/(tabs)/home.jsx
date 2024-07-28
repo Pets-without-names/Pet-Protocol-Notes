@@ -5,9 +5,17 @@ import {
   Dimensions,
   ImageBackground,
 } from 'react-native';
-import { Text, Button } from '@rneui/themed';
+import { Text, Button, Dialog } from '@rneui/themed';
+import { router } from 'expo-router';
+import AddNoteForm from '../../../components/AddNoteForm';
+import { useState } from 'react';
 
 const Home = () => {
+  const [visible, setVisible] = useState(false);
+  const toggleDialog = () => {
+    setVisible(!visible);
+  };
+  
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -28,8 +36,11 @@ const Home = () => {
             borderRadius: 10,
             width: 250,
           }}
-          onPress={() => {}}
+          onPress={toggleDialog}
         />
+        <Dialog isVisible={visible} onBackdropPress={toggleDialog}>
+          <AddNoteForm />
+        </Dialog>
       </View>
     </SafeAreaView>
   );
