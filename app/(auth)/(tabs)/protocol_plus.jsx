@@ -32,13 +32,6 @@ const ProtocolPlusView = ({ navigation }) => {
           ListEmptyComponent={() => <EmptyState title='No dog notes' />}
         />
       </SafeAreaView>
-      {/* <Dialog
-        isVisible={visible}
-        onBackdropPress={toggleDialog}
-        animationType='fade'
-      >
-        <AddNoteForm />
-      </Dialog> */}
     </>
   );
 };

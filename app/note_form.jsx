@@ -15,18 +15,23 @@ const AddNoteForm = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Input
-          label='Name'
-          maxLength={25}
-          autoCapitalize='words'
-          value={name}
-          onChangeText={setName}
-          placeholder='Enter name'
-        />
-        <Card>
-          <Card.Title>Protocol Level</Card.Title>
-          <Card.Divider />
-          <CheckBox
+        <View style={styles.container}>
+          <Input
+            label='Name'
+            labelStyle={styles.label}
+            maxLength={25}
+            autoCapitalize='words'
+            value={name}
+            onChangeText={setName}
+            placeholder='Enter name'
+          />
+          <Card>
+            <Card.Title style={styles.label}>Protocol Level</Card.Title>
+            <Card.Divider />
+            <Text h4 style={styles.text}>
+              Protocol
+            </Text>
+            {/* <CheckBox
             title='Protocol'
             checked={index === 0}
             onPress={() => setIndex(0)}
@@ -39,57 +44,59 @@ const AddNoteForm = () => {
             onPress={() => setIndex(1)}
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
-          />
-        </Card>
-        <Card>
-          <Card.Title>Reactivity</Card.Title>
-          <Card.Divider />
-          <View style={styles.row}>
-            <CheckBox
-              title='Dog'
-              size={24}
-              checked={dogReactive}
-              onPress={() => setDogReactive(!dogReactive)}
-            />
-            <CheckBox
-              title='Cat'
-              size={24}
-              checked={catReactive}
-              onPress={() => setCatReactive(!catReactive)}
-            />
-          </View>
+          /> */}
+          </Card>
+          <Card>
+            <Card.Title style={styles.label}>Reactivity</Card.Title>
+            <Card.Divider />
+            <View style={styles.row}>
+              <CheckBox
+                title='Dog'
+                size={24}
+                checked={dogReactive}
+                onPress={() => setDogReactive(!dogReactive)}
+              />
+              <CheckBox
+                title='Cat'
+                size={24}
+                checked={catReactive}
+                onPress={() => setCatReactive(!catReactive)}
+              />
+            </View>
+            <View>
+              <CheckBox
+                title='Barrier'
+                size={24}
+                checked={barrierReactive}
+                onPress={() => setBarrierReactive(!barrierReactive)}
+              />
+            </View>
+          </Card>
           <View>
             <CheckBox
-              title='Barrier'
+              title='Resource Guarder'
               size={24}
-              checked={barrierReactive}
-              onPress={() => setBarrierReactive(!barrierReactive)}
+              checked={resourceGuard}
+              onPress={() => setResourceGuard(!resourceGuard)}
+            />
+            <CheckBox
+              title='Avoid Strangers'
+              size={24}
+              checked={strangers}
+              onPress={() => setStrangers(!strangers)}
             />
           </View>
-        </Card>
-        <View>
-          <CheckBox
-            title='Resource Guarder'
-            size={24}
-            checked={resourceGuard}
-            onPress={() => setResourceGuard(!resourceGuard)}
+          <Input
+            label='Additional Notes'
+            labelStyle={styles.label}
+            value={notes}
+            onChangeText={setNotes}
+            placeholder='enter notes'
+            multiline={true}
+            numberOfLines={5}
           />
-          <CheckBox
-            title='Avoid Strangers'
-            size={24}
-            checked={strangers}
-            onPress={() => setStrangers(!strangers)}
-          />
+          <Button onPress={() => {}}>Submit</Button>
         </View>
-        <Input
-          label='Notes'
-          value={notes}
-          onChangeText={setNotes}
-          placeholder='enter notes'
-          multiline={true}
-          numberOfLines={5}
-        />
-        <Button onPress={() => {}}>Submit</Button>
       </ScrollView>
     </SafeAreaView>
   );
@@ -98,13 +105,26 @@ const AddNoteForm = () => {
 export default AddNoteForm;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    borderColor: 'grey',
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 20,
+  },
   card: {
     padding: 10,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    textAlign: 'center',
+  },
+  label: {
+    textAlign: 'center',
+    fontSize: 20,
   },
   button: {},
 });

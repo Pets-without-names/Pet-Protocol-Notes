@@ -47,7 +47,7 @@ export default function TabLayout() {
               backgroundColor='white'
               color='blue'
               onPress={() => {
-                router.push('/note_form');
+                router.push('/plus_form');
               }}
             >
               Add Note

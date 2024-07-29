@@ -17,7 +17,12 @@ const RootLayout = () => {
         name='note_form'
         options={{
           presentation: 'card',
-          
+        }}
+      />
+      <Stack.Screen
+        name='plus_form'
+        options={{
+          presentation: 'card',
         }}
       />
     </Stack>
