@@ -9,8 +9,6 @@ const AuthLayout = () => {
       }}
     >
       <Stack.Screen name='(tabs)' />
-      {/* <Stack.Screen name='sign_in' />
-      <Stack.Screen name='sign_up' /> */}
     </Stack>
   );
 };

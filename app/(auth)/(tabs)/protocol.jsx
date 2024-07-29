@@ -30,12 +30,7 @@ const ProtocolView = () => {
           renderItem={({ item }) => <DogNote name={item.name} />}
           keyExtractor={(item) => item.$id}
           ListHeaderComponentStyle={styles.header}
-          ListEmptyComponent={() => (
-            <EmptyState
-              title='No Protocol Notes'
-              subtitle='Go to the home tab to add notes'
-            />
-          )}
+          ListEmptyComponent={() => <EmptyState title='No Protocol Notes' />}
           RefreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }

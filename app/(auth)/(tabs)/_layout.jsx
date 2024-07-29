@@ -1,6 +1,7 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
+import { router } from 'expo-router';
 
 export default function TabLayout() {
   return (
@@ -19,6 +20,16 @@ export default function TabLayout() {
         name='protocol'
         options={{
           headerShown: true,
+          headerRight: () => (
+            <FontAwesome.Button
+              name='plus'
+              backgroundColor='white'
+              color='blue'
+              onPress={() => router.push('/note_form')}
+            >
+              Add Note
+            </FontAwesome.Button>
+          ),
           title: 'Protocol',
           tabBarIcon: ({ color }) => (
             <FontAwesome6 size={28} name='dog' color={color} />
@@ -30,6 +41,18 @@ export default function TabLayout() {
         options={{
           headerShown: true,
           title: 'Protocol +',
+          headerRight: () => (
+            <FontAwesome.Button
+              name='plus'
+              backgroundColor='white'
+              color='blue'
+              onPress={() => {
+                router.push('/note_form');
+              }}
+            >
+              Add Note
+            </FontAwesome.Button>
+          ),
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name='plus' color={color} />
           ),
