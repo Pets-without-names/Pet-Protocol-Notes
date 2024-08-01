@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import { getAccount } from '../lib/appwrite';
+import { getAccount } from '../appwrite/connections';
 
 const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);

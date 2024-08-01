@@ -2,7 +2,7 @@ import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
 import { Input, Button } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { getAccount, signIn } from '../../lib/appwrite';
+import { getAccount, signIn } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignIn = () => {

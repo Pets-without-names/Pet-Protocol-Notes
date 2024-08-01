@@ -3,13 +3,13 @@ import {
   StyleSheet,
   SafeAreaView,
   FlatList,
-  View,
   RefreshControl,
 } from 'react-native';
 import DogNote from '../../../components/DogNote';
 import EmptyState from '../../../components/EmptyState';
-import { getProtocolNotes } from '../../../lib/appwrite';
-import useAppwrite from '../../../lib/useAppwrite';
+import { getProtocolNotes } from '../../../appwrite/connections';
+import useAppwrite from '../../../appwrite/useAppwrite';
+//import db from '../../appwrite/databases';
 
 const ProtocolView = () => {
   const { data: notes, refetch } = useAppwrite(getProtocolNotes);

@@ -4,8 +4,8 @@ import { Dialog } from '@rneui/themed';
 import { router } from 'expo-router';
 import DogNote from '../../../components/DogNote';
 import EmptyState from '../../../components/EmptyState';
-import { getProtocolPlusNotes } from '../../../lib/appwrite';
-import useAppwrite from '../../../lib/useAppwrite';
+import { getProtocolPlusNotes } from '../../../appwrite/connections';
+import useAppwrite from '../../../appwrite/useAppwrite';
 // import AddNoteForm from '../../../components/AddNoteForm';
 
 const ProtocolPlusView = ({ navigation }) => {

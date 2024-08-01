@@ -2,7 +2,7 @@ import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
 import { Input, Button } from '@rneui/themed';
 import { React, useState } from 'react';
 import { router } from 'expo-router';
-import { createAccount } from '../../lib/appwrite';
+import { createAccount } from '../../appwrite/connections';
 
 const SignUp = () => {
   const [form, setForm] = useState({
