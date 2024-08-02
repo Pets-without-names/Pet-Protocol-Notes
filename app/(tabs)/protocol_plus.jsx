@@ -1,21 +1,19 @@
 import { React, useState } from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
-import { Dialog } from '@rneui/themed';
 import { router } from 'expo-router';
-import DogNote from '../../../components/DogNote';
-import EmptyState from '../../../components/EmptyState';
-import { getProtocolPlusNotes } from '../../../appwrite/connections';
-import useAppwrite from '../../../appwrite/useAppwrite';
-// import AddNoteForm from '../../../components/AddNoteForm';
+import DogNote from '../../components/DogNote';
+import EmptyState from '../../components/EmptyState';
+import { getProtocolPlusNotes } from '../../appwrite/connections';
+import useAppwrite from '../../appwrite/useAppwrite';
 
 const ProtocolPlusView = ({ navigation }) => {
   const { data: notes, refetch } = useAppwrite(getProtocolPlusNotes);
   const [refreshing, setRefreshing] = useState(false);
   const [visible, setVisible] = useState(false);
 
-  const toggleDialog = () => {
-    setVisible(!visible);
-  };
+  // const toggleDialog = () => {
+  //   setVisible(!visible);
+  // };
 
   const onRefresh = async () => {
     setRefreshing(true);

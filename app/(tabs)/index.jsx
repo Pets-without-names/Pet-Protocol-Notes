@@ -28,7 +28,7 @@ const Home = () => {
         <ImageBackground
           style={styles.image}
           resizeMode='contain'
-          source={require('../../../assets/images/pawprint200.png')}
+          source={require('../../assets/images/pawprint200.png')}
         />
         <Button
           title='Add Protocol'

@@ -1,5 +1,5 @@
 import { ID } from 'react-native-appwrite';
-import { client, databases, account } from './config';
+import { databases, account } from './config';
 import { DATABASE_ID, PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
 
 // Register a new user:
@@ -21,25 +21,6 @@ export async function createAccount(firstName, lastName, email, password) {
   }
 }
 
-//Create a new dog walking protocol:
-export const createProtocol = async () => {
-  try {
-  } catch (error) {
-    console.log(error.message);
-    throw new Error(error);
-  }
-};
-
-//User sign-in:
-export async function signIn(email, password) {
-  try {
-    const session = await account.createEmailPasswordSession(email, password);
-    return session;
-  } catch (error) {
-    throw new Error(error);
-  }
-}
-
 // Get Account
 export async function getAccount() {
   try {
@@ -48,8 +29,18 @@ export async function getAccount() {
 
     return currentAccount;
   } catch (error) {
-    console.log(error);
+    console.log('Getting account error: ' + error);
     return null;
+  }
+}
+
+//User sign-in:
+export async function signIn(email, password) {
+  try {
+    const session = await account.createEmailPasswordSession(email, password);
+    return session;
+  } catch (error) {
+    throw new Error(error);
   }
 }
 
@@ -89,3 +80,32 @@ export async function getProtocolPlusNotes() {
     throw new Error(error);
   }
 }
+
+//Create a new dog walking protocol:
+export const createProtocolNote = async (data) => {
+  try {
+    const result = await databases.createDocument(
+      DATABASE_ID,
+      PROTOCOL_COLL_ID,
+      ID.unique(),
+      data
+    );
+  } catch (error) {
+    console.log(error.message);
+    throw new Error(error);
+  }
+};
+
+export const createPlusNote = async (data) => {
+  try {
+    const result = await databases.createDocument(
+      DATABASE_ID,
+      PROTOCOL_PLUS_COLL_ID,
+      ID.unique(),
+      data
+    );
+  } catch (error) {
+    console.log(error.message);
+    throw new Error(error);
+  }
+};

@@ -5,10 +5,10 @@ import {
   FlatList,
   RefreshControl,
 } from 'react-native';
-import DogNote from '../../../components/DogNote';
-import EmptyState from '../../../components/EmptyState';
-import { getProtocolNotes } from '../../../appwrite/connections';
-import useAppwrite from '../../../appwrite/useAppwrite';
+import DogNote from '../../components/DogNote';
+import EmptyState from '../../components/EmptyState';
+import { getProtocolNotes } from '../../appwrite/connections';
+import useAppwrite from '../../appwrite/useAppwrite';
 //import db from '../../appwrite/databases';
 
 const ProtocolView = () => {

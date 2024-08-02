@@ -22,10 +22,10 @@ const SignIn = () => {
     }
     setSubmitting(true);
     try {
-      // await signIn(form.email, form.password);
-      // const result = await getAccount();
-      // setUser(result);//undefined
-      // setIsLogged(true); //undefined
+      await signIn(form.email, form.password);
+      const result = await getAccount();
+      setUser(result); //undefined
+      setIsLogged(true); //undefined
 
       Alert.alert('Success', 'User signed in successfully');
       router.replace('/home');
