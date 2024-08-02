@@ -1,13 +1,10 @@
 import { Client, Account, Databases } from 'react-native-appwrite';
-import { ENDPOINT, PROJECT_ID, PLATFORM_ID } from '@env';
+import { ENDPOINT, PROJECT_ID, PLATFORM } from '@env';
 
 // Init your React Native SDK
 const client = new Client();
 
-client
-  .setEndpoint('https://cloud.appwrite.io/v1')
-  .setProject('66a04859001d3df0988d')
-  .setPlatform('com.petswithoutnames.protocols');
+client.setEndpoint(ENDPOINT).setProject(PROJECT_ID).setPlatform(PLATFORM);
 
 const account = new Account(client);
 const databases = new Databases(client);

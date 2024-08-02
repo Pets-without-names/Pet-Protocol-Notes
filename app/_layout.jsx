@@ -7,10 +7,11 @@ const RootLayout = () => {
       screenOptions={{
         headerTitle: '',
         headerBackTitle: 'back',
-        headerShown: false,
+        headerShown: true,
       }}
     >
       <Stack.Screen name='(tabs)' />
+      <Stack.Screen name='(forms)' options={{ presentation: 'modal' }} />
     </Stack>
   );
 };

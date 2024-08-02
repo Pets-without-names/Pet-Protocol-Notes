@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useCallback } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -9,7 +9,6 @@ import DogNote from '../../components/DogNote';
 import EmptyState from '../../components/EmptyState';
 import { getProtocolNotes } from '../../appwrite/connections';
 import useAppwrite from '../../appwrite/useAppwrite';
-//import db from '../../appwrite/databases';
 
 const ProtocolView = () => {
   const { data: notes, refetch } = useAppwrite(getProtocolNotes);
@@ -27,7 +26,7 @@ const ProtocolView = () => {
       <SafeAreaView>
         <FlatList
           data={notes}
-          renderItem={({ item }) => <DogNote name={item.name} />}
+          renderItem={({ item }) => <DogNote dogInfo={item} />}
           keyExtractor={(item) => item.$id}
           ListHeaderComponentStyle={styles.header}
           ListEmptyComponent={() => <EmptyState title='No Protocol Notes' />}

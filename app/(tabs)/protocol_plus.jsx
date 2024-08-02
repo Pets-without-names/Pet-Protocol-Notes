@@ -25,7 +25,7 @@ const ProtocolPlusView = ({ navigation }) => {
       <SafeAreaView>
         <FlatList
           data={notes}
-          renderItem={({ item }) => <DogNote name={item.name} />}
+          renderItem={({ item }) => <DogNote dogInfo={item} />}
           keyExtractor={(item) => item.$id}
           ListEmptyComponent={() => <EmptyState title='No dog notes' />}
         />

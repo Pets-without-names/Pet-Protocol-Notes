@@ -5,11 +5,11 @@ import {
   SafeAreaView,
   Alert,
 } from 'react-native';
-import { CheckBox, Text, Card, Input, Button } from '@rneui/themed';
+import { CheckBox, Card, Input, Button } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
-import { createPlusNote } from '../appwrite/connections';
+import { createPlusNote } from '../../appwrite/connections';
 import { router } from 'expo-router';
 
 const PlusForm = () => {
@@ -36,7 +36,7 @@ const PlusForm = () => {
     try {
       const result = await createPlusNote(form);
       Alert.alert('Note added');
-      router.push('/protocol_plus');
+      router.back();
     } catch (error) {
       console.log(error);
       Alert.alert('Error: ' + error.mesage);

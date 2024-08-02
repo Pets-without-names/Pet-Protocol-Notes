@@ -3,7 +3,7 @@ import { Card } from '@rneui/themed';
 import React from 'react';
 import { router } from 'expo-router';
 
-const DogNote = ({ name }) => {
+const DogNote = ({ dogInfo }) => {
   return (
     <Pressable
       onPress={() => {
@@ -11,7 +11,7 @@ const DogNote = ({ name }) => {
       }}
     >
       <Card containerStyle={styles.card}>
-        <Card.Title style={styles.name}>{name}</Card.Title>
+        <Card.Title style={styles.name}>{dogInfo.name}</Card.Title>
       </Card>
     </Pressable>
   );

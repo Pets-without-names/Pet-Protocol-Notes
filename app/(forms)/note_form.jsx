@@ -5,12 +5,12 @@ import {
   SafeAreaView,
   Alert,
 } from 'react-native';
-import { CheckBox, Text, Card, Input, Button } from '@rneui/themed';
+import { CheckBox, Card, Input, Button } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
-import { createProtocolNote } from '../appwrite/connections';
-import { router } from 'expo-router';
+import { createProtocolNote } from '../../appwrite/connections';
+import { Link, router } from 'expo-router';
 
 const AddNoteForm = () => {
   const [form, setForm] = useState({
@@ -18,13 +18,14 @@ const AddNoteForm = () => {
     barrier_reactive: false,
     dog_reactive: false,
     misc_notes: '',
-    protocol_dated: dayjs(),
+    protocol_date: dayjs(),
     cat_reactive: false,
     resource_guarder: false,
     stranger_reactive: false,
   });
-  const [index, setIndex] = useState(0);
+
   const [isSubmitting, setSubmitting] = useState(false);
+  const isPresented = router.canGoBack();
 
   const submit = async () => {
     // Check for blank form fields:
@@ -36,7 +37,7 @@ const AddNoteForm = () => {
     try {
       const result = await createProtocolNote(form);
       Alert.alert('Note added');
-      router.replace('/protocol_plus');
+      router.back();
     } catch (error) {
       console.log(error);
       Alert.alert('Error: ' + error.mesage);
@@ -49,6 +50,11 @@ const AddNoteForm = () => {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
+          {isPresented && (
+            <Link href='../' style={styles.label}>
+              Dismiss
+            </Link>
+          )}
           <Input
             label='Name'
             labelStyle={styles.label}
@@ -60,9 +66,9 @@ const AddNoteForm = () => {
           />
           <DateTimePicker
             mode='single'
-            date={form.protocol_dated}
+            date={form.protocol_date}
             onChange={(params) => {
-              setForm({ ...form, protocol_dated: params.date });
+              setForm({ ...form, protocol_date: params.date });
             }}
           />
           <Card>

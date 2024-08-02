@@ -1,6 +1,7 @@
 import { ID } from 'react-native-appwrite';
 import { databases, account } from './config';
 import { DATABASE_ID, PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
+import db from './databases';
 
 // Register a new user:
 export async function createAccount(firstName, lastName, email, password) {
@@ -57,11 +58,8 @@ export async function signOut() {
 
 export async function getProtocolNotes() {
   try {
-    const protocolNotes = await databases.listDocuments(
-      DATABASE_ID,
-      PROTOCOL_COLL_ID
-    );
-    return protocolNotes.documents;
+    const response = await db.protocol.list();
+    return response.documents;
   } catch (error) {
     console.log(error);
     throw new Error(error);
@@ -70,11 +68,8 @@ export async function getProtocolNotes() {
 
 export async function getProtocolPlusNotes() {
   try {
-    const plusNotes = await databases.listDocuments(
-      DATABASE_ID,
-      PROTOCOL_PLUS_COLL_ID
-    );
-    return plusNotes.documents;
+    const response = await db.protocolPlus.list();
+    return response.documents;
   } catch (error) {
     console.log(error);
     throw new Error(error);
@@ -84,12 +79,7 @@ export async function getProtocolPlusNotes() {
 //Create a new dog walking protocol:
 export const createProtocolNote = async (data) => {
   try {
-    const result = await databases.createDocument(
-      DATABASE_ID,
-      PROTOCOL_COLL_ID,
-      ID.unique(),
-      data
-    );
+    const response = await db.protocol.create(data);
   } catch (error) {
     console.log(error.message);
     throw new Error(error);
@@ -98,11 +88,32 @@ export const createProtocolNote = async (data) => {
 
 export const createPlusNote = async (data) => {
   try {
-    const result = await databases.createDocument(
+    const response = await db.protocolPlus.create(data)
+  } catch (error) {
+    console.log(error.message);
+    throw new Error(error);
+  }
+};
+
+export const deleteProtocolNote = async (documentId) => {
+  try {
+    const result = await databases.deleteDocument(
       DATABASE_ID,
-      PROTOCOL_PLUS_COLL_ID,
-      ID.unique(),
-      data
+      PROTOCOL_COLL_ID,
+      documentId
+    );
+  } catch (error) {
+    console.log(error.message);
+    throw new Error(error);
+  }
+};
+
+export const deletePlusNote = async (documentId) => {
+  try {
+    const result = await databases.deleteDocument(
+      DATABASE_ID,
+      PROTOCOL_COLL_ID,
+      documentId
     );
   } catch (error) {
     console.log(error.message);
