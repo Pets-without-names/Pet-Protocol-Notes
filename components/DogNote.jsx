@@ -7,7 +7,7 @@ const DogNote = ({ dogInfo }) => {
   return (
     <Pressable
       onPress={() => {
-        router.push('../../details/1');
+        router.push(`../../details/${dogInfo.$id}`);
       }}
     >
       <Card containerStyle={styles.card}>

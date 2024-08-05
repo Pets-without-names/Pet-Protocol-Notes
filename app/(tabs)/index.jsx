@@ -5,17 +5,10 @@ import {
   Dimensions,
   ImageBackground,
 } from 'react-native';
-import { Text, Button, Dialog } from '@rneui/themed';
-import { router } from 'expo-router';
-// import AddNoteForm from '../../../components/AddNoteForm';
+import { Text } from '@rneui/themed';
 import { useState } from 'react';
 
 const Home = () => {
-  const [visible, setVisible] = useState(false);
-  const toggleDialog = () => {
-    setVisible(!visible);
-  };
-
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -30,21 +23,6 @@ const Home = () => {
           resizeMode='contain'
           source={require('../../assets/images/pawprint200.png')}
         />
-        <Button
-          title='Add Protocol'
-          buttonStyle={{
-            borderRadius: 10,
-            width: 250,
-          }}
-          onPress={toggleDialog}
-        />
-        {/* <Dialog
-          isVisible={visible}
-          onBackdropPress={toggleDialog}
-          animationType='fade'
-        >
-          <AddNoteForm />
-        </Dialog> */}
       </View>
     </SafeAreaView>
   );

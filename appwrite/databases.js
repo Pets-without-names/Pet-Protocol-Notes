@@ -35,7 +35,7 @@ collections.forEach((coll) => {
         payload,
         permissions
       ),
-    delete: (id) => databases.deleteDocument(coll.dbId, coll.id, id),
+    delete: (id) => databases.deleteDocument(coll.databaseID, coll.id, id),
     list: (queries = []) =>
       databases.listDocuments(coll.databaseID, coll.id, queries),
     get: (id) => databases.getDocument(coll.databaseID, coll.id, id),
