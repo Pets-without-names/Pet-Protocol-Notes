@@ -56,6 +56,25 @@ export async function signOut() {
   }
 }
 
+export const getProtocolDetails = async (id) => {
+  try {
+    const response = await db.protocol.get(id);
+    return response; //returns a JSON object
+  } catch (error) {
+    console.log(error.message);
+    throw new Error(error);
+  }
+};
+export const getPlusDetails = async (id) => {
+  try {
+    const response = await db.protocolPlus.get(id);
+    return response; //returns a JSON object
+  } catch (error) {
+    console.log(error.message);
+    throw new Error(error);
+  }
+};
+
 export async function getProtocolNotes() {
   try {
     const response = await db.protocol.list();
@@ -88,7 +107,7 @@ export const createProtocolNote = async (data) => {
 
 export const createPlusNote = async (data) => {
   try {
-    const response = await db.protocolPlus.create(data)
+    const response = await db.protocolPlus.create(data);
   } catch (error) {
     console.log(error.message);
     throw new Error(error);

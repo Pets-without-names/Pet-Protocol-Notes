@@ -12,7 +12,6 @@ import useAppwrite from '../../appwrite/useAppwrite';
 
 const ProtocolView = () => {
   const { data: notes, refetch } = useAppwrite(getProtocolNotes);
-
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {

@@ -1,39 +1,49 @@
-import { React } from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
-import { Card } from '@rneui/themed';
+import { React, useState } from 'react';
+import { StyleSheet, ScrollView } from 'react-native';
+import { Card, Text } from '@rneui/themed';
 import { useLocalSearchParams } from 'expo-router';
 
-// const dogInfo = {
-//   name: 'Artie',
-//   note1: 'Barrier Reactive',
-//   note2: 'Resource Garder',
-//   note3: 'Place Routine',
-//   note4: 'Dog Reactive',
-//   note5: 'Practice door routine.  OK to walk past strangers',
-// };
-
-// const infoArray = Object.entries(dogInfo);
-
 const Details = () => {
-  const { id } = useLocalSearchParams();
+  const params = useLocalSearchParams();
+  const [data, setData] = useState([]);
+
+  //Format the protocol date:
+  const date = new Date(Date.parse(params.protocol_date));
+  const formattedDate = `${date.getDate()}-${date.toLocaleString('default', {
+    month: 'short',
+  })}-${date.getFullYear()}`;
+
+  //create an array of the protocol details:
+  Object.entries(params).forEach((entry) => {
+    const [key, value] = entry;
+    // console.log(`${key}: ${value}`);
+  });
+
+  // const fetchDetails = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const response = await getProtocolDetails(params.$id);
+  //     setData(response);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     throw new Error(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchDetails();
+  // }, []);
 
   return (
     <>
       <ScrollView>
         <Card style={styles.container}>
-          <Card.Title style={styles.name}>{id}</Card.Title>
+          <Card.Title style={styles.name}>{params.name}</Card.Title>
           <Card.Divider />
-          {/* <Card.Image
-            style={styles.image}
-            source={require('../../assets/images/artie.png')}
-          /> */}
-          {/* {infoArray.map((dog, index) => {
-            return (
-              <Text style={styles.notes} key={index}>
-                {dog[1]}
-              </Text>
-            );
-          })} */}
+          <Text h4>Protocol date: {formattedDate}</Text>
+          <Text>{params.misc_notes}</Text>
         </Card>
       </ScrollView>
     </>
