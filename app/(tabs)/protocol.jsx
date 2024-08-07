@@ -1,5 +1,6 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useCallback } from 'react';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { useFocusEffect } from 'expo-router';
 import DogNote from '../../components/DogNote';
 import EmptyState from '../../components/EmptyState';
 import { getProtocolNotes } from '../../appwrite/connections';
@@ -9,12 +10,14 @@ const ProtocolView = () => {
   const { data: notes, refetch } = useAppwrite(getProtocolNotes);
   const [refreshing, setRefreshing] = useState(false);
 
-  // const onRefresh = async () => {
-  //   setRefreshing(true);
-  //   await refetch();
-  //   setRefreshing(false);
-  // };
+  //refetch the data after a note has been added:
+  useFocusEffect(
+    useCallback(() => {
+      refetch();
+    }, [notes])
+  );
 
+  //refetch the data with the pull down functionality
   useEffect(() => {
     if (refreshing) {
       refetch();

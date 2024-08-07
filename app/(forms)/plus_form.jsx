@@ -8,9 +8,8 @@ import {
 import { CheckBox, Card, Input, Button } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
-import dayjs from 'dayjs';
 import { createPlusNote } from '../../appwrite/connections';
-import { router } from 'expo-router';
+import { router, Link } from 'expo-router';
 
 const PlusForm = () => {
   const [form, setForm] = useState({
@@ -18,13 +17,14 @@ const PlusForm = () => {
     barrier_reactive: false,
     dog_reactive: false,
     misc_notes: '',
-    protocol_dated: dayjs(),
+    protocol_dated: new Date(),
     cat_reactive: false,
     resource_guarder: false,
     stranger_reactive: false,
   });
   const [index, setIndex] = useState(0);
   const [isSubmitting, setSubmitting] = useState(false);
+  const isPresented = router.canGoBack();
 
   const submit = async () => {
     // Check for blank form fields:
@@ -35,7 +35,7 @@ const PlusForm = () => {
     setSubmitting(true);
     try {
       const result = await createPlusNote(form);
-      Alert.alert('Note added');
+      Alert.alert(`${form.name} added`);
       router.back();
     } catch (error) {
       console.log(error);
@@ -49,6 +49,11 @@ const PlusForm = () => {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
+          {isPresented && (
+            <Link href='../' style={styles.label}>
+              Dismiss
+            </Link>
+          )}
           <Input
             label='Name'
             labelStyle={styles.label}

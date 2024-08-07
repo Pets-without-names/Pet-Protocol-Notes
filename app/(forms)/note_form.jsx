@@ -8,7 +8,6 @@ import {
 import { CheckBox, Card, Input, Button } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
-import dayjs from 'dayjs';
 import { createProtocolNote } from '../../appwrite/connections';
 import { Link, router } from 'expo-router';
 
@@ -18,7 +17,7 @@ const AddNoteForm = () => {
     barrier_reactive: false,
     dog_reactive: false,
     misc_notes: '',
-    protocol_date: dayjs(),
+    protocol_date: new Date(),
     cat_reactive: false,
     resource_guarder: false,
     stranger_reactive: false,
@@ -36,7 +35,7 @@ const AddNoteForm = () => {
     setSubmitting(true);
     try {
       const result = await createProtocolNote(form);
-      Alert.alert('Note added');
+      Alert.alert(`${form.name} added`);
       router.back();
     } catch (error) {
       console.log(error);
