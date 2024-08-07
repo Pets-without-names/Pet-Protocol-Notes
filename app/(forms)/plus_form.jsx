@@ -17,12 +17,12 @@ const PlusForm = () => {
     barrier_reactive: false,
     dog_reactive: false,
     misc_notes: '',
-    protocol_dated: new Date(),
     cat_reactive: false,
     resource_guarder: false,
     stranger_reactive: false,
+    protocol_date: new Date(),
   });
-  const [index, setIndex] = useState(0);
+
   const [isSubmitting, setSubmitting] = useState(false);
   const isPresented = router.canGoBack();
 
@@ -65,9 +65,9 @@ const PlusForm = () => {
           />
           <DateTimePicker
             mode='single'
-            date={form.protocol_dated}
+            date={form.protocol_date}
             onChange={(params) => {
-              setForm({ ...form, protocol_dated: params.date });
+              setForm({ ...form, protocol_date: params.date });
             }}
           />
           <Card>

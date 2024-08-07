@@ -15,8 +15,6 @@ const Details = () => {
     month: 'short',
   })}-${date.getFullYear()}`;
 
-  console.log(formattedDate);
-
   //create an array of the protocol details:
   Object.entries(params).forEach((entry) => {
     const [key, value] = entry;
@@ -26,7 +24,7 @@ const Details = () => {
   const handleDelete = async (documentID) => {
     try {
       const result = await deleteNote(params.$collectionId, documentID);
-      Alert.alert(`${params.name} note deleted`);
+      Alert.alert(`${params.name} deleted`);
       router.back();
     } catch (error) {
       console.log('delete error: ' + error.message);

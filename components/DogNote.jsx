@@ -11,7 +11,6 @@ const DogNote = ({ dogInfo }) => {
           pathname: `../../details/${dogInfo.$id}`,
           params: dogInfo,
         });
-        // router.push(`../../details/${dogInfo.$id}`);
       }}
     >
       <Card containerStyle={styles.card}>
