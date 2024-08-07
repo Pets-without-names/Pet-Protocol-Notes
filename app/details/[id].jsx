@@ -1,7 +1,9 @@
 import { React, useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { Card, Text } from '@rneui/themed';
-import { useLocalSearchParams } from 'expo-router';
+import { StyleSheet, ScrollView, Alert } from 'react-native';
+import { Card, Text, Button } from '@rneui/themed';
+import { useLocalSearchParams, router } from 'expo-router';
+import { FontAwesome6 } from '@expo/vector-icons';
+import { deleteNote } from '../../appwrite/connections';
 
 const Details = () => {
   const params = useLocalSearchParams();
@@ -13,28 +15,24 @@ const Details = () => {
     month: 'short',
   })}-${date.getFullYear()}`;
 
+  console.log(formattedDate);
+
   //create an array of the protocol details:
   Object.entries(params).forEach((entry) => {
     const [key, value] = entry;
     // console.log(`${key}: ${value}`);
   });
 
-  // const fetchDetails = async () => {
-  //   setIsLoading(true);
-  //   try {
-  //     const response = await getProtocolDetails(params.$id);
-  //     setData(response);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //     throw new Error(error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchDetails();
-  // }, []);
+  const handleDelete = async (documentID) => {
+    try {
+      const result = await deleteNote(params.$collectionId, documentID);
+      Alert.alert(`${params.name} note deleted`);
+      router.back();
+    } catch (error) {
+      console.log('delete error: ' + error.message);
+      throw new Error(error);
+    }
+  };
 
   return (
     <>
@@ -45,6 +43,20 @@ const Details = () => {
           <Text h4>Protocol date: {formattedDate}</Text>
           <Text>{params.misc_notes}</Text>
         </Card>
+        <Button
+          style={styles.button}
+          onPress={() => {
+            handleDelete(params.$id);
+          }}
+        >
+          Delete
+          <FontAwesome6
+            name='trash-can'
+            size='24'
+            color='white'
+            style={styles.icon}
+          />
+        </Button>
       </ScrollView>
     </>
   );
@@ -59,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   name: {
-    fontSize: 36,
+    fontSize: 28,
   },
   notes: {
     fontSize: 18,
@@ -68,6 +80,10 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 250,
+  },
+  button: {},
+  icon: {
+    marginLeft: 20,
   },
 });
 

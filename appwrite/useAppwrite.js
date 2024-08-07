@@ -11,7 +11,7 @@ const useAppwrite = (fn) => {
       const response = await fn();
       setData(response);
     } catch (error) {
-      console.log(error);
+      console.log('refetch error: ' + error);
       Alert.alert('Error: ', error.message);
       throw new Error(error);
     } finally {

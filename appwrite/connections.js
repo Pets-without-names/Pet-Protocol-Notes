@@ -114,28 +114,15 @@ export const createPlusNote = async (data) => {
   }
 };
 
-export const deleteProtocolNote = async (documentId) => {
+export const deleteNote = async (collID, documentID) => {
   try {
     const result = await databases.deleteDocument(
       DATABASE_ID,
-      PROTOCOL_COLL_ID,
-      documentId
+      collID,
+      documentID
     );
   } catch (error) {
-    console.log(error.message);
-    throw new Error(error);
-  }
-};
-
-export const deletePlusNote = async (documentId) => {
-  try {
-    const result = await databases.deleteDocument(
-      DATABASE_ID,
-      PROTOCOL_COLL_ID,
-      documentId
-    );
-  } catch (error) {
-    console.log(error.message);
+    console.log('Delete error: ' + error.message);
     throw new Error(error);
   }
 };

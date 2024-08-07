@@ -1,10 +1,5 @@
-import { React, useState } from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  FlatList,
-  RefreshControl,
-} from 'react-native';
+import { React, useState, useEffect } from 'react';
+import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import DogNote from '../../components/DogNote';
 import EmptyState from '../../components/EmptyState';
 import { getProtocolNotes } from '../../appwrite/connections';
@@ -14,24 +9,31 @@ const ProtocolView = () => {
   const { data: notes, refetch } = useAppwrite(getProtocolNotes);
   const [refreshing, setRefreshing] = useState(false);
 
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await refetch();
-    setRefreshing(false);
-  };
+  // const onRefresh = async () => {
+  //   setRefreshing(true);
+  //   await refetch();
+  //   setRefreshing(false);
+  // };
+
+  useEffect(() => {
+    if (refreshing) {
+      refetch();
+      setRefreshing(false);
+    }
+  }, [refreshing]);
 
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <FlatList
           data={notes}
+          style={styles.list}
           renderItem={({ item }) => <DogNote dogInfo={item} />}
           keyExtractor={(item) => item.$id}
           ListHeaderComponentStyle={styles.header}
           ListEmptyComponent={() => <EmptyState title='No Protocol Notes' />}
-          RefreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
+          refreshing={refreshing}
+          onRefresh={() => setRefreshing(true)}
         />
       </SafeAreaView>
     </>
@@ -43,5 +45,11 @@ export default ProtocolView;
 const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
+  },
+  container: {
+    flex: 1,
+  },
+  list: {
+    flex: 1,
   },
 });

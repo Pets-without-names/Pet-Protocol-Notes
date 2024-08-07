@@ -1,10 +1,5 @@
-import { React, useState } from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  RefreshControl,
-  StyleSheet,
-} from 'react-native';
+import { React, useState, useEffect } from 'react';
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
 import DogNote from '../../components/DogNote';
 import EmptyState from '../../components/EmptyState';
@@ -15,23 +10,25 @@ const ProtocolPlusView = () => {
   const { data: notes, refetch } = useAppwrite(getProtocolPlusNotes);
   const [refreshing, setRefreshing] = useState(false);
 
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await refetch();
-    setRefreshing(false);
-  };
+  useEffect(() => {
+    if (refreshing) {
+      refetch();
+      setRefreshing(false);
+    }
+  }, [refreshing]);
+
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <FlatList
           data={notes}
+          style={styles.list}
           renderItem={({ item }) => <DogNote dogInfo={item} />}
           keyExtractor={(item) => item.$id}
           ListHeaderComponentStyle={styles.header}
           ListEmptyComponent={() => <EmptyState title='No dog notes' />}
-          RefreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
+          refreshing={refreshing}
+          onRefresh={() => setRefreshing(true)}
         />
       </SafeAreaView>
     </>
@@ -43,5 +40,11 @@ export default ProtocolPlusView;
 const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
+  },
+  container: {
+    flex: 1,
+  },
+  list: {
+    flex: 1,
   },
 });
