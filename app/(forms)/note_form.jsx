@@ -1,15 +1,20 @@
+import { View, StyleSheet, Alert } from 'react-native';
 import {
-  View,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-  Alert,
-} from 'react-native';
-import { CheckBox, Card, Input, Button } from '@rneui/themed';
+  CheckBox,
+  Card,
+  Input,
+  Button,
+  FAB,
+  Header,
+  Icon,
+  Text,
+} from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
 import { createProtocolNote } from '../../appwrite/connections';
 import { Link, router } from 'expo-router';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const AddNoteForm = () => {
   const [form, setForm] = useState({
@@ -46,14 +51,22 @@ const AddNoteForm = () => {
   };
 
   return (
-    <SafeAreaView>
-      <ScrollView>
+    <SafeAreaProvider>
+      <Header
+        containerStyle={styles.header}
+        leftComponent={
+          <Icon
+            name='close'
+            reverse
+            size={14}
+            onPress={() => {
+              router.back();
+            }}
+          />
+        }
+      />
+      <KeyboardAwareScrollView extraScrollHeight={60}>
         <View style={styles.container}>
-          {isPresented && (
-            <Link href='../' style={styles.label}>
-              Dismiss
-            </Link>
-          )}
           <Input
             label='Name'
             labelStyle={styles.label}
@@ -136,8 +149,8 @@ const AddNoteForm = () => {
             Submit
           </Button>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </KeyboardAwareScrollView>
+    </SafeAreaProvider>
   );
 };
 
@@ -145,6 +158,7 @@ export default AddNoteForm;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     borderColor: 'grey',
     borderWidth: 1,
     borderRadius: 5,
@@ -163,4 +177,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {},
+  header: {},
 });
