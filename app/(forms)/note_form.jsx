@@ -1,18 +1,9 @@
 import { View, StyleSheet, Alert } from 'react-native';
-import {
-  CheckBox,
-  Card,
-  Input,
-  Button,
-  FAB,
-  Header,
-  Icon,
-  Text,
-} from '@rneui/themed';
+import { CheckBox, Card, Input, Button, Header, Icon } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
-import { createProtocolNote } from '../../appwrite/connections';
-import { Link, router } from 'expo-router';
+import { createNote } from '../../appwrite/connections';
+import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -29,7 +20,7 @@ const AddNoteForm = () => {
   });
 
   const [isSubmitting, setSubmitting] = useState(false);
-  const isPresented = router.canGoBack();
+  const params = useLocalSearchParams();
 
   const submit = async () => {
     // Check for blank form fields:
@@ -39,8 +30,8 @@ const AddNoteForm = () => {
     }
     setSubmitting(true);
     try {
-      const result = await createProtocolNote(form);
-      Alert.alert(`${form.name} added`);
+      const result = await createNote(params.collID, form);
+      Alert.alert(`${result.name} added`);
       router.back();
     } catch (error) {
       console.log(error);
@@ -110,7 +101,10 @@ const AddNoteForm = () => {
                 size={24}
                 checked={form.barrier_reactive}
                 onPress={() =>
-                  setForm({ ...form, barrier_reactive: !form.barrier_reactive })
+                  setForm({
+                    ...form,
+                    barrier_reactive: !form.barrier_reactive,
+                  })
                 }
               />
             </View>
@@ -129,7 +123,10 @@ const AddNoteForm = () => {
               size={24}
               checked={form.stranger_reactive}
               onPress={() =>
-                setForm({ ...form, stranger_reactive: !form.stranger_reactive })
+                setForm({
+                  ...form,
+                  stranger_reactive: !form.stranger_reactive,
+                })
               }
             />
           </View>

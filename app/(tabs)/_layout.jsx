@@ -1,6 +1,7 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Tabs, router, Link } from 'expo-router';
+import { PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
 
 export default function TabLayout() {
   return (
@@ -24,7 +25,12 @@ export default function TabLayout() {
               name='plus'
               backgroundColor='white'
               color='blue'
-              onPress={() => router.push('/note_form')}
+              onPress={() =>
+                router.push({
+                  pathname: '../(forms)/note_form',
+                  params: { collID: PROTOCOL_COLL_ID },
+                })
+              }
             >
               Add Note
             </FontAwesome.Button>
@@ -46,7 +52,10 @@ export default function TabLayout() {
               backgroundColor='white'
               color='blue'
               onPress={() => {
-                router.push('/plus_form');
+                router.push({
+                  pathname: '../(forms)/plus_form',
+                  params: { collID: PROTOCOL_PLUS_COLL_ID },
+                });
               }}
             >
               Add Note
