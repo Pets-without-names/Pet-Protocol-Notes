@@ -14,7 +14,7 @@ const ProtocolView = () => {
   useFocusEffect(
     useCallback(() => {
       refetch();
-    }, [notes])
+    }, [])
   );
 
   //refetch the data with the pull down functionality

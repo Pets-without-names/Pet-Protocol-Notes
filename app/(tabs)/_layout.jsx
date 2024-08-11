@@ -53,7 +53,7 @@ export default function TabLayout() {
               color='blue'
               onPress={() => {
                 router.push({
-                  pathname: '../(forms)/plus_form',
+                  pathname: '../(forms)/note_form',
                   params: { collID: PROTOCOL_PLUS_COLL_ID },
                 });
               }}

@@ -9,7 +9,6 @@ const FormLayout = () => {
       }}
     >
       <Stack.Screen name='note_form' />
-      <Stack.Screen name='plus_form' />
     </Stack>
   );
 };
