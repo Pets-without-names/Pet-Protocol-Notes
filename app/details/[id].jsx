@@ -13,9 +13,9 @@ const Details = () => {
 
   //Format the protocol date:
   const date = new Date(Date.parse(params.protocol_date));
-  const formattedDate = `${date.getDate()}-${date.toLocaleString('default', {
+  const formattedDate = `${date.toLocaleString('default', {
     month: 'short',
-  })}-${date.getFullYear()}`;
+  })}-${date.getDate()}-${date.getFullYear()}`;
 
   //Iterate over the protocol details:
   function compileDetails() {
@@ -63,26 +63,23 @@ const Details = () => {
   return (
     <>
       <ScrollView contentContainerStyle={styles.outsideContainer}>
-        <Card style={styles.cardContainer}>
+        <Card containerStyle={styles.cardContainer}>
           <Card.Title style={styles.name}>{params.name}</Card.Title>
           <Card.Divider />
-          <Text h4 style={{ textAlign: 'center' }}>
+          <Text style={{ textAlign: 'center', fontSize: 20 }}>
             Protocol date: {formattedDate}
           </Text>
+          {details.map((item, i) => {
+            return (
+              <ListItem key={i} bottomDivider>
+                <ListItem.Content style={{ alignItems: 'center' }}>
+                  <Text style={styles.text}>{item.note}</Text>
+                </ListItem.Content>
+              </ListItem>
+            );
+          })}
         </Card>
-        {details.map((item, i) => {
-          return (
-            <ListItem
-              key={i}
-              bottomDivider
-              containerStyle={styles.listContainer}
-            >
-              <ListItem.Content style={{ alignItems: 'center' }}>
-                <Text style={styles.text}>{item.note}</Text>
-              </ListItem.Content>
-            </ListItem>
-          );
-        })}
+
         <Button
           title='Delete'
           icon={{
@@ -106,15 +103,19 @@ const Details = () => {
 
 const styles = StyleSheet.create({
   outsideContainer: {
+    flex: 1,
     alignItems: 'center',
   },
-
-  cardContainer: {},
+  cardContainer: {
+    width: '90%',
+    borderRadius: 10,
+  },
   name: {
     fontSize: 28,
-  },
-  listContainer: {
-    width: '75%',
+    borderColor: 'grey',
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
   },
   image: {
     width: '100%',
@@ -128,10 +129,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: 200,
     marginTop: 15,
-  },
-  button: {
-    alignItems: 'center',
-    marginTop: 10,
   },
   icon: {
     marginLeft: 20,
