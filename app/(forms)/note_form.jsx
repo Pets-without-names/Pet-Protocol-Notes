@@ -17,6 +17,9 @@ const AddNoteForm = () => {
     cat_reactive: false,
     resource_guarder: false,
     stranger_reactive: false,
+    jumpy_mouthy: false,
+    door_routine: false,
+    place_routine: false,
   });
 
   const [isSubmitting, setSubmitting] = useState(false);
@@ -35,7 +38,6 @@ const AddNoteForm = () => {
       router.back();
     } catch (error) {
       console.log(error);
-      Alert.alert('Error: ' + error.mesage);
     } finally {
       setSubmitting(false);
     }
@@ -107,6 +109,17 @@ const AddNoteForm = () => {
                   })
                 }
               />
+              <CheckBox
+                title='Jumpy/Mouthy'
+                size={24}
+                checked={form.jumpy_mouthy}
+                onPress={() =>
+                  setForm({
+                    ...form,
+                    jumpy_mouthy: !form.jumpy_mouthy,
+                  })
+                }
+              />
             </View>
           </Card>
           <View>
@@ -129,9 +142,32 @@ const AddNoteForm = () => {
                 })
               }
             />
+            <CheckBox
+              title='Place Routine'
+              size={24}
+              checked={form.place_routine}
+              onPress={() =>
+                setForm({
+                  ...form,
+                  place_routine: !form.place_routine,
+                })
+              }
+            />
+            <CheckBox
+              title='Door Routine'
+              size={24}
+              checked={form.door_routine}
+              onPress={() =>
+                setForm({
+                  ...form,
+                  door_routine: !form.door_routine,
+                })
+              }
+            />
           </View>
           <Input
-            label='Notes'
+            label='Other Notes'
+            labelStyle={{ fontWeight: 'bold', fontSize: 20 }}
             value={form.misc_notes}
             onChangeText={(text) => setForm({ ...form, misc_notes: text })}
             placeholder='enter notes'

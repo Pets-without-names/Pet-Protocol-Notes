@@ -38,6 +38,15 @@ const Details = () => {
           case 'stranger_reactive':
             detailsArray.push({ note: 'Do not walk past strangers' });
             break;
+          case 'jumpy_mouthy':
+            detailsArray.push({ note: 'Jumpy/Mouthy' });
+            break;
+          case 'door_routine':
+            detailsArray.push({ note: 'Practice Door Routine' });
+            break;
+          case 'place_routine':
+            detailsArray.push({ note: 'Practice Place Routine' });
+            break;
         }
       }
     });
