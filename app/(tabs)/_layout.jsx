@@ -1,6 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { FontAwesome6 } from '@expo/vector-icons';
-import { Tabs, router} from 'expo-router';
+import { Tabs, router } from 'expo-router';
 import { PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
 
 export default function TabLayout() {

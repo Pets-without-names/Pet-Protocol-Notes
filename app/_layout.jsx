@@ -7,7 +7,7 @@ const RootLayout = () => {
       screenOptions={{
         headerTitle: '',
         headerBackTitle: 'back',
-        headerShown: true,
+        headerShown: false,
       }}
     >
       <Stack.Screen name='(tabs)' />
