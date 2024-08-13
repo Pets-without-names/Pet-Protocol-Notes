@@ -65,6 +65,13 @@ const Details = () => {
     }
   };
 
+  const handleUpdate = async () => {
+    router.replace({
+      pathname: '../(forms)/update_form',
+      params: params,
+    });
+  };
+
   useEffect(() => {
     compileDetails();
   }, []);
@@ -88,7 +95,21 @@ const Details = () => {
             );
           })}
         </Card>
-
+        <Button
+          title='Update'
+          icon={{
+            name: 'update',
+            type: 'fontawesome',
+            size: 25,
+            color: 'white',
+          }}
+          iconRight
+          containerStyle={styles.buttonContainer}
+          buttonStyle={styles.buttonStyle}
+          onPress={() => {
+            handleUpdate();
+          }}
+        />
         <Button
           title='Delete'
           icon={{
@@ -102,7 +123,7 @@ const Details = () => {
           buttonStyle={styles.buttonStyle}
           onPress={() => {
             Alert.alert('Are you sure?');
-            //handleDelete(params.$id);
+            handleDelete(params.$id);
           }}
         />
       </ScrollView>

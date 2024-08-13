@@ -1,4 +1,5 @@
 import { View, StyleSheet, Alert } from 'react-native';
+import { React, useState } from 'react';
 import {
   CheckBox,
   Card,
@@ -8,49 +9,39 @@ import {
   Icon,
   Text,
 } from '@rneui/themed';
-import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
-import { createNote } from '../../appwrite/connections';
+import { updateNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const AddNoteForm = () => {
-  const [form, setForm] = useState({
-    name: '',
-    barrier_reactive: false,
-    dog_reactive: false,
-    misc_notes: '',
-    protocol_date: new Date(),
-    cat_reactive: false,
-    resource_guarder: false,
-    stranger_reactive: false,
-    jumpy_mouthy: false,
-    door_routine: false,
-    place_routine: false,
-  });
-
-  const [isSubmitting, setSubmitting] = useState(false);
-  const [nameError, setNameError] = useState(false);
+const UpdateForm = () => {
   const params = useLocalSearchParams();
+  // console.log(params);
+  const [form, setForm] = useState({
+    barrier_reactive: params.barrier_reactive === 'true' ? true : false,
+    dog_reactive: params.dog_reactive === 'true' ? true : false,
+    misc_notes: params.misc_notes,
+    protocol_date: params.protocol_date,
+    cat_reactive: params.cat_reactive === 'true' ? true : false,
+    resource_guarder: params.resource_guarder === 'true' ? true : false,
+    stranger_reactive: params.stranger_reactive === 'true' ? true : false,
+    jumpy_mouthy: params.jumpy_mouthy === 'true' ? true : false,
+    door_routine: params.door_routine === 'true' ? true : false,
+    place_routine: params.place_routine === 'true' ? true : false,
+  });
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const submit = async () => {
-    // Check for blank form fields:
-    if (form.name === '') {
-      Alert.alert('please enter a name');
-      setNameError(true);
-      return;
-    }
     setSubmitting(true);
     try {
-      const result = await createNote(params.collID, form);
-      Alert.alert(`${result.name} added`);
+      const result = await updateNote(params.$collectionId, params.$id, form);
+      Alert.alert(`${result.name} updated`);
       router.back();
     } catch (error) {
       console.log(error);
     } finally {
       setSubmitting(false);
-      setNameError(false);
     }
   };
 
@@ -61,8 +52,7 @@ const AddNoteForm = () => {
         leftComponent={
           <Icon
             name='close'
-            reverse
-            size={14}
+            size={18}
             onPress={() => {
               router.back();
             }}
@@ -71,23 +61,7 @@ const AddNoteForm = () => {
       />
       <KeyboardAwareScrollView extraScrollHeight={60}>
         <View style={styles.container}>
-          <Input
-            label='Name'
-            labelStyle={styles.label}
-            maxLength={25}
-            autoCapitalize='words'
-            value={form.name}
-            onChangeText={(text) => {
-              setForm({ ...form, name: text });
-              setNameError(false);
-            }}
-            placeholder='Enter name'
-          />
-          {nameError && (
-            <Text h4 style={{ color: 'red' }}>
-              Enter a name
-            </Text>
-          )}
+          <Text h3>{params.name}</Text>
           <DateTimePicker
             mode='single'
             date={form.protocol_date}
@@ -198,7 +172,7 @@ const AddNoteForm = () => {
               submit();
             }}
           >
-            Submit
+            Update
           </Button>
         </View>
       </KeyboardAwareScrollView>
@@ -206,7 +180,7 @@ const AddNoteForm = () => {
   );
 };
 
-export default AddNoteForm;
+export default UpdateForm;
 
 const styles = StyleSheet.create({
   container: {

@@ -129,6 +129,21 @@ export const createNote = async (collID, data, docID = ID.unique()) => {
   }
 };
 
+export const updateNote = async (collID, docID, data) => {
+  try {
+    const response = await databases.updateDocument(
+      DATABASE_ID,
+      collID,
+      docID,
+      data
+    );
+    return response;
+  } catch (error) {
+    console.log(`Update error: ${error.message}`);
+    throw new Error(error);
+  }
+};
+
 export async function deleteNote(collID, documentID) {
   try {
     const result = await databases.deleteDocument(
