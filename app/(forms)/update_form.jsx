@@ -8,6 +8,7 @@ import {
   Header,
   Icon,
   Text,
+  Divider,
 } from '@rneui/themed';
 import DateTimePicker from 'react-native-ui-datepicker';
 import { updateNote } from '../../appwrite/connections';
@@ -52,16 +53,31 @@ const UpdateForm = () => {
         leftComponent={
           <Icon
             name='close'
-            size={18}
+            size={24}
             onPress={() => {
               router.back();
             }}
           />
         }
+        centerComponent={<Text style={styles.header}>{params.name}</Text>}
       />
-      <KeyboardAwareScrollView extraScrollHeight={60}>
+      <KeyboardAwareScrollView extraScrollHeight={120}>
         <View style={styles.container}>
-          <Text h3>{params.name}</Text>
+          <Text
+            h3
+            style={{
+              width: '90%',
+              textAlign: 'center',
+              marginBottom: 20,
+              borderColor: 'black',
+              borderWidth: 1,
+              borderRadius: 10,
+              padding: 10,
+            }}
+          >
+            {params.name}
+          </Text>
+          <Divider />
           <DateTimePicker
             mode='single'
             date={form.protocol_date}
@@ -69,7 +85,7 @@ const UpdateForm = () => {
               setForm({ ...form, protocol_date: params.date });
             }}
           />
-          <Card>
+          <Card containerStyle={{ width: '100%' }}>
             <Card.Title>Reactivity</Card.Title>
             <Card.Divider />
             <View style={styles.row}>
@@ -115,7 +131,7 @@ const UpdateForm = () => {
               />
             </View>
           </Card>
-          <View>
+          <View style={{ width: '100%' }}>
             <CheckBox
               title='Resource Guarder'
               size={24}
@@ -168,12 +184,20 @@ const UpdateForm = () => {
             numberOfLines={5}
           />
           <Button
+            title='Update'
+            icon={{
+              name: 'update',
+              type: 'fontawesome',
+              size: 25,
+              color: 'white',
+            }}
+            iconRight
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.button}
             onPress={() => {
               submit();
             }}
-          >
-            Update
-          </Button>
+          />
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaProvider>
@@ -189,6 +213,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 20,
+    width: '100%',
+    alignItems: 'center',
   },
   card: {
     padding: 10,
@@ -202,6 +228,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  button: {},
-  header: {},
+  button: {
+    backgroundColor: 'green',
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 10,
+  },
+  buttonContainer: { width: 250, marginBottom: 25 },
+  header: {
+    color: 'white',
+    fontSize: 20,
+  },
 });

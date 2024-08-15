@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 import { Text } from '@rneui/themed';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const EmptyState = ({ title, subtitle }) => {
   return (

@@ -1,8 +1,7 @@
 import { React, useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, Alert, SafeAreaView } from 'react-native';
+import { StyleSheet, ScrollView, Alert } from 'react-native';
 import { Card, Text, Button, ListItem } from '@rneui/themed';
 import { useLocalSearchParams, router } from 'expo-router';
-import { FontAwesome6 } from '@expo/vector-icons';
 import { deleteNote } from '../../appwrite/connections';
 
 const Details = () => {
@@ -105,7 +104,7 @@ const Details = () => {
           }}
           iconRight
           containerStyle={styles.buttonContainer}
-          buttonStyle={styles.buttonStyle}
+          buttonStyle={styles.updateButton}
           onPress={() => {
             handleUpdate();
           }}
@@ -120,9 +119,8 @@ const Details = () => {
           }}
           iconRight
           containerStyle={styles.buttonContainer}
-          buttonStyle={styles.buttonStyle}
+          buttonStyle={styles.deleteButton}
           onPress={() => {
-            Alert.alert('Are you sure?');
             handleDelete(params.$id);
           }}
         />
@@ -151,7 +149,14 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 250,
   },
-  buttonStyle: {
+  updateButton: {
+    backgroundColor: 'green',
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 10,
+  },
+  deleteButton: {
+    backgroundColor: 'red',
     borderColor: 'transparent',
     borderWidth: 0,
     borderRadius: 10,

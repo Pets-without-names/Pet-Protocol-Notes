@@ -1,5 +1,11 @@
 import { React, useState, useEffect, useCallback } from 'react';
-import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import {
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import DogNote from '../../components/DogNote';
 import EmptyState from '../../components/EmptyState';
@@ -7,8 +13,9 @@ import { getProtocolPlusNotes } from '../../appwrite/connections';
 import useAppwrite from '../../appwrite/useAppwrite';
 
 const ProtocolPlusView = () => {
-  const { data: notes, refetch } = useAppwrite(getProtocolPlusNotes);
+  const { data: notes, isLoading, refetch } = useAppwrite(getProtocolPlusNotes);
   const [refreshing, setRefreshing] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
 
   //refetch the data after a note has been added:
   useFocusEffect(
@@ -34,7 +41,7 @@ const ProtocolPlusView = () => {
           renderItem={({ item }) => <DogNote dogInfo={item} />}
           keyExtractor={(item) => item.$id}
           ListHeaderComponentStyle={styles.header}
-          ListEmptyComponent={() => <EmptyState title='No dog notes' />}
+          ListEmptyComponent={<EmptyState title='No dog notes' />}
           refreshing={refreshing}
           onRefresh={() => setRefreshing(true)}
         />

@@ -61,15 +61,15 @@ const AddNoteForm = () => {
         leftComponent={
           <Icon
             name='close'
-            reverse
-            size={14}
+            size={24}
             onPress={() => {
               router.back();
             }}
           />
         }
+        // centerComponent={{ text: 'Cancel', style: styles.header }}
       />
-      <KeyboardAwareScrollView extraScrollHeight={60}>
+      <KeyboardAwareScrollView extraScrollHeight={120}>
         <View style={styles.container}>
           <Input
             label='Name'
@@ -95,7 +95,7 @@ const AddNoteForm = () => {
               setForm({ ...form, protocol_date: params.date });
             }}
           />
-          <Card>
+          <Card containerStyle={{ width: '100%' }}>
             <Card.Title>Reactivity</Card.Title>
             <Card.Divider />
             <View style={styles.row}>
@@ -141,7 +141,7 @@ const AddNoteForm = () => {
               />
             </View>
           </Card>
-          <View>
+          <View style={{ width: '100%' }}>
             <CheckBox
               title='Resource Guarder'
               size={24}
@@ -186,7 +186,12 @@ const AddNoteForm = () => {
           </View>
           <Input
             label='Other Notes'
-            labelStyle={{ fontWeight: 'bold', fontSize: 20 }}
+            labelStyle={{
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              marginTop: 25,
+            }}
             value={form.misc_notes}
             onChangeText={(text) => setForm({ ...form, misc_notes: text })}
             placeholder='enter notes'
@@ -194,12 +199,20 @@ const AddNoteForm = () => {
             numberOfLines={5}
           />
           <Button
+            title='Submit'
+            icon={{
+              name: 'check',
+              type: 'fontawesome',
+              size: 25,
+              color: 'white',
+            }}
+            iconRight
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.button}
             onPress={() => {
               submit();
             }}
-          >
-            Submit
-          </Button>
+          />
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaProvider>
@@ -215,6 +228,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 20,
+    width: '100%',
+    alignItems: 'center',
   },
   card: {
     padding: 10,
@@ -228,6 +243,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  button: {},
-  header: {},
+  button: {
+    backgroundColor: 'green',
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 10,
+  },
+  buttonContainer: { width: 250, marginBottom: 25 },
+  header: {
+    color: 'white',
+    fontSize: 20,
+  },
 });
