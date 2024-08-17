@@ -63,18 +63,7 @@ const UpdateForm = () => {
       />
       <KeyboardAwareScrollView extraScrollHeight={120}>
         <View style={styles.container}>
-          <Text
-            h3
-            style={{
-              width: '90%',
-              textAlign: 'center',
-              marginBottom: 20,
-              borderColor: 'black',
-              borderWidth: 1,
-              borderRadius: 10,
-              padding: 10,
-            }}
-          >
+          <Text h3 style={styles.nameText}>
             {params.name}
           </Text>
           <Divider />
@@ -227,6 +216,15 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  nameText: {
+    width: '90%',
+    textAlign: 'center',
+    marginBottom: 20,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
   },
   button: {
     backgroundColor: 'green',
