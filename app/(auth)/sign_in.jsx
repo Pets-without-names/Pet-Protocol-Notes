@@ -1,12 +1,12 @@
 import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
-import { Input, Button } from '@rneui/themed';
+import { Input, Button, Text } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { getAccount, signIn } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignIn = () => {
-  // const { user, setUser, setIsLogged } = useGlobalContext();
+  const { user, setUser, setIsLogged } = useGlobalContext();
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -24,8 +24,8 @@ const SignIn = () => {
     try {
       await signIn(form.email, form.password);
       const result = await getAccount();
-      setUser(result); //undefined
-      setIsLogged(true); //undefined
+      setUser(result); //undefined?
+      setIsLogged(true); //undefined?
 
       Alert.alert('Success', 'User signed in successfully');
       router.replace('/home');
@@ -38,8 +38,8 @@ const SignIn = () => {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.outer}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
         <Input
           value={form.email}
           label='email'
@@ -79,8 +79,18 @@ const SignIn = () => {
         <Button
           title='Log in'
           style={styles.button}
+          loading={isSubmitting}
           onPress={() => {
             submit();
+          }}
+        />
+      </View>
+      <View style={styles.card}>
+        <Text h3>Don't have an account?</Text>
+        <Button
+          title='Create Account'
+          onPress={() => {
+            router.push('/sign_up');
           }}
         />
       </View>
@@ -91,7 +101,10 @@ const SignIn = () => {
 export default SignIn;
 
 const styles = StyleSheet.create({
-  outer: {
+  container: {
+    alignItems: 'center',
+  },
+  card: {
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
@@ -102,7 +115,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
-    width: '100%',
+    width: '90%',
     padding: 10,
     marginTop: 50,
   },

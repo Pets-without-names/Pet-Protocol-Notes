@@ -1,6 +1,6 @@
 import { ID } from 'react-native-appwrite';
 import { databases, account } from './config';
-import { DATABASE_ID, PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
+import { DATABASE_ID } from '@env';
 import db from './databases';
 
 // Register a new user:
