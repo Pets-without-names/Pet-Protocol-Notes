@@ -67,7 +67,6 @@ const AddNoteForm = () => {
             }}
           />
         }
-        // centerComponent={{ text: 'Cancel', style: styles.header }}
       />
       <KeyboardAwareScrollView extraScrollHeight={120}>
         <View style={styles.container}>

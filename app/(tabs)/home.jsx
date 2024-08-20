@@ -1,9 +1,10 @@
-import { View, StyleSheet, SafeAreaView, ImageBackground } from 'react-native';
+import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import { Text, Button } from '@rneui/themed';
 import { signOut } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { router } from 'expo-router';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Home = () => {
   const { user, setUser, isLogged, setIsLogged } = useGlobalContext();
@@ -30,21 +31,18 @@ const Home = () => {
         <Text h4 style={styles.text}>
           Create and update dog walking protocols!
         </Text>
-
-        <ImageBackground
-          style={styles.image}
-          resizeMode='contain'
-          source={require('../../assets/images/pawprint200.png')}
-        >
-          <View>
-            <Text h4 style={styles.imageText}>
-              Please check-in with the staff to verify the proper dates and
-              protocols
-            </Text>
-          </View>
-        </ImageBackground>
+        <View>
+          <Text h4 style={styles.imageText}>
+            Please check-in with the staff to verify the proper dates and
+            protocols
+          </Text>
+        </View>
         <Button
+          containerStyle={styles.button}
           title='Sign Out'
+          titleStyle={{ marginRight: 15 }}
+          icon={<FontAwesome name='sign-out' size={24} color='white' />}
+          iconRight
           onPress={() => logOut()}
           loading={isSubmitting}
         />
@@ -58,6 +56,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     alignItems: 'center',
+    padding: 20,
   },
   heading: {
     textAlign: 'center',
@@ -75,19 +74,16 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
 
-  image: {
-    height: 300,
-    width: 300,
-    resizeMode: 'cover',
-    opacity: 0.6,
-    justifyContent: 'center',
-  },
   button: {
     padding: 10,
+    marginTop: 25,
     width: 190,
     shadowColor: 'grey',
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
+    borderColor: 'transparent',
+    borderWidth: 1,
+    borderRadius: 10,
   },
 });

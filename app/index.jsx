@@ -18,6 +18,8 @@ const Welcome = () => {
       <Text h3>Welcome page</Text>
       <Button
         title='Sign in'
+        containerStyle={styles.buttonContainer}
+        buttonStyle={styles.button}
         onPress={() => {
           router.push('/sign_in');
         }}
@@ -29,6 +31,20 @@ const Welcome = () => {
 export default Welcome;
 
 const styles = StyleSheet.create({
-  container: { alignItems: 'center' },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#94C2FF',
+  },
   heading: {},
+  button: {
+    backgroundColor: 'blue',
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 10,
+  },
+  buttonContainer: {
+    width: 200,
+    marginTop: 15,
+  },
 });

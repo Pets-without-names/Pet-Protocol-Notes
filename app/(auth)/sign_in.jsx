@@ -26,8 +26,6 @@ const SignIn = () => {
       const result = await getAccount();
       setUser(result); //undefined?
       setIsLogged(true); //undefined?
-
-      Alert.alert('Success', 'User signed in successfully');
       router.replace('/home');
     } catch (error) {
       console.log(error);
@@ -90,7 +88,7 @@ const SignIn = () => {
         <Button
           title='Create Account'
           onPress={() => {
-            router.push('/sign_up');
+            router.replace('/sign_up');
           }}
         />
       </View>
@@ -102,9 +100,12 @@ export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
+    backgroundColor: '#0004FF',
   },
   card: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
@@ -118,10 +119,6 @@ const styles = StyleSheet.create({
     width: '90%',
     padding: 10,
     marginTop: 50,
-  },
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   label: {
     fontSize: 24,

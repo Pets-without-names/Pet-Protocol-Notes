@@ -140,7 +140,7 @@ const SignUp = () => {
         <Button
           title='Sign In'
           style={styles.button}
-          onPress={() => router.push('sign_in')}
+          onPress={() => router.replace('sign_in')}
         />
       </View>
     </SafeAreaView>
@@ -150,7 +150,7 @@ const SignUp = () => {
 export default SignUp;
 
 const styles = StyleSheet.create({
-  container: { alignItems: 'center' },
+  container: { flex: 1, alignItems: 'center', backgroundColor: 'green' },
   card: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -165,10 +165,6 @@ const styles = StyleSheet.create({
     width: '90%',
     padding: 10,
     marginTop: 50,
-  },
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   label: {
     fontSize: 24,
