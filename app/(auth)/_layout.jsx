@@ -1,5 +1,6 @@
 import React from 'react';
 import { Stack, Redirect } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import Loader from '../../components/Loader';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
@@ -18,6 +19,7 @@ const AuthLayout = () => {
         <Stack.Screen name='sign_up' />
       </Stack>
       <Loader isLoading={loading} />
+      <StatusBar style='light' />
     </>
   );
 };

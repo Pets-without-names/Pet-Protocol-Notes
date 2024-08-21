@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
-import { Input, Button, Text } from '@rneui/themed';
+import { Input, Button, Text, Divider } from '@rneui/themed';
 import { React, useState } from 'react';
 import { router } from 'expo-router';
 import { createAccount } from '../../appwrite/connections';
@@ -53,93 +53,100 @@ const SignUp = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
+      <View style={styles.inputContainer}>
         <Input
           value={form.firstName}
           label='First Name'
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, firstName: text })}
-          placeholder='First name'
+          placeholder='  First name'
           onFocus={() => {
             setInputFocus(true);
           }}
           onBlur={() => setInputFocus(false)}
-          textAlign='center'
-          containerStyle={styles.container}
           style={{
             borderWidth: 1,
-            borderRadius: 5,
-            borderColor: inputFocused ? 'orange' : 'black',
+            borderRadius: 10,
+            borderColor: inputFocused ? 'green' : 'black',
           }}
+          inputStyle={{ color: 'white' }}
+          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
           value={form.lastName}
           label='Last Name'
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, lastName: text })}
-          placeholder='Last Name'
+          placeholder='  Last Name'
           onFocus={() => {
             setInputFocus(true);
           }}
           onBlur={() => setInputFocus(false)}
-          textAlign='center'
-          containerStyle={styles.container}
           style={{
             borderWidth: 1,
-            borderRadius: 5,
-            borderColor: inputFocused ? 'orange' : 'black',
+            borderRadius: 10,
+            borderColor: inputFocused ? 'green' : 'black',
           }}
+          inputStyle={{ color: 'white' }}
+          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
           value={form.email}
           label='email'
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, email: text })}
-          placeholder='email address'
+          placeholder='  email address'
           onFocus={() => {
             setInputFocus(true);
           }}
           onBlur={() => setInputFocus(false)}
           keyboardType='email-address'
-          textAlign='center'
-          containerStyle={styles.container}
           style={{
             borderWidth: 1,
-            borderRadius: 5,
-            borderColor: inputFocused ? 'orange' : 'black',
+            borderRadius: 10,
+            borderColor: inputFocused ? 'green' : 'black',
           }}
+          inputStyle={{ color: 'white' }}
+          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
           value={form.password}
           label='Password'
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, password: text })}
-          placeholder='password'
+          placeholder='  password'
           onFocus={() => setPwordFocus(true)}
           onBlur={() => setPwordFocus(false)}
-          textAlign='center'
-          containerStyle={styles.container}
           secureTextEntry={true}
           style={{
             borderWidth: 1,
-            borderRadius: 5,
-            borderColor: pwordFocused ? 'orange' : 'black',
+            borderRadius: 10,
+            borderColor: pwordFocused ? 'green' : 'black',
           }}
+          inputStyle={{ color: 'white' }}
+          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Button
           title='Create an account'
-          style={styles.button}
+          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          containerStyle={styles.buttonContainer}
           loading={isSubmitting}
           onPress={() => {
             submit();
           }}
         />
       </View>
-      <View style={styles.card}>
-        <Text h3>Already have an account?</Text>
+      <View style={styles.accountContainer}>
+        <Divider width={2} color='#2089DC' style={styles.divider} />
+        <Text h4 style={styles.label}>
+          Already have an account?
+        </Text>
         <Button
           title='Sign In'
-          style={styles.button}
+          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          containerStyle={styles.buttonContainer}
           onPress={() => router.replace('sign_in')}
         />
       </View>
@@ -150,27 +157,36 @@ const SignUp = () => {
 export default SignUp;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', backgroundColor: 'green' },
-  card: {
-    justifyContent: 'center',
+  container: {
+    flex: 1,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 10,
-    backgroundColor: 'white',
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 4 },
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
-    width: '90%',
-    padding: 10,
-    marginTop: 50,
+    backgroundColor: '#31353D',
   },
   label: {
-    fontSize: 24,
+    fontSize: 20,
+    marginBottom: 5,
+    color: 'white',
+    opacity: 0.75,
   },
-  button: {
+  inputContainer: {
+    marginTop: 10,
+    width: '95%',
+    alignItems: 'center',
     padding: 10,
-    width: '100%',
+  },
+  accountContainer: {
+    marginTop: 50,
+    width: '95%',
+    alignItems: 'center',
+    padding: 10,
+  },
+  buttonContainer: {
+    width: '75%',
+    marginVertical: 20,
+  },
+  divider: {
+    width: '85%',
+    margin: 10,
+    opacity: 0.65,
   },
 });

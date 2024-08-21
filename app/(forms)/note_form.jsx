@@ -34,6 +34,12 @@ const AddNoteForm = () => {
   const [nameError, setNameError] = useState(false);
   const params = useLocalSearchParams();
 
+  //Validate user input:
+  const handleInput = (text) => {
+    setForm({ ...form, name: text.replace(/[^a-zA-Z. -]+/gi, '') });
+    setNameError(false);
+  };
+
   const submit = async () => {
     // Check for blank form fields:
     if (form.name === '') {
@@ -77,8 +83,7 @@ const AddNoteForm = () => {
             autoCapitalize='words'
             value={form.name}
             onChangeText={(text) => {
-              setForm({ ...form, name: text });
-              setNameError(false);
+              handleInput(text);
             }}
             placeholder='Enter name'
           />

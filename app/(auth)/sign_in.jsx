@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
-import { Input, Button, Text } from '@rneui/themed';
+import { Input, Button, Text, Divider } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { getAccount, signIn } from '../../appwrite/connections';
@@ -37,56 +37,73 @@ const SignIn = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
+      <View>
+        <Text h3 style={styles.header}>
+          Account Log-in
+        </Text>
+        <Text h4 style={styles.subHeader}>
+          Welcome back!
+        </Text>
+      </View>
+      <View style={styles.inputContainer}>
         <Input
           value={form.email}
           label='email'
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, email: text })}
-          placeholder='email address'
+          placeholder='  email address'
           onFocus={() => {
             setInputFocus(true);
           }}
           onBlur={() => setInputFocus(false)}
           keyboardType='email-address'
-          textAlign='center'
-          containerStyle={styles.container}
           style={{
             borderWidth: 1,
-            borderRadius: 5,
-            borderColor: inputFocused ? 'orange' : 'black',
+            borderRadius: 10,
+            borderColor: inputFocused ? 'green' : 'black',
           }}
+          inputStyle={{ color: 'white' }}
+          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
           value={form.password}
           label='Password'
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, password: text })}
-          placeholder='password'
+          placeholder='  password'
           onFocus={() => setPwordFocus(true)}
           onBlur={() => setPwordFocus(false)}
-          textAlign='center'
-          containerStyle={styles.container}
           secureTextEntry={true}
           style={{
             borderWidth: 1,
-            borderRadius: 5,
-            borderColor: pwordFocused ? 'orange' : 'black',
+            borderRadius: 10,
+            borderColor: pwordFocused ? 'green' : 'black',
           }}
+          inputStyle={{ color: 'white' }}
+          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Button
           title='Log in'
-          style={styles.button}
+          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          containerStyle={styles.buttonContainer}
           loading={isSubmitting}
           onPress={() => {
             submit();
           }}
         />
       </View>
-      <View style={styles.card}>
-        <Text h3>Don't have an account?</Text>
+
+      <View style={styles.accountContainer}>
+        <Divider width={2} color='#2089DC' style={styles.divider} />
+        <Text h4 style={styles.subHeader}>
+          Don't have an account?
+        </Text>
         <Button
           title='Create Account'
+          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          containerStyle={styles.buttonContainer}
           onPress={() => {
             router.replace('/sign_up');
           }}
@@ -102,33 +119,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#0004FF',
+    backgroundColor: '#31353D',
   },
-  card: {
-    flex: 1,
-    justifyContent: 'center',
+  inputContainer: {
+    marginTop: 10,
+    width: '95%',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 10,
-    backgroundColor: 'white',
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 4 },
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
-    width: '90%',
     padding: 10,
+  },
+  accountContainer: {
     marginTop: 50,
+    width: '95%',
+    alignItems: 'center',
+    padding: 10,
   },
   label: {
-    fontSize: 24,
+    fontSize: 20,
+    marginBottom: 5,
+    color: 'white',
+    opacity: 0.75,
   },
-  button: {
-    padding: 10,
-    width: 190,
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 4 },
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
+  header: {
+    color: 'white',
+    marginTop: 20,
+  },
+  subHeader: {
+    color: 'white',
+    marginTop: 5,
+  },
+  buttonContainer: {
+    width: '75%',
+    marginVertical: 20,
+  },
+  divider: {
+    width: '85%',
+    margin: 10,
+    opacity: 0.65,
   },
 });
