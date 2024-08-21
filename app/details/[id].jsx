@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, Alert } from 'react-native';
+import { StyleSheet, ScrollView, Alert, View } from 'react-native';
 import { Card, Text, Button, ListItem } from '@rneui/themed';
 import { useLocalSearchParams, router } from 'expo-router';
 import { deleteNote } from '../../appwrite/connections';
@@ -94,36 +94,38 @@ const Details = () => {
             );
           })}
         </Card>
-        <Button
-          title='Update'
-          icon={{
-            name: 'update',
-            type: 'fontawesome',
-            size: 25,
-            color: 'white',
-          }}
-          iconRight
-          containerStyle={styles.buttonContainer}
-          buttonStyle={styles.updateButton}
-          onPress={() => {
-            handleUpdate();
-          }}
-        />
-        <Button
-          title='Delete'
-          icon={{
-            name: 'delete',
-            type: 'fontawesome',
-            size: 25,
-            color: 'white',
-          }}
-          iconRight
-          containerStyle={styles.buttonContainer}
-          buttonStyle={styles.deleteButton}
-          onPress={() => {
-            handleDelete(params.$id);
-          }}
-        />
+        <View style={styles.buttonView}>
+          <Button
+            title='Update'
+            icon={{
+              name: 'update',
+              type: 'fontawesome',
+              size: 25,
+              color: 'white',
+            }}
+            iconRight
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.updateButton}
+            onPress={() => {
+              handleUpdate();
+            }}
+          />
+          <Button
+            title='Delete'
+            icon={{
+              name: 'delete',
+              type: 'fontawesome',
+              size: 25,
+              color: 'white',
+            }}
+            iconRight
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.deleteButton}
+            onPress={() => {
+              handleDelete(params.$id);
+            }}
+          />
+        </View>
       </ScrollView>
     </>
   );
@@ -162,14 +164,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonContainer: {
-    width: 200,
-    marginTop: 15,
+    width: '45%',
   },
   icon: {
     marginLeft: 20,
   },
   text: {
     fontSize: 18,
+  },
+  buttonView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    position: 'absolute',
+    bottom: 75,
   },
 });
 

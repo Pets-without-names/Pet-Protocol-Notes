@@ -26,9 +26,6 @@ const Home = () => {
           Protocol Notes
         </Text>
         <Text h4 style={styles.text}>
-          A collaborative note app.
-        </Text>
-        <Text h4 style={styles.text}>
           Create and update dog walking protocols!
         </Text>
         <View>
@@ -38,7 +35,7 @@ const Home = () => {
           </Text>
         </View>
         <Button
-          containerStyle={styles.button}
+          containerStyle={styles.buttonContainer}
           title='Sign Out'
           titleStyle={{ marginRight: 15 }}
           icon={<FontAwesome name='sign-out' size={24} color='white' />}
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
 
-  button: {
+  buttonContainer: {
     padding: 10,
     marginTop: 25,
     width: 190,
@@ -85,5 +82,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
     borderWidth: 1,
     borderRadius: 10,
+    position: 'absolute',
+    bottom: 35,
   },
 });
