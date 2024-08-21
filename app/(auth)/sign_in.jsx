@@ -62,7 +62,7 @@ const SignIn = () => {
             borderRadius: 10,
             borderColor: inputFocused ? 'green' : 'black',
           }}
-          inputStyle={{ color: 'white' }}
+          inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
@@ -79,7 +79,7 @@ const SignIn = () => {
             borderRadius: 10,
             borderColor: pwordFocused ? 'green' : 'black',
           }}
-          inputStyle={{ color: 'white' }}
+          inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Button
