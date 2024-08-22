@@ -7,6 +7,7 @@ import {
   Header,
   Icon,
   Text,
+  FAB,
 } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
@@ -34,7 +35,7 @@ const AddNoteForm = () => {
   const [nameError, setNameError] = useState(false);
   const params = useLocalSearchParams();
 
-  //Validate user input:
+  //Validate user input to only allow certain characters:
   const handleInput = (text) => {
     setForm({ ...form, name: text.replace(/[^a-zA-Z. -]+/gi, '') });
     setNameError(false);
@@ -202,7 +203,7 @@ const AddNoteForm = () => {
             multiline={true}
             numberOfLines={5}
           />
-          <Button
+          {/* <Button
             title='Submit'
             icon={{
               name: 'check',
@@ -216,9 +217,25 @@ const AddNoteForm = () => {
             onPress={() => {
               submit();
             }}
-          />
+          /> */}
         </View>
       </KeyboardAwareScrollView>
+      <FAB
+        title='Submit'
+        color='green'
+        size='large'
+        // placement='right'
+        icon={{
+          name: 'check',
+          type: 'fontawesome',
+          size: 25,
+          color: 'white',
+        }}
+        style={styles.fab}
+        onPress={() => {
+          submit();
+        }}
+      />
     </SafeAreaProvider>
   );
 };
@@ -257,5 +274,10 @@ const styles = StyleSheet.create({
   header: {
     color: 'white',
     fontSize: 20,
+  },
+  fab: {
+    position: 'absolute',
+    right: 30,
+    bottom: 30,
   },
 });
