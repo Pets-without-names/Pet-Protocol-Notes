@@ -15,6 +15,7 @@ import { updateNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const UpdateForm = () => {
   const params = useLocalSearchParams();
@@ -32,12 +33,14 @@ const UpdateForm = () => {
     place_routine: params.place_routine === 'true' ? true : false,
   });
   const [isSubmitting, setSubmitting] = useState(false);
+  const { noteStatusChanged, setStatusChanged } = useGlobalContext();
 
   const submit = async () => {
     setSubmitting(true);
     try {
       const result = await updateNote(params.$collectionId, params.$id, form);
       Alert.alert(`${result.name} updated`);
+      setStatusChanged(true);
       router.back();
     } catch (error) {
       console.log(error);
