@@ -9,7 +9,7 @@ const useAppwrite = (fn) => {
     setIsLoading(true);
     try {
       const response = await fn();
-      setData(response);
+      setData(response.documents);
     } catch (error) {
       console.log('refetch error: ' + error);
       Alert.alert('Error: ', error.message);

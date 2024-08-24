@@ -2,6 +2,7 @@ import { ID } from 'react-native-appwrite';
 import { databases, account } from './config';
 import { DATABASE_ID } from '@env';
 import db from './databases';
+import { useState } from 'react';
 
 // Register a new user:
 export async function createAccount(firstName, lastName, email, password) {
@@ -68,7 +69,7 @@ export const getProtocolDetails = async (id) => {
 export const getPlusDetails = async (id) => {
   try {
     const response = await db.protocolPlus.get(id);
-    return response; //returns a JSON object
+    return response;
   } catch (error) {
     console.log(error.message);
     throw new Error(error);
@@ -78,7 +79,7 @@ export const getPlusDetails = async (id) => {
 export async function getProtocolNotes() {
   try {
     const response = await db.protocol.list();
-    return response.documents;
+    return response;
   } catch (error) {
     console.log(error);
     throw new Error(error);
@@ -88,7 +89,8 @@ export async function getProtocolNotes() {
 export async function getProtocolPlusNotes() {
   try {
     const response = await db.protocolPlus.list();
-    return response.documents;
+    // return response.documents;
+    return response;
   } catch (error) {
     console.log(error);
     throw new Error(error);
@@ -96,23 +98,23 @@ export async function getProtocolPlusNotes() {
 }
 
 //Create a new dog walking protocol:
-export const createProtocolNote = async (data) => {
-  try {
-    const response = await db.protocol.create(data);
-  } catch (error) {
-    console.log(error.message);
-    throw new Error(error);
-  }
-};
+// export const createProtocolNote = async (data) => {
+//   try {
+//     const response = await db.protocol.create(data);
+//   } catch (error) {
+//     console.log(error.message);
+//     throw new Error(error);
+//   }
+// };
 
-export const createPlusNote = async (data) => {
-  try {
-    const response = await db.protocolPlus.create(data);
-  } catch (error) {
-    console.log(error.message);
-    throw new Error(error);
-  }
-};
+// export const createPlusNote = async (data) => {
+//   try {
+//     const response = await db.protocolPlus.create(data);
+//   } catch (error) {
+//     console.log(error.message);
+//     throw new Error(error);
+//   }
+// };
 
 export const createNote = async (collID, data, docID = ID.unique()) => {
   try {
