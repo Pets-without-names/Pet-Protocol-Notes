@@ -15,6 +15,7 @@ import { createNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const AddNoteForm = () => {
   const [form, setForm] = useState({
@@ -34,6 +35,7 @@ const AddNoteForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [nameError, setNameError] = useState(false);
   const params = useLocalSearchParams();
+  const { noteStatusChanged, setStatusChanged } = useGlobalContext();
 
   //Validate user input to only allow certain characters:
   const handleInput = (text) => {
@@ -52,6 +54,7 @@ const AddNoteForm = () => {
     try {
       const result = await createNote(params.collID, form);
       Alert.alert(`${result.name} added`);
+      setStatusChanged(true);
       router.back();
     } catch (error) {
       console.log(error);

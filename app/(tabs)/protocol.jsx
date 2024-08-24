@@ -1,24 +1,36 @@
 import { React, useState, useEffect, useCallback } from 'react';
-import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  ActivityIndicator,
+  Platform,
+} from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import DogNote from '../../components/DogNote';
 import EmptyState from '../../components/EmptyState';
 import { getProtocolNotes } from '../../appwrite/connections';
 import useAppwrite from '../../appwrite/useAppwrite';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const ProtocolView = () => {
-  const { data: notes, refetch } = useAppwrite(getProtocolNotes);
+  const { data: notes, refetch, isLoading } = useAppwrite(getProtocolNotes);
   const [refreshing, setRefreshing] = useState(false);
+  const osName = Platform.OS;
+  const { noteStatusChanged, setStatusChanged } = useGlobalContext();
 
-  //refetch the data after a note has been added:
+  //refetch the data after a note has been added, updated, or deleted:
   useFocusEffect(
     useCallback(() => {
-      refetch();
-    }, [])
+      if (noteStatusChanged) {
+        refetch();
+        setStatusChanged(false);
+      }
+    }, [noteStatusChanged])
   );
 
-  //refetch the data with the pull down functionality
   useEffect(() => {
+    //refetch the data with the pull down functionality
     if (refreshing) {
       refetch();
       setRefreshing(false);
@@ -28,16 +40,24 @@ const ProtocolView = () => {
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <FlatList
-          data={notes}
-          style={styles.list}
-          renderItem={({ item }) => <DogNote dogInfo={item} />}
-          keyExtractor={(item) => item.$id}
-          ListHeaderComponentStyle={styles.header}
-          ListEmptyComponent={() => <EmptyState title='No Protocol Notes' />}
-          refreshing={refreshing}
-          onRefresh={() => setRefreshing(true)}
-        />
+        {isLoading ? (
+          <ActivityIndicator
+            size={osName === 'ios' ? 'large' : 50}
+            color='blue'
+            style={styles.activity}
+          />
+        ) : (
+          <FlatList
+            data={notes}
+            style={styles.list}
+            renderItem={({ item }) => <DogNote dogInfo={item} />}
+            keyExtractor={(item) => item.$id}
+            ListHeaderComponentStyle={styles.header}
+            ListEmptyComponent={() => <EmptyState title='No Protocol Notes' />}
+            refreshing={refreshing}
+            onRefresh={() => setRefreshing(true)}
+          />
+        )}
       </SafeAreaView>
     </>
   );
@@ -51,8 +71,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    alignItems: 'center',
+  },
+  activity: {
+    marginTop: 50,
   },
   list: {
-    flex: 1,
+    width: '90%',
   },
 });

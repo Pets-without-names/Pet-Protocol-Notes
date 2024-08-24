@@ -3,12 +3,15 @@ import { StyleSheet, ScrollView, Alert, View } from 'react-native';
 import { Card, Text, Button, ListItem } from '@rneui/themed';
 import { useLocalSearchParams, router } from 'expo-router';
 import { deleteNote } from '../../appwrite/connections';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const Details = () => {
   const params = useLocalSearchParams();
   //array to hold the information to display:
   const [details, setDetails] = useState([]);
   const detailsArray = [];
+  //context for notes status change (add,update,delete):
+  const { noteStatusChanged, setStatusChanged } = useGlobalContext();
 
   //Format the protocol date:
   const date = new Date(Date.parse(params.protocol_date));
@@ -57,6 +60,7 @@ const Details = () => {
     try {
       await deleteNote(params.$collectionId, documentID);
       Alert.alert(`${params.name} deleted`);
+      setStatusChanged(true);
       router.back();
     } catch (error) {
       console.log('delete error: ' + error.message);
