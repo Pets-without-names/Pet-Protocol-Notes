@@ -1,12 +1,12 @@
 import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
-import { Input, Button, Text, Divider } from '@rneui/themed';
+import { Input, Button, Text, Divider, CheckBox } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { getAccount, signIn } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignIn = () => {
-  const { user, setUser,setIsLogged } = useGlobalContext();
+  const { user, setUser, setIsLogged } = useGlobalContext();
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -82,6 +82,7 @@ const SignIn = () => {
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
+        <CheckBox title='Remember Me' />
         <Button
           title='Log in'
           buttonStyle={{ borderRadius: 10, padding: 10 }}

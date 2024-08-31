@@ -1,6 +1,6 @@
 import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { useState } from 'react';
-import { Text, Button } from '@rneui/themed';
+import { Text, Button, Card } from '@rneui/themed';
 import { signOut } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { router } from 'expo-router';
@@ -28,12 +28,12 @@ const Home = () => {
         <Text h4 style={styles.text}>
           Create and update dog walking protocols!
         </Text>
-        <View>
-          <Text h4 style={styles.imageText}>
-            Please check-in with the staff to verify the proper dates and
-            protocols
-          </Text>
-        </View>
+        <Card containerStyle={styles.card}>
+          <Card.Title style={styles.title}>
+            Please check-in with the staff to verify the proper protocols and
+            dates
+          </Card.Title>
+        </Card>
         <Button
           containerStyle={styles.buttonContainer}
           title='Sign Out'
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: '#CCCED5',
   },
   heading: {
     textAlign: 'center',
@@ -84,5 +85,23 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     position: 'absolute',
     bottom: 35,
+  },
+  card: {
+    backgroundColor: '#2B58ED',
+    cornerRadius: '10',
+    borderColor: 'black',
+    borderWidth: '1',
+    borderRadius: '10',
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+    marginTop: 20,
+  },
+  title: {
+    padding: 10,
+    fontSize: 18,
+    marginTop: 8,
+    color: 'white',
   },
 });

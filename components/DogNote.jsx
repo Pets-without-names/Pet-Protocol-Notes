@@ -6,6 +6,7 @@ import { router } from 'expo-router';
 const DogNote = ({ dogInfo }) => {
   return (
     <Pressable
+      style={styles.container}
       onPress={() => {
         router.push({
           pathname: `../../details/${dogInfo.$id}`,
@@ -23,14 +24,18 @@ const DogNote = ({ dogInfo }) => {
 export default DogNote;
 
 const styles = StyleSheet.create({
+  container: {},
   card: {
-    backgroundColor: 'lightblue',
+    backgroundColor: '#2B58ED',
     cornerRadius: '10',
     borderColor: 'black',
     borderWidth: '1',
     borderRadius: '10',
   },
   name: {
-    fontSize: '16',
+    fontSize: '20',
+    letterSpacing: 1.5,
+    color: 'white',
+    marginTop: 10,
   },
 });

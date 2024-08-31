@@ -1,6 +1,7 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Tabs, router, Redirect } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import Loader from '../../components/Loader';
@@ -19,6 +20,7 @@ export default function TabLayout() {
           options={{
             title: 'Home',
             headerShown: false,
+            headerStyle: { backgroundColor: '#CCCED5' },
             tabBarIcon: ({ color }) => (
               <FontAwesome size={28} name='home' color={color} />
             ),
@@ -28,10 +30,11 @@ export default function TabLayout() {
           name='protocol'
           options={{
             headerShown: true,
+            headerStyle: { backgroundColor: '#CCCED5' },
             headerRight: () => (
               <FontAwesome.Button
                 name='plus'
-                backgroundColor='white'
+                backgroundColor='#CCCED5'
                 color='blue'
                 onPress={() =>
                   router.push({
@@ -53,11 +56,12 @@ export default function TabLayout() {
           name='protocol_plus'
           options={{
             headerShown: true,
+            headerStyle: { backgroundColor: '#CCCED5' },
             title: 'Protocol +',
             headerRight: () => (
               <FontAwesome.Button
                 name='plus'
-                backgroundColor='white'
+                backgroundColor='#CCCED5'
                 color='blue'
                 onPress={() => {
                   router.push({
