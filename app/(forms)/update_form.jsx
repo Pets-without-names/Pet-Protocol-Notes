@@ -26,6 +26,7 @@ const UpdateForm = () => {
     misc_notes: params.misc_notes,
     protocol_date: params.protocol_date,
     cat_reactive: params.cat_reactive === 'true' ? true : false,
+    leash_reactive: params.leash_reactive === 'true' ? true : false,
     resource_guarder: params.resource_guarder === 'true' ? true : false,
     stranger_reactive: params.stranger_reactive === 'true' ? true : false,
     jumpy_mouthy: params.jumpy_mouthy === 'true' ? true : false,
@@ -111,19 +112,27 @@ const UpdateForm = () => {
                 }
               />
               <CheckBox
-                title='Jumpy/Mouthy'
+                title='Leash'
                 size={24}
-                checked={form.jumpy_mouthy}
+                checked={form.leash_reactive}
                 onPress={() =>
                   setForm({
                     ...form,
-                    jumpy_mouthy: !form.jumpy_mouthy,
+                    leash_reactive: !form.leash_reactive,
                   })
                 }
               />
             </View>
           </Card>
           <View style={{ width: '100%' }}>
+            <CheckBox
+              title='Jumpy/Mouthy'
+              size={24}
+              checked={form.jumpy_mouthy}
+              onPress={() =>
+                setForm({ ...form, jumpy_mouthy: !form.jumpy_mouthy })
+              }
+            />
             <CheckBox
               title='Resource Guarder'
               size={24}

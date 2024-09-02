@@ -34,6 +34,9 @@ const Details = () => {
           case 'cat_reactive':
             detailsArray.push({ note: 'Cat Reactive' });
             break;
+          case 'leash_reactive':
+            detailsArray.push({ note: 'Leash Reactive' });
+            break;
           case 'resource_guarder':
             detailsArray.push({ note: 'Resource Guarder' });
             break;
@@ -139,10 +142,17 @@ const styles = StyleSheet.create({
   outsideContainer: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: '#CCCED5',
   },
   cardContainer: {
     width: '90%',
+    borderWidth: 1,
+    borderColor: 'black',
     borderRadius: 10,
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
   },
   name: {
     fontSize: 28,

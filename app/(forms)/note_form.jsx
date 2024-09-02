@@ -25,6 +25,7 @@ const AddNoteForm = () => {
     misc_notes: '',
     protocol_date: new Date(),
     cat_reactive: false,
+    leash_reactive: false,
     resource_guarder: false,
     stranger_reactive: false,
     jumpy_mouthy: false,
@@ -124,7 +125,7 @@ const AddNoteForm = () => {
                 }
               />
             </View>
-            <View>
+            <View style={styles.row}>
               <CheckBox
                 title='Barrier'
                 size={24}
@@ -137,19 +138,27 @@ const AddNoteForm = () => {
                 }
               />
               <CheckBox
-                title='Jumpy/Mouthy'
+                title='Leash'
                 size={24}
-                checked={form.jumpy_mouthy}
+                checked={form.leash_reactive}
                 onPress={() =>
                   setForm({
                     ...form,
-                    jumpy_mouthy: !form.jumpy_mouthy,
+                    leash_reactive: !form.leash_reactive,
                   })
                 }
               />
             </View>
           </Card>
           <View style={{ width: '100%' }}>
+            <CheckBox
+              title='Jumpy/Mouthy'
+              size={24}
+              checked={form.jumpy_mouthy}
+              onPress={() =>
+                setForm({ ...form, jumpy_mouthy: !form.jumpy_mouthy })
+              }
+            />
             <CheckBox
               title='Resource Guarder'
               size={24}
@@ -265,7 +274,6 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    alignItems: 'center',
   },
   button: {
     backgroundColor: 'green',

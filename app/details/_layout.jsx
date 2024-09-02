@@ -14,10 +14,11 @@ export default function DetailsLayout() {
         options={{
           headerShown: true,
           headerTitle: '',
+          headerStyle: { backgroundColor: '#CCCED5' },
           headerLeft: () => (
             <FontAwesome.Button
               name='backward'
-              backgroundColor='white'
+              backgroundColor='#CCCED5'
               color='blue'
               onPress={() => router.back()}
             >
