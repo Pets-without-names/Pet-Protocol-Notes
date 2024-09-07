@@ -16,9 +16,9 @@ export async function createAccount(firstName, lastName, email, password) {
     );
     if (!newAccount) throw Error;
 
-    // await signIn(email, password);
+    await signIn(email, password);
   } catch (error) {
-    console.log(error);
+    console.log(`create account error: ${error}`);
     throw new Error(error);
   }
 }
@@ -28,7 +28,6 @@ export async function getAccount() {
   try {
     const currentAccount = await account.get();
     if (!currentAccount) throw Error;
-
     return currentAccount;
   } catch (error) {
     console.log('Getting account error: ' + error);

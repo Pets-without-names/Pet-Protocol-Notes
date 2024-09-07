@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { getAccount, signIn } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
+import validator from 'validator';
 
 const SignIn = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
@@ -11,15 +12,36 @@ const SignIn = () => {
     email: '',
     password: '',
   });
-  const [inputFocused, setInputFocus] = useState(false);
+  const [emailFocused, setEmailFocus] = useState(false);
   const [pwordFocused, setPwordFocus] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   const submit = async () => {
-    if (form.email === '' || form.password === '') {
-      Alert.alert('Error', 'Please fill in all fields');
+    //Check for blank email input:
+    if (validator.isEmpty(form.email)) {
+      Alert.alert('Enter your email address');
+      setEmailFocus(true);
       return;
     }
+    //Validate the submitted email format:
+    if (!validator.isEmail(form.email)) {
+      Alert.alert('Enter a valid email address');
+      setEmailError('Enter a valid email address');
+      setEmailFocus(true);
+      return;
+    } else {
+      setEmailError('');
+    }
+
+    //Password validations:
+    if (validator.isEmpty(form.password)) {
+      Alert.alert('Please enter your password');
+      setPwordFocus(true);
+      return;
+    }
+
+    //this will trigger the button loading animation
     setSubmitting(true);
     try {
       await signIn(form.email, form.password);
@@ -29,7 +51,7 @@ const SignIn = () => {
       router.replace('/home');
     } catch (error) {
       console.log(error);
-      Alert.alert('Error ' + error.message);
+      Alert.alert('Invalid Credentials.  Check your email and password.');
     } finally {
       setSubmitting(false);
     }
@@ -50,17 +72,23 @@ const SignIn = () => {
           value={form.email}
           label='email'
           labelStyle={styles.label}
-          onChangeText={(text) => setForm({ ...form, email: text })}
+          errorMessage={emailError}
+          onChangeText={(text) => {
+            if (validator.isEmail(text)) {
+              setEmailError('');
+            }
+            setForm({ ...form, email: text });
+          }}
           placeholder='  email address'
           onFocus={() => {
-            setInputFocus(true);
+            setEmailFocus(true);
           }}
-          onBlur={() => setInputFocus(false)}
+          onBlur={() => setEmailFocus(false)}
           keyboardType='email-address'
           style={{
             borderWidth: 1,
             borderRadius: 10,
-            borderColor: inputFocused ? 'green' : 'black',
+            borderColor: emailFocused ? 'orange' : 'black',
           }}
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
@@ -77,12 +105,12 @@ const SignIn = () => {
           style={{
             borderWidth: 1,
             borderRadius: 10,
-            borderColor: pwordFocused ? 'green' : 'black',
+            borderColor: pwordFocused ? 'orange' : 'black',
           }}
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
-        <CheckBox title='Remember Me' />
+        {/* <CheckBox title='Remember Me' /> */}
         <Button
           title='Log in'
           buttonStyle={{ borderRadius: 10, padding: 10 }}

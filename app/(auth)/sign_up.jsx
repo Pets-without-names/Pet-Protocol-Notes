@@ -4,6 +4,7 @@ import { React, useState } from 'react';
 import { router } from 'expo-router';
 import { createAccount } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
+import validator from 'validator';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -14,9 +15,12 @@ const SignUp = () => {
   });
 
   const { setUser, setIsLogged } = useGlobalContext();
-  const [inputFocused, setInputFocus] = useState(false);
-  const [pwordFocused, setPwordFocus] = useState(false);
+  const [fnameFocused, setfnameFocused] = useState(false);
+  const [lnameFocused, setlnameFocused] = useState(false);
+  const [emailFocused, setEmailFocused] = useState(false);
+  const [pwordFocused, setPwordFocused] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   const submit = async () => {
     //check form input fields are not null:
@@ -29,6 +33,14 @@ const SignUp = () => {
       Alert.alert('Please fill in all fields');
       return;
     }
+
+    //Validate the sumbitted email format:
+    if (!validator.isEmail(form.email)) {
+      Alert.alert('Enter a valid email address.');
+      setEmailFocused(true);
+      return;
+    }
+
     //this will trigger the button loading animation
     setSubmitting(true);
 
@@ -39,13 +51,14 @@ const SignUp = () => {
         form.email,
         form.password
       );
-      setUser(result); //may not need this?
+      setUser(result);
       setIsLogged(true);
       Alert.alert('Account created');
       router.replace('/home');
     } catch (error) {
-      Alert.alert('Error ' + error.message);
       console.log(error);
+      Alert.alert(error);
+      console.log(`account sign-in error: ${error}`);
     } finally {
       setSubmitting(false);
     }
@@ -60,16 +73,17 @@ const SignUp = () => {
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, firstName: text })}
           placeholder='  First name'
+          autoFocus={true}
           onFocus={() => {
-            setInputFocus(true);
+            setfnameFocused(true);
           }}
-          onBlur={() => setInputFocus(false)}
+          onBlur={() => setfnameFocused(false)}
           style={{
             borderWidth: 1,
             borderRadius: 10,
-            borderColor: inputFocused ? 'green' : 'black',
+            borderColor: fnameFocused ? 'orange' : 'black',
           }}
-          inputStyle={{ color: 'white' }}
+          inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
@@ -79,34 +93,40 @@ const SignUp = () => {
           onChangeText={(text) => setForm({ ...form, lastName: text })}
           placeholder='  Last Name'
           onFocus={() => {
-            setInputFocus(true);
+            setlnameFocused(true);
           }}
-          onBlur={() => setInputFocus(false)}
+          onBlur={() => setlnameFocused(false)}
           style={{
             borderWidth: 1,
             borderRadius: 10,
-            borderColor: inputFocused ? 'green' : 'black',
+            borderColor: lnameFocused ? 'orange' : 'black',
           }}
-          inputStyle={{ color: 'white' }}
+          inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
           value={form.email}
           label='email'
           labelStyle={styles.label}
-          onChangeText={(text) => setForm({ ...form, email: text })}
+          onChangeText={(text) => {
+            setForm({ ...form, email: text });
+          }}
           placeholder='  email address'
           onFocus={() => {
-            setInputFocus(true);
+            setEmailFocused(true);
           }}
-          onBlur={() => setInputFocus(false)}
+          onBlur={() => setEmailFocused(false)}
+          enablesReturnKeyAutomatically={true}
+          errorMessage={emailError}
+          inputMode='email'
           keyboardType='email-address'
+          textContentType='emailAdress'
           style={{
             borderWidth: 1,
             borderRadius: 10,
-            borderColor: inputFocused ? 'green' : 'black',
+            borderColor: emailFocused ? 'orange' : 'black',
           }}
-          inputStyle={{ color: 'white' }}
+          inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Input
@@ -115,15 +135,16 @@ const SignUp = () => {
           labelStyle={styles.label}
           onChangeText={(text) => setForm({ ...form, password: text })}
           placeholder='  password'
-          onFocus={() => setPwordFocus(true)}
-          onBlur={() => setPwordFocus(false)}
+          onFocus={() => setPwordFocused(true)}
+          onBlur={() => setPwordFocused(false)}
+          enablesReturnKeyAutomatically={true}
           secureTextEntry={true}
           style={{
             borderWidth: 1,
             borderRadius: 10,
-            borderColor: pwordFocused ? 'green' : 'black',
+            borderColor: pwordFocused ? 'orange' : 'black',
           }}
-          inputStyle={{ color: 'white' }}
+          inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
         <Button
