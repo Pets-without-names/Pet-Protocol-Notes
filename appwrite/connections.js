@@ -18,8 +18,21 @@ export async function createAccount(firstName, lastName, email, password) {
 
     await signIn(email, password);
   } catch (error) {
-    console.log(`create account error: ${error}`);
-    throw new Error(error);
+    switch (error.type) {
+      case 'user_already_exists':
+        error.message = 'User with this email already exists.';
+        throw error;
+      case 'password_recently_used':
+        error.message =
+          'The password you are trying to use is similar to your previous password. For your security, please choose a different password and try again.';
+        throw error;
+      case 'password_personal_data':
+        error.message =
+          'The password you are trying to use contains references to your name or email. For your security, please choose a different password and try again.';
+        throw error;
+      default:
+        throw new Error(error);
+    }
   }
 }
 
@@ -30,7 +43,7 @@ export async function getAccount() {
     if (!currentAccount) throw Error;
     return currentAccount;
   } catch (error) {
-    console.log('Getting account error: ' + error);
+    // console.log('Getting account error: ' + error);
     return null;
   }
 }
@@ -41,7 +54,13 @@ export async function signIn(email, password) {
     const session = await account.createEmailPasswordSession(email, password);
     return session;
   } catch (error) {
-    throw new Error(error);
+    if (error.type === 'user_invalid_credentials') {
+      error.message =
+        'Invalid credentials. Please check the email and password.';
+      throw error;
+    } else {
+      throw new Error(error);
+    }
   }
 }
 
@@ -49,7 +68,6 @@ export async function signIn(email, password) {
 export async function signOut() {
   try {
     const session = await account.deleteSession('current');
-
     return session;
   } catch (error) {
     throw new Error(error);

@@ -50,8 +50,8 @@ const SignIn = () => {
       setIsLogged(true);
       router.replace('/home');
     } catch (error) {
-      console.log(error);
-      Alert.alert('Invalid Credentials.  Check your email and password.');
+      //errors only has a message and name...no type or code.
+      Alert.alert(error.message);
     } finally {
       setSubmitting(false);
     }

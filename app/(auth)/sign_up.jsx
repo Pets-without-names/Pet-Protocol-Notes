@@ -4,7 +4,8 @@ import { React, useState } from 'react';
 import { router } from 'expo-router';
 import { createAccount } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
-import validator from 'validator';
+import isEmail from 'validator/es/lib/isEmail';
+import { AppwriteException } from 'react-native-appwrite';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -35,9 +36,22 @@ const SignUp = () => {
     }
 
     //Validate the sumbitted email format:
-    if (!validator.isEmail(form.email)) {
+    if (!isEmail(form.email)) {
       Alert.alert('Enter a valid email address.');
       setEmailFocused(true);
+      return;
+    }
+
+    //Strong password validation with regex:
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    const strongPassword = regex.test(form.password);
+    if (!strongPassword) {
+      Alert.alert(
+        'Password must be at least 8 characters. Contain one lower-case and one upper-case letter.  One digit and one special character.'
+      );
+      setPwordFocused(true);
       return;
     }
 
@@ -56,9 +70,7 @@ const SignUp = () => {
       Alert.alert('Account created');
       router.replace('/home');
     } catch (error) {
-      console.log(error);
-      Alert.alert(error);
-      console.log(`account sign-in error: ${error}`);
+      Alert.alert(error.message);
     } finally {
       setSubmitting(false);
     }
