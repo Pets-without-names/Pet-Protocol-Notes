@@ -35,6 +35,8 @@ const Home = () => {
           </Card.Title>
         </Card>
         <Button
+          // color={'#6A8E7F'}
+          buttonStyle={styles.button}
           containerStyle={styles.buttonContainer}
           title='Sign Out'
           titleStyle={{ marginRight: 15 }}
@@ -54,7 +56,8 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#CCCED5',
+    backgroundColor: '#F6F4F3',
+    // backgroundColor: '#CCCED5',
   },
   heading: {
     textAlign: 'center',
@@ -71,7 +74,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 40,
   },
-
+  button: {
+    backgroundColor: '#6A8E7F',
+    borderRadius: 5,
+  },
   buttonContainer: {
     padding: 10,
     marginTop: 25,
@@ -80,14 +86,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
-    borderColor: 'transparent',
-    borderWidth: 1,
-    borderRadius: 10,
     position: 'absolute',
     bottom: 35,
   },
   card: {
-    backgroundColor: '#2B58ED',
+    //backgroundColor: '#2B58ED',
+    //backgroundColor: '#4357AD',
+    backgroundColor: '#304D6D',
     cornerRadius: '10',
     borderColor: 'black',
     borderWidth: '1',

@@ -53,7 +53,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#6EA8FF',
+    //backgroundColor: '#6EA8FF',
+    //backgroundColor: '#A7CCED',
+    backgroundColor: '#82A0BC',
   },
   heading: {
     marginTop: 35,

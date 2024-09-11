@@ -38,11 +38,11 @@ export default function TabLayout() {
           name='protocol'
           options={{
             headerShown: true,
-            headerStyle: { backgroundColor: '#CCCED5' },
+            headerStyle: { backgroundColor: '#F6F4F3' },
             headerRight: () => (
               <FontAwesome.Button
                 name='plus'
-                backgroundColor='#CCCED5'
+                backgroundColor='#F6F4F3'
                 color='blue'
                 onPress={() =>
                   router.push({
@@ -64,12 +64,12 @@ export default function TabLayout() {
           name='protocol_plus'
           options={{
             headerShown: true,
-            headerStyle: { backgroundColor: '#CCCED5' },
+            headerStyle: { backgroundColor: '#F6F4F3' },
             title: 'Protocol +',
             headerRight: () => (
               <FontAwesome.Button
                 name='plus'
-                backgroundColor='#CCCED5'
+                backgroundColor='#F6F4F3'
                 color='blue'
                 onPress={() => {
                   router.push({

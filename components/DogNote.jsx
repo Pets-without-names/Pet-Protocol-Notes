@@ -26,7 +26,10 @@ export default DogNote;
 const styles = StyleSheet.create({
   container: {},
   card: {
-    backgroundColor: '#2B58ED',
+    //backgroundColor: '#2B58ED',
+    //backgroundColor: '#4357AD',
+    //backgroundColor: '#82A0BC',
+    backgroundColor: '#304D6D',
     cornerRadius: '10',
     borderColor: 'black',
     borderWidth: '1',

@@ -30,6 +30,10 @@ export async function createAccount(firstName, lastName, email, password) {
         error.message =
           'The password you are trying to use contains references to your name or email. For your security, please choose a different password and try again.';
         throw error;
+      case 'user_password_mismatch':
+        error.message =
+          'Passwords do not match. Please check the password and confirm password.';
+        throw error;
       default:
         throw new Error(error);
     }

@@ -166,13 +166,15 @@ const styles = StyleSheet.create({
     height: 250,
   },
   updateButton: {
-    backgroundColor: 'green',
+    //backgroundColor: 'green',
+    backgroundColor: '#6A8E7F',
     borderColor: 'transparent',
     borderWidth: 0,
     borderRadius: 10,
   },
   deleteButton: {
-    backgroundColor: 'red',
+    //backgroundColor: 'red',
+    backgroundColor: '#AA767C',
     borderColor: 'transparent',
     borderWidth: 0,
     borderRadius: 10,

@@ -113,7 +113,7 @@ const SignIn = () => {
         {/* <CheckBox title='Remember Me' /> */}
         <Button
           title='Log in'
-          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          buttonStyle={styles.loginButton}
           titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
           containerStyle={styles.buttonContainer}
           loading={isSubmitting}
@@ -130,7 +130,7 @@ const SignIn = () => {
         </Text>
         <Button
           title='Create Account'
-          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          buttonStyle={styles.createButton}
           titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
           containerStyle={styles.buttonContainer}
           onPress={() => {
@@ -184,5 +184,15 @@ const styles = StyleSheet.create({
     width: '85%',
     margin: 10,
     opacity: 0.65,
+  },
+  loginButton: {
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: '#68AE7F',
+  },
+  createButton: {
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: '#68AE7F',
   },
 });

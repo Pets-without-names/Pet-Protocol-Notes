@@ -5,7 +5,6 @@ import { router } from 'expo-router';
 import { createAccount } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import isEmail from 'validator/es/lib/isEmail';
-import { AppwriteException } from 'react-native-appwrite';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -13,6 +12,7 @@ const SignUp = () => {
     lastName: '',
     email: '',
     password: '',
+    passwordConfirm: '',
   });
 
   const { setUser, setIsLogged } = useGlobalContext();
@@ -20,6 +20,7 @@ const SignUp = () => {
   const [lnameFocused, setlnameFocused] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
   const [pwordFocused, setPwordFocused] = useState(false);
+  const [pword2Focused, setPword2Focused] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
 
@@ -52,6 +53,13 @@ const SignUp = () => {
         'Password must be at least 8 characters. Contain one lower-case and one upper-case letter.  One digit and one special character.'
       );
       setPwordFocused(true);
+      return;
+    }
+
+    //check passwords match
+    if (form.password != form.passwordConfirm) {
+      Alert.alert('Passwords do not match');
+      setPword2Focused(true);
       return;
     }
 
@@ -159,9 +167,27 @@ const SignUp = () => {
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
+        <Input
+          value={form.passwordConfirm}
+          label='Confirm Password'
+          labelStyle={styles.label}
+          onChangeText={(text) => setForm({ ...form, passwordConfirm: text })}
+          placeholder='  password'
+          onFocus={() => setPword2Focused(true)}
+          onBlur={() => setPword2Focused(false)}
+          enablesReturnKeyAutomatically={true}
+          secureTextEntry={true}
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            borderColor: pword2Focused ? 'orange' : 'black',
+          }}
+          inputStyle={{ color: 'white', padding: 5 }}
+          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+        />
         <Button
           title='Create an account'
-          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          buttonStyle={styles.buttonStyle}
           titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
           containerStyle={styles.buttonContainer}
           loading={isSubmitting}
@@ -177,7 +203,7 @@ const SignUp = () => {
         </Text>
         <Button
           title='Sign In'
-          buttonStyle={{ borderRadius: 10, padding: 10 }}
+          buttonStyle={styles.buttonStyle}
           titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
           containerStyle={styles.buttonContainer}
           onPress={() => router.replace('sign_in')}
@@ -208,7 +234,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   accountContainer: {
-    marginTop: 50,
     width: '95%',
     alignItems: 'center',
     padding: 10,
@@ -217,6 +242,12 @@ const styles = StyleSheet.create({
     width: '75%',
     marginVertical: 20,
   },
+  buttonStyle: {
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: '#68AE7F',
+  },
+
   divider: {
     width: '85%',
     margin: 10,

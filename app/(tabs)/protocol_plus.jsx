@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#CCCED5',
+    backgroundColor: '#F6F4F3',
+    //backgroundColor: '#CCCED5',
   },
   activity: {
     marginTop: 50,
