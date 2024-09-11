@@ -13,7 +13,7 @@ export default function TabLayout() {
   return (
     <>
       <Tabs
-        screenOptions={{ tabBarActiveTintColor: 'blue', headerShown: false }}
+        screenOptions={{ tabBarActiveTintColor: '#4357AD', headerShown: false }}
       >
         <Tabs.Screen
           name='home'
@@ -43,7 +43,7 @@ export default function TabLayout() {
               <FontAwesome.Button
                 name='plus'
                 backgroundColor='#F6F4F3'
-                color='blue'
+                color='#4357AD'
                 onPress={() =>
                   router.push({
                     pathname: '../(forms)/note_form',
@@ -70,7 +70,7 @@ export default function TabLayout() {
               <FontAwesome.Button
                 name='plus'
                 backgroundColor='#F6F4F3'
-                color='blue'
+                color='#4357AD'
                 onPress={() => {
                   router.push({
                     pathname: '../(forms)/note_form',

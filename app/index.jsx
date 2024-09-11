@@ -38,7 +38,8 @@ const Welcome = () => {
         title='Sign in'
         containerStyle={styles.buttonContainer}
         buttonStyle={styles.button}
-        titleStyle={{ color: 'black' }}
+        raised
+        titleStyle={{ color: 'white', fontSize: 22 }}
         onPress={() => {
           router.push('/sign_in');
         }}
@@ -53,9 +54,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    //backgroundColor: '#6EA8FF',
+    backgroundColor: '#F6F4F3',
     //backgroundColor: '#A7CCED',
-    backgroundColor: '#82A0BC',
+    //backgroundColor: '#82A0BC',
   },
   heading: {
     marginTop: 35,
@@ -71,15 +72,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   button: {
-    backgroundColor: '#CCCED5',
-    borderColor: 'transparent',
-    borderWidth: 0,
+    backgroundColor: '#6A8E7F',
     borderRadius: 10,
   },
   buttonContainer: {
     width: 200,
     position: 'absolute',
     bottom: 100,
+    borderRadius: 10,
   },
   image: {
     width: 150,

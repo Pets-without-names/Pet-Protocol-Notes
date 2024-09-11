@@ -29,10 +29,14 @@ const Home = () => {
           Create and update dog walking protocols!
         </Text>
         <Card containerStyle={styles.card}>
-          <Card.Title style={styles.title}>
+          {/* <Card.Title style={styles.title}>
             Please check-in with the staff to verify the proper protocols and
             dates
-          </Card.Title>
+          </Card.Title> */}
+          <Text style={styles.title}>
+            Please check-in with the staff to verify the proper protocols and
+            dates
+          </Text>
         </Card>
         <Button
           // color={'#6A8E7F'}
@@ -106,7 +110,8 @@ const styles = StyleSheet.create({
   title: {
     padding: 10,
     fontSize: 18,
-    marginTop: 8,
     color: 'white',
+    textAlign: 'center',
+    fontWeight: '600',
   },
 });

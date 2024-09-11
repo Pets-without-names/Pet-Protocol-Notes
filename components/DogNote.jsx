@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet } from 'react-native';
-import { Card } from '@rneui/themed';
+import { Card, Text } from '@rneui/themed';
 import React from 'react';
 import { router } from 'expo-router';
 
@@ -15,7 +15,8 @@ const DogNote = ({ dogInfo }) => {
       }}
     >
       <Card containerStyle={styles.card}>
-        <Card.Title style={styles.name}>{dogInfo.name}</Card.Title>
+        {/* <Card.Title style={styles.name}>{dogInfo.name}</Card.Title> */}
+        <Text style={styles.name}>{dogInfo.name}</Text>
       </Card>
     </Pressable>
   );
@@ -36,9 +37,10 @@ const styles = StyleSheet.create({
     borderRadius: '10',
   },
   name: {
-    fontSize: '20',
+    fontSize: '22',
+    fontWeight: '600',
     letterSpacing: 1.5,
     color: 'white',
-    marginTop: 10,
+    textAlign: 'center',
   },
 });

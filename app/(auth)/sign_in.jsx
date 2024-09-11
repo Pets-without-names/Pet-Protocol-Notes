@@ -124,7 +124,7 @@ const SignIn = () => {
       </View>
 
       <View style={styles.accountContainer}>
-        <Divider width={2} color='#2089DC' style={styles.divider} />
+        <Divider width={2} color='#4357AD' style={styles.divider} />
         <Text h4 style={styles.subHeader}>
           Don't have an account?
         </Text>

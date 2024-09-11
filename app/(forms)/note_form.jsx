@@ -72,6 +72,7 @@ const AddNoteForm = () => {
         leftComponent={
           <Icon
             name='close'
+            color='#F6F4F3'
             size={24}
             onPress={() => {
               router.back();
@@ -234,7 +235,7 @@ const AddNoteForm = () => {
       </KeyboardAwareScrollView>
       <FAB
         title='Submit'
-        color='green'
+        color='#6A8E7F'
         size='large'
         // placement='right'
         icon={{
@@ -281,10 +282,12 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 10,
   },
-  buttonContainer: { width: 250, marginBottom: 25 },
+  buttonContainer: {
+    width: 250,
+    marginBottom: 25,
+  },
   header: {
-    color: 'white',
-    fontSize: 20,
+    backgroundColor: '#304D6D',
   },
   fab: {
     position: 'absolute',

@@ -86,8 +86,10 @@ const Details = () => {
     <>
       <ScrollView contentContainerStyle={styles.outsideContainer}>
         <Card containerStyle={styles.cardContainer}>
-          <Card.Title style={styles.name}>{params.name}</Card.Title>
-          <Card.Divider />
+          <Card containerStyle={styles.nameContainer}>
+            {/* <Card.Title style={styles.name}>{params.name}</Card.Title> */}
+            <Text style={styles.name}>{params.name}</Text>
+          </Card>
           <Text style={{ textAlign: 'center', fontSize: 20 }}>
             Protocol date: {formattedDate}
           </Text>
@@ -104,6 +106,7 @@ const Details = () => {
         <View style={styles.buttonView}>
           <Button
             title='Update'
+            titleStyle={{ fontSize: 20 }}
             icon={{
               name: 'update',
               type: 'fontawesome',
@@ -119,6 +122,7 @@ const Details = () => {
           />
           <Button
             title='Delete'
+            titleStyle={{ fontSize: 20 }}
             icon={{
               name: 'delete',
               type: 'fontawesome',
@@ -142,7 +146,8 @@ const styles = StyleSheet.create({
   outsideContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#CCCED5',
+    // backgroundColor: '#F6F4F3',
+    backgroundColor: '#E1DFDF',
   },
   cardContainer: {
     width: '90%',
@@ -154,12 +159,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 4,
   },
+  nameContainer: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 10,
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+    marginBottom: 20,
+  },
   name: {
     fontSize: 28,
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 10,
+    fontWeight: '700',
+    color: '#304D6D',
+    textAlign: 'center',
   },
   image: {
     width: '100%',
