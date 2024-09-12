@@ -80,5 +80,6 @@ const styles = StyleSheet.create({
   },
   list: {
     width: '90%',
+    marginTop: 20,
   },
 });

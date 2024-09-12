@@ -57,7 +57,8 @@ const UpdateForm = () => {
         leftComponent={
           <Icon
             name='close'
-            size={24}
+            color='#F6F4F3'
+            size={34}
             onPress={() => {
               router.back();
             }}
@@ -79,7 +80,7 @@ const UpdateForm = () => {
             }}
           />
           <Card containerStyle={{ width: '100%' }}>
-            <Card.Title>Reactivity</Card.Title>
+            <Card.Title style={{ fontSize: 18 }}>Reactivity</Card.Title>
             <Card.Divider />
             <View style={styles.row}>
               <CheckBox
@@ -127,7 +128,7 @@ const UpdateForm = () => {
           <View style={{ width: '100%' }}>
             <CheckBox
               title='Jumpy/Mouthy'
-              size={24}
+              size={30}
               checked={form.jumpy_mouthy}
               onPress={() =>
                 setForm({ ...form, jumpy_mouthy: !form.jumpy_mouthy })
@@ -135,7 +136,7 @@ const UpdateForm = () => {
             />
             <CheckBox
               title='Resource Guarder'
-              size={24}
+              size={30}
               checked={form.resource_guarder}
               onPress={() =>
                 setForm({ ...form, resource_guarder: !form.resource_guarder })
@@ -143,7 +144,7 @@ const UpdateForm = () => {
             />
             <CheckBox
               title='Avoid Strangers'
-              size={24}
+              size={30}
               checked={form.stranger_reactive}
               onPress={() =>
                 setForm({
@@ -154,7 +155,7 @@ const UpdateForm = () => {
             />
             <CheckBox
               title='Place Routine'
-              size={24}
+              size={30}
               checked={form.place_routine}
               onPress={() =>
                 setForm({
@@ -165,7 +166,7 @@ const UpdateForm = () => {
             />
             <CheckBox
               title='Door Routine'
-              size={24}
+              size={30}
               checked={form.door_routine}
               onPress={() =>
                 setForm({
@@ -210,9 +211,6 @@ export default UpdateForm;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderRadius: 5,
     padding: 20,
     width: '100%',
     alignItems: 'center',
@@ -239,7 +237,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    backgroundColor: 'green',
+    backgroundColor: '#6A8E7F',
     borderColor: 'transparent',
     borderWidth: 0,
     borderRadius: 10,
@@ -248,5 +246,6 @@ const styles = StyleSheet.create({
   header: {
     color: 'white',
     fontSize: 20,
+    backgroundColor: '#304D6D',
   },
 });

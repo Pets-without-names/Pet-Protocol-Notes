@@ -73,7 +73,7 @@ const AddNoteForm = () => {
           <Icon
             name='close'
             color='#F6F4F3'
-            size={24}
+            size={34}
             onPress={() => {
               router.back();
             }}
@@ -106,7 +106,7 @@ const AddNoteForm = () => {
             }}
           />
           <Card containerStyle={{ width: '100%' }}>
-            <Card.Title>Reactivity</Card.Title>
+            <Card.Title style={{ fontSize: 18 }}>Reactivity</Card.Title>
             <Card.Divider />
             <View style={styles.row}>
               <CheckBox
@@ -154,7 +154,7 @@ const AddNoteForm = () => {
           <View style={{ width: '100%' }}>
             <CheckBox
               title='Jumpy/Mouthy'
-              size={24}
+              size={30}
               checked={form.jumpy_mouthy}
               onPress={() =>
                 setForm({ ...form, jumpy_mouthy: !form.jumpy_mouthy })
@@ -162,7 +162,7 @@ const AddNoteForm = () => {
             />
             <CheckBox
               title='Resource Guarder'
-              size={24}
+              size={30}
               checked={form.resource_guarder}
               onPress={() =>
                 setForm({ ...form, resource_guarder: !form.resource_guarder })
@@ -170,7 +170,7 @@ const AddNoteForm = () => {
             />
             <CheckBox
               title='Avoid Strangers'
-              size={24}
+              size={30}
               checked={form.stranger_reactive}
               onPress={() =>
                 setForm({
@@ -181,7 +181,7 @@ const AddNoteForm = () => {
             />
             <CheckBox
               title='Place Routine'
-              size={24}
+              size={30}
               checked={form.place_routine}
               onPress={() =>
                 setForm({
@@ -192,7 +192,7 @@ const AddNoteForm = () => {
             />
             <CheckBox
               title='Door Routine'
-              size={24}
+              size={30}
               checked={form.door_routine}
               onPress={() =>
                 setForm({
@@ -216,7 +216,7 @@ const AddNoteForm = () => {
             multiline={true}
             numberOfLines={5}
           />
-          {/* <Button
+          <Button
             title='Submit'
             icon={{
               name: 'check',
@@ -230,10 +230,10 @@ const AddNoteForm = () => {
             onPress={() => {
               submit();
             }}
-          /> */}
+          />
         </View>
       </KeyboardAwareScrollView>
-      <FAB
+      {/* <FAB
         title='Submit'
         color='#6A8E7F'
         size='large'
@@ -248,7 +248,7 @@ const AddNoteForm = () => {
         onPress={() => {
           submit();
         }}
-      />
+      /> */}
     </SafeAreaProvider>
   );
 };
@@ -258,9 +258,6 @@ export default AddNoteForm;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderRadius: 5,
     padding: 20,
     width: '100%',
     alignItems: 'center',
@@ -277,7 +274,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   button: {
-    backgroundColor: 'green',
+    backgroundColor: '#6A8E7F',
     borderColor: 'transparent',
     borderWidth: 0,
     borderRadius: 10,

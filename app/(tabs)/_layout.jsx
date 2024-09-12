@@ -42,7 +42,7 @@ export default function TabLayout() {
                   })
                 }
               >
-                Add Note
+                ADD NOTE
               </FontAwesome.Button>
             ),
             title: 'Protocol',
@@ -69,7 +69,7 @@ export default function TabLayout() {
                   });
                 }}
               >
-                Add Note
+                ADD NOTE
               </FontAwesome.Button>
             ),
             tabBarIcon: ({ color }) => (

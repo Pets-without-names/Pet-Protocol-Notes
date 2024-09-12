@@ -15,7 +15,6 @@ const DogNote = ({ dogInfo }) => {
       }}
     >
       <Card containerStyle={styles.card}>
-        {/* <Card.Title style={styles.name}>{dogInfo.name}</Card.Title> */}
         <Text style={styles.name}>{dogInfo.name}</Text>
       </Card>
     </Pressable>
@@ -27,14 +26,12 @@ export default DogNote;
 const styles = StyleSheet.create({
   container: {},
   card: {
-    //backgroundColor: '#2B58ED',
-    //backgroundColor: '#4357AD',
-    //backgroundColor: '#82A0BC',
     backgroundColor: '#304D6D',
     cornerRadius: '10',
     borderColor: 'black',
     borderWidth: '1',
     borderRadius: '10',
+    padding: 12,
   },
   name: {
     fontSize: '22',
