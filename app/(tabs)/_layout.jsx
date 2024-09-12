@@ -26,15 +26,6 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name='posts'
-          options={{
-            title: 'Posts',
-            tabBarIcon: ({ color }) => (
-              <FontAwesome size={28} name='commenting' color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
           name='protocol'
           options={{
             headerShown: true,

@@ -47,7 +47,7 @@ export async function getAccount() {
     if (!currentAccount) throw Error;
     return currentAccount;
   } catch (error) {
-    // console.log('Getting account error: ' + error);
+    console.log('Getting account error: ' + error);
     return null;
   }
 }
@@ -117,25 +117,6 @@ export async function getProtocolPlusNotes() {
     throw new Error(error);
   }
 }
-
-//Create a new dog walking protocol:
-// export const createProtocolNote = async (data) => {
-//   try {
-//     const response = await db.protocol.create(data);
-//   } catch (error) {
-//     console.log(error.message);
-//     throw new Error(error);
-//   }
-// };
-
-// export const createPlusNote = async (data) => {
-//   try {
-//     const response = await db.protocolPlus.create(data);
-//   } catch (error) {
-//     console.log(error.message);
-//     throw new Error(error);
-//   }
-// };
 
 export const createNote = async (collID, data, docID = ID.unique()) => {
   try {
