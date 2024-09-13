@@ -1,5 +1,5 @@
-import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
-import { Input, Button, Text, Divider, CheckBox } from '@rneui/themed';
+import { SafeAreaView, StyleSheet, View, Alert, Platform } from 'react-native';
+import { Input, Button, Text, Divider } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { getAccount, signIn } from '../../appwrite/connections';
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#31353D',
+    paddingTop: Platform.OS === 'android' ? 40 : 0,
   },
   inputContainer: {
     marginTop: 10,

@@ -1,6 +1,5 @@
-// import { StatusBar } from 'expo-status-bar';
 import { Redirect, router } from 'expo-router';
-import { View, SafeAreaView, StyleSheet, Image } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Image, Platform } from 'react-native';
 import { Button } from '@rneui/themed';
 import { Text } from '@rneui/base';
 import { useGlobalContext } from '../context/GlobalProvider';
@@ -55,8 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#F6F4F3',
-    //backgroundColor: '#A7CCED',
-    //backgroundColor: '#82A0BC',
+    marginTop: Platform.OS === 'android' ? 50 : 0,
   },
   heading: {
     marginTop: 35,

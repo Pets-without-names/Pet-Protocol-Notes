@@ -58,7 +58,11 @@ export async function signIn(email, password) {
     const session = await account.createEmailPasswordSession(email, password);
     return session;
   } catch (error) {
-    if (error.type === 'user_invalid_credentials') {
+    if (
+      error.type === 'user_invalid_credentials' ||
+      //this will catch the password less than 8 characters:
+      error.type === 'general_argument_invalid'
+    ) {
       error.message =
         'Invalid credentials. Please check the email and password.';
       throw error;

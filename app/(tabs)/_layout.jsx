@@ -79,6 +79,7 @@ export default function TabLayout() {
         />
       </Tabs>
       <Loader isLoading={loading} />
+      <StatusBar style='dark' />
     </>
   );
 }

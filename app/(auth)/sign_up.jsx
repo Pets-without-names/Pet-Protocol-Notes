@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, View, Alert } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Alert, Platform } from 'react-native';
 import { Input, Button, Text, Divider } from '@rneui/themed';
 import { React, useState } from 'react';
 import { router } from 'expo-router';
@@ -220,6 +220,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#31353D',
+    paddingTop: Platform.OS === 'android' ? 40 : 0,
   },
   label: {
     fontSize: 20,
