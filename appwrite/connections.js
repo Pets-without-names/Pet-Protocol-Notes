@@ -1,19 +1,13 @@
 import { ID } from 'react-native-appwrite';
-import { databases, account } from './config';
+import { databases, account, avatars } from './config';
 import { DATABASE_ID } from '@env';
 import db from './databases';
-import { useState } from 'react';
 
 // Register a new user:
 export async function createAccount(firstName, lastName, email, password) {
-  const userName = firstName + ' ' + lastName;
+  const name = firstName + ' ' + lastName;
   try {
-    const newAccount = await account.create(
-      ID.unique(),
-      email,
-      password,
-      userName
-    );
+    const newAccount = await account.create(ID.unique(), email, password, name);
     if (!newAccount) throw Error;
 
     await signIn(email, password);
@@ -49,6 +43,17 @@ export async function getAccount() {
   } catch (error) {
     console.log('Getting account error: ' + error);
     return null;
+  }
+}
+
+//Get current user avatar:
+export async function getAvatar(user) {
+  try {
+    const avatarUrl = avatars.getInitials(user);
+    return avatarUrl;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
   }
 }
 
@@ -163,5 +168,21 @@ export async function deleteNote(collID, documentID) {
   } catch (error) {
     console.log('Delete error: ' + error.message);
     throw new Error(error);
+  }
+}
+
+export async function createPwordRecovery(email, url) {
+  try {
+    //email & url must be strings:
+    const result = await account.createRecovery(email, url);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function updatePwordRecovery(email, userID, password) {
+  try {
+  } catch (error) {
+    console.log(error);
   }
 }

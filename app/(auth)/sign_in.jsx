@@ -1,4 +1,11 @@
-import { SafeAreaView, StyleSheet, View, Alert, Platform } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Alert,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
 import { Input, Button, Text, Divider } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
@@ -16,6 +23,10 @@ const SignIn = () => {
   const [pwordFocused, setPwordFocus] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
+
+  const handlePasswordRecovery = () => {
+    router.push('/recovery')
+  };
 
   const submit = async () => {
     //Check for blank email input:
@@ -110,7 +121,10 @@ const SignIn = () => {
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
-        {/* <CheckBox title='Remember Me' /> */}
+        <TouchableOpacity onPress={handlePasswordRecovery}>
+          <Text style={styles.forgot}>forgot password?</Text>
+        </TouchableOpacity>
+
         <Button
           title='Log in'
           buttonStyle={styles.loginButton}
@@ -185,6 +199,10 @@ const styles = StyleSheet.create({
     width: '85%',
     margin: 10,
     opacity: 0.65,
+  },
+  forgot: {
+    fontSize: 18,
+    color: '#F6F4F3',
   },
   loginButton: {
     borderRadius: 10,

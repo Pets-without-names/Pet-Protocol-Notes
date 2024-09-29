@@ -87,7 +87,6 @@ const Details = () => {
       <ScrollView contentContainerStyle={styles.outsideContainer}>
         <Card containerStyle={styles.cardContainer}>
           <Card containerStyle={styles.nameContainer}>
-            {/* <Card.Title style={styles.name}>{params.name}</Card.Title> */}
             <Text style={styles.name}>{params.name}</Text>
           </Card>
           <Text style={{ textAlign: 'center', fontSize: 20 }}>
@@ -146,7 +145,6 @@ const styles = StyleSheet.create({
   outsideContainer: {
     flex: 1,
     alignItems: 'center',
-    // backgroundColor: '#F6F4F3',
     backgroundColor: '#E1DFDF',
   },
   cardContainer: {
@@ -158,8 +156,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
+    elevation: 10,
   },
   nameContainer: {
+    backgroundColor: '#F6F4F3',
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 10,
@@ -167,11 +167,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
+    elevation: 10,
     marginBottom: 20,
   },
   name: {
     fontSize: 28,
-    fontWeight: '700',
+    fontWeight: 700,
     color: '#304D6D',
     textAlign: 'center',
   },
@@ -180,14 +181,12 @@ const styles = StyleSheet.create({
     height: 250,
   },
   updateButton: {
-    //backgroundColor: 'green',
     backgroundColor: '#6A8E7F',
     borderColor: 'transparent',
     borderWidth: 0,
     borderRadius: 10,
   },
   deleteButton: {
-    //backgroundColor: 'red',
     backgroundColor: '#AA767C',
     borderColor: 'transparent',
     borderWidth: 0,
