@@ -27,7 +27,15 @@
       "output": "static",
       "favicon": ""
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router",
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Ubanist-Regular"]
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
     }
