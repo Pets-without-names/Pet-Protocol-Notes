@@ -178,7 +178,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   label: {
-    fontSize: 20,
+    fontFamily: 'ConcertOne-Regular',
+    fontSize: 22,
     marginBottom: 5,
     color: 'white',
     opacity: 0.75,
@@ -186,11 +187,13 @@ const styles = StyleSheet.create({
   header: {
     color: 'white',
     marginTop: 20,
+    fontFamily: 'ConcertOne-Regular',
   },
   subHeader: {
     color: 'white',
     marginTop: 5,
     fontFamily: 'Urbanist-Regular',
+    textAlign: 'center',
   },
   buttonContainer: {
     width: '75%',

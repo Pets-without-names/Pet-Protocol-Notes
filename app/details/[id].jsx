@@ -89,7 +89,7 @@ const Details = () => {
           <Card containerStyle={styles.nameContainer}>
             <Text style={styles.name}>{params.name}</Text>
           </Card>
-          <Text style={{ textAlign: 'center', fontSize: 20 }}>
+          <Text style={{ textAlign: 'center', fontSize: 22 }}>
             Protocol date: {formattedDate}
           </Text>
           {details.map((item, i) => {
@@ -171,8 +171,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   name: {
-    fontSize: 28,
-    fontWeight: 700,
+    fontFamily: 'ConcertOne-Regular',
+    fontSize: 30,
+    fontWeight: '700',
     color: '#304D6D',
     textAlign: 'center',
   },
@@ -199,7 +200,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   text: {
-    fontSize: 18,
+    fontFamily: 'Urbanist-Medium',
+    fontSize: 20,
   },
   buttonView: {
     flexDirection: 'row',

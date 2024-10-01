@@ -16,7 +16,7 @@ const Welcome = () => {
       <View style={styles.heading}>
         <Loader isLoading={loading} />
         <Text h2 style={styles.text}>
-          Protocol Notes App!
+          Protocol Notes
         </Text>
         <View style={{ alignItems: 'center', marginTop: 25 }}>
           <Image
@@ -38,7 +38,11 @@ const Welcome = () => {
         containerStyle={styles.buttonContainer}
         buttonStyle={styles.button}
         raised
-        titleStyle={{ color: 'white', fontSize: 22 }}
+        titleStyle={{
+          color: 'white',
+          fontSize: 22,
+          fontFamily: 'Urbanist-Medium',
+        }}
         onPress={() => {
           router.push('/sign_in');
         }}

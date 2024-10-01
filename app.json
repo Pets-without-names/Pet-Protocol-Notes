@@ -32,7 +32,11 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Ubanist-Regular"]
+          "fonts": [
+            "../assets/fonts/Ubanist-Regular",
+            "../assets/fonts/Urbanist-Medium",
+            "../assets/fonts/ConcertOne-Regular"
+          ]
         }
       ]
     ],

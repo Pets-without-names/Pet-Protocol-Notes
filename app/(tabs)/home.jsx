@@ -94,11 +94,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F4F3',
   },
   heading: {
+    fontFamily: 'ConcertOne-Regular',
     textAlign: 'center',
     padding: 10,
     marginTop: 40,
   },
   text: {
+    fontFamily: 'Urbanist-Medium',
     textAlign: 'center',
     padding: 20,
   },
@@ -138,9 +140,12 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   title: {
+    padding: 10,
     fontSize: 18,
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'Urbanist-Medium',
+    fontSize: 20,
     fontWeight: '600',
     marginLeft: 5,
   },
@@ -153,5 +158,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  divider: {
+    width: '85%',
+    margin: 10,
+    opacity: 0.65,
   },
 });
