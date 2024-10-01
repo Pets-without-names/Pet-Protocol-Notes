@@ -87,10 +87,9 @@ const Details = () => {
       <ScrollView contentContainerStyle={styles.outsideContainer}>
         <Card containerStyle={styles.cardContainer}>
           <Card containerStyle={styles.nameContainer}>
-            {/* <Card.Title style={styles.name}>{params.name}</Card.Title> */}
             <Text style={styles.name}>{params.name}</Text>
           </Card>
-          <Text style={{ textAlign: 'center', fontSize: 20 }}>
+          <Text style={{ textAlign: 'center', fontSize: 22 }}>
             Protocol date: {formattedDate}
           </Text>
           {details.map((item, i) => {
@@ -146,7 +145,6 @@ const styles = StyleSheet.create({
   outsideContainer: {
     flex: 1,
     alignItems: 'center',
-    // backgroundColor: '#F6F4F3',
     backgroundColor: '#E1DFDF',
   },
   cardContainer: {
@@ -170,7 +168,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   name: {
-    fontSize: 28,
+    fontFamily: 'ConcertOne-Regular',
+    fontSize: 30,
     fontWeight: '700',
     color: '#304D6D',
     textAlign: 'center',
@@ -180,7 +179,6 @@ const styles = StyleSheet.create({
     height: 250,
   },
   updateButton: {
-    //backgroundColor: 'green',
     backgroundColor: '#6A8E7F',
     borderColor: 'transparent',
     borderWidth: 0,
@@ -200,7 +198,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   text: {
-    fontSize: 18,
+    fontFamily: 'Urbanist-Medium',
+    fontSize: 20,
   },
   buttonView: {
     flexDirection: 'row',

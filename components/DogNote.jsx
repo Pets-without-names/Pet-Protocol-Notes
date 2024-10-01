@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   name: {
-    fontSize: '22',
+    fontFamily: 'ConcertOne-Regular',
+    fontSize: '24',
     fontWeight: '600',
     letterSpacing: 1.5,
     color: 'white',

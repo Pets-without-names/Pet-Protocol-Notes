@@ -223,7 +223,8 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? 40 : 0,
   },
   label: {
-    fontSize: 20,
+    fontFamily: 'ConcertOne-Regular',
+    fontSize: 22,
     marginBottom: 5,
     color: 'white',
     opacity: 0.75,

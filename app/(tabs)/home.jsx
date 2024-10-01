@@ -1,6 +1,6 @@
 import { View, StyleSheet, SafeAreaView } from 'react-native';
 import { useState } from 'react';
-import { Text, Button, Card } from '@rneui/themed';
+import { Text, Button, Card, Divider } from '@rneui/themed';
 import { signOut } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { router } from 'expo-router';
@@ -25,21 +25,17 @@ const Home = () => {
         <Text h2 style={styles.heading}>
           Protocol Notes
         </Text>
+        <Divider width={2} color='#304D6D' style={styles.divider} />
         <Text h4 style={styles.text}>
           Create and update dog walking protocols!
         </Text>
         <Card containerStyle={styles.card}>
-          {/* <Card.Title style={styles.title}>
-            Please check-in with the staff to verify the proper protocols and
-            dates
-          </Card.Title> */}
           <Text style={styles.title}>
             Please check-in with the staff to verify the proper protocols and
             dates
           </Text>
         </Card>
         <Button
-          // color={'#6A8E7F'}
           buttonStyle={styles.button}
           containerStyle={styles.buttonContainer}
           title='Sign Out'
@@ -61,14 +57,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     backgroundColor: '#F6F4F3',
-    // backgroundColor: '#CCCED5',
   },
   heading: {
+    fontFamily: 'ConcertOne-Regular',
     textAlign: 'center',
     padding: 10,
     marginTop: 40,
   },
   text: {
+    fontFamily: 'Urbanist-Medium',
     textAlign: 'center',
     padding: 20,
   },
@@ -94,8 +91,6 @@ const styles = StyleSheet.create({
     bottom: 35,
   },
   card: {
-    //backgroundColor: '#2B58ED',
-    //backgroundColor: '#4357AD',
     backgroundColor: '#304D6D',
     cornerRadius: '10',
     borderColor: 'black',
@@ -109,9 +104,15 @@ const styles = StyleSheet.create({
   },
   title: {
     padding: 10,
-    fontSize: 18,
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'Urbanist-Medium',
+    fontSize: 20,
     fontWeight: '600',
+  },
+  divider: {
+    width: '85%',
+    margin: 10,
+    opacity: 0.65,
   },
 });

@@ -110,7 +110,6 @@ const SignIn = () => {
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
-        {/* <CheckBox title='Remember Me' /> */}
         <Button
           title='Log in'
           buttonStyle={styles.loginButton}
@@ -164,7 +163,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   label: {
-    fontSize: 20,
+    fontFamily: 'ConcertOne-Regular',
+    fontSize: 22,
     marginBottom: 5,
     color: 'white',
     opacity: 0.75,
@@ -172,11 +172,13 @@ const styles = StyleSheet.create({
   header: {
     color: 'white',
     marginTop: 20,
+    fontFamily: 'ConcertOne-Regular',
   },
   subHeader: {
     color: 'white',
     marginTop: 5,
     fontFamily: 'Urbanist-Regular',
+    textAlign: 'center',
   },
   buttonContainer: {
     width: '75%',
