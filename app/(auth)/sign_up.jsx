@@ -249,7 +249,6 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#68AE7F',
   },
-
   divider: {
     width: '85%',
     margin: 10,

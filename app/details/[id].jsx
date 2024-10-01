@@ -102,41 +102,41 @@ const Details = () => {
             );
           })}
         </Card>
-        <View style={styles.buttonView}>
-          <Button
-            title='Update'
-            titleStyle={{ fontSize: 20 }}
-            icon={{
-              name: 'update',
-              type: 'fontawesome',
-              size: 25,
-              color: 'white',
-            }}
-            iconRight
-            containerStyle={styles.buttonContainer}
-            buttonStyle={styles.updateButton}
-            onPress={() => {
-              handleUpdate();
-            }}
-          />
-          <Button
-            title='Delete'
-            titleStyle={{ fontSize: 20 }}
-            icon={{
-              name: 'delete',
-              type: 'fontawesome',
-              size: 25,
-              color: 'white',
-            }}
-            iconRight
-            containerStyle={styles.buttonContainer}
-            buttonStyle={styles.deleteButton}
-            onPress={() => {
-              handleDelete(params.$id);
-            }}
-          />
-        </View>
       </ScrollView>
+      <View style={styles.buttonView}>
+        <Button
+          title='Update'
+          titleStyle={{ fontSize: 20 }}
+          icon={{
+            name: 'update',
+            type: 'fontawesome',
+            size: 25,
+            color: 'white',
+          }}
+          iconRight
+          containerStyle={styles.buttonContainer}
+          buttonStyle={styles.updateButton}
+          onPress={() => {
+            handleUpdate();
+          }}
+        />
+        <Button
+          title='Delete'
+          titleStyle={{ fontSize: 20 }}
+          icon={{
+            name: 'delete',
+            type: 'fontawesome',
+            size: 25,
+            color: 'white',
+          }}
+          iconRight
+          containerStyle={styles.buttonContainer}
+          buttonStyle={styles.deleteButton}
+          onPress={() => {
+            handleDelete(params.$id);
+          }}
+        />
+      </View>
     </>
   );
 };
@@ -202,10 +202,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   buttonView: {
+    alignSelf: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'absolute',
-    bottom: 75,
+    bottom: 55,
   },
 });
 
