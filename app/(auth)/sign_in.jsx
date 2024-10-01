@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
   subHeader: {
     color: 'white',
     marginTop: 5,
+    fontFamily: 'Urbanist-Regular',
   },
   buttonContainer: {
     width: '75%',

@@ -62,12 +62,14 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
+    fontFamily: 'ConcertOne-Regular',
   },
   subHeading: {
     textAlign: 'center',
     fontSize: 20,
     marginTop: 20,
     paddingHorizontal: 40,
+    fontFamily: 'Urbanist-Medium',
   },
   button: {
     backgroundColor: '#6A8E7F',
