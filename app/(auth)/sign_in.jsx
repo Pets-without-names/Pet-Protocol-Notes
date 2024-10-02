@@ -127,8 +127,8 @@ const SignIn = () => {
 
         <Button
           title='Log in'
-          buttonStyle={styles.loginButton}
-          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          buttonStyle={styles.buttonStyle}
+          titleStyle={styles.titleStyle}
           containerStyle={styles.buttonContainer}
           loading={isSubmitting}
           onPress={() => {
@@ -144,8 +144,8 @@ const SignIn = () => {
         </Text>
         <Button
           title='Create Account'
-          buttonStyle={styles.createButton}
-          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          buttonStyle={styles.buttonStyle}
+          titleStyle={styles.titleStyle}
           containerStyle={styles.buttonContainer}
           onPress={() => {
             router.replace('/sign_up');
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: 'ConcertOne-Regular',
-    fontSize: 22,
+    fontSize: Platform.OS === 'ios' ? 22 : 24,
     marginBottom: 5,
     color: 'white',
     opacity: 0.75,
@@ -213,9 +213,9 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#68AE7F',
   },
-  createButton: {
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: '#68AE7F',
+  titleStyle: {
+    fontSize: Platform.OS === 'ios' ? 20 : 24,
+    fontWeight: '600',
+    paddingVertical: 2,
   },
 });
