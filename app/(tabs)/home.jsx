@@ -31,8 +31,8 @@ const Home = () => {
         </Text>
         <Card containerStyle={styles.card}>
           <Text style={styles.title}>
-            Please check-in with the staff to verify the proper protocols and
-            dates
+            Please check-in with the ACE staff to verify the proper protocols
+            and dates
           </Text>
         </Card>
         <Button

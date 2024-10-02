@@ -89,7 +89,9 @@ const Details = () => {
           <Card containerStyle={styles.nameContainer}>
             <Text style={styles.name}>{params.name}</Text>
           </Card>
-          <Text style={{ textAlign: 'center', fontSize: 22 }}>
+          <Text
+            style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold' }}
+          >
             Protocol date: {formattedDate}
           </Text>
           {details.map((item, i) => {
@@ -103,7 +105,7 @@ const Details = () => {
           })}
         </Card>
       </ScrollView>
-      <View style={styles.buttonView}>
+      {/* <View style={styles.buttonView}>
         <Button
           title='Update'
           titleStyle={{ fontSize: 20 }}
@@ -136,7 +138,7 @@ const Details = () => {
             handleDelete(params.$id);
           }}
         />
-      </View>
+      </View> */}
     </>
   );
 };
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E1DFDF',
   },
   cardContainer: {
-    width: '90%',
+    width: '95%',
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 10,
@@ -169,14 +171,10 @@ const styles = StyleSheet.create({
   },
   name: {
     fontFamily: 'ConcertOne-Regular',
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: '700',
     color: '#304D6D',
     textAlign: 'center',
-  },
-  image: {
-    width: '100%',
-    height: 250,
   },
   updateButton: {
     backgroundColor: '#6A8E7F',
@@ -185,7 +183,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   deleteButton: {
-    //backgroundColor: 'red',
     backgroundColor: '#AA767C',
     borderColor: 'transparent',
     borderWidth: 0,
