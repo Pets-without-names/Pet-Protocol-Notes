@@ -10,6 +10,7 @@ const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [noteStatusChanged, setStatusChanged] = useState(false);
+  const [showEditButtons, setEditButtons] = useState(false);
 
   useEffect(() => {
     getAccount()
@@ -40,6 +41,8 @@ const GlobalProvider = ({ children }) => {
         loading,
         noteStatusChanged,
         setStatusChanged,
+        showEditButtons,
+        setEditButtons,
       }}
     >
       {children}

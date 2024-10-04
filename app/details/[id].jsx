@@ -4,14 +4,17 @@ import { Card, Text, Button, ListItem } from '@rneui/themed';
 import { useLocalSearchParams, router } from 'expo-router';
 import { deleteNote } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
+import Modal from 'react-native-modal';
 
 const Details = () => {
   const params = useLocalSearchParams();
   //array to hold the information to display:
   const [details, setDetails] = useState([]);
+  const [isEditVisible, setEditVisible] = useState(false);
   const detailsArray = [];
   //context for notes status change (add,update,delete):
   const { noteStatusChanged, setStatusChanged } = useGlobalContext();
+  const { showEditButtons, setEditButtons } = useGlobalContext();
 
   //Format the protocol date:
   const date = new Date(Date.parse(params.protocol_date));
@@ -104,41 +107,54 @@ const Details = () => {
             );
           })}
         </Card>
+        <Modal
+          //Would like to have the modal cover ONLY a part of the screen: bottom half?
+          isVisible={showEditButtons}
+          swipeDirection={'down'}
+          onBackdropPress={() => setEditButtons(false)}
+          //onSwipeMove={() => setEditButtons(false)}
+          onSwipeComplete={() => setEditButtons(false)}
+          style={styles.modal}
+        >
+          <View style={styles.buttonView}>
+            <Button
+              title='Update'
+              raised
+              titleStyle={{ fontSize: 20 }}
+              icon={{
+                name: 'update',
+                type: 'fontawesome',
+                size: 25,
+                color: 'white',
+              }}
+              iconRight
+              containerStyle={styles.buttonContainer}
+              buttonStyle={styles.updateButton}
+              onPress={() => {
+                setEditButtons(false);
+                handleUpdate();
+              }}
+            />
+            <Button
+              title='Delete'
+              titleStyle={{ fontSize: 20 }}
+              icon={{
+                name: 'delete',
+                type: 'fontawesome',
+                size: 25,
+                color: 'white',
+              }}
+              iconRight
+              containerStyle={styles.buttonContainer}
+              buttonStyle={styles.deleteButton}
+              onPress={() => {
+                setEditButtons(false);
+                handleDelete(params.$id);
+              }}
+            />
+          </View>
+        </Modal>
       </ScrollView>
-      {/* <View style={styles.buttonView}>
-        <Button
-          title='Update'
-          titleStyle={{ fontSize: 20 }}
-          icon={{
-            name: 'update',
-            type: 'fontawesome',
-            size: 25,
-            color: 'white',
-          }}
-          iconRight
-          containerStyle={styles.buttonContainer}
-          buttonStyle={styles.updateButton}
-          onPress={() => {
-            handleUpdate();
-          }}
-        />
-        <Button
-          title='Delete'
-          titleStyle={{ fontSize: 20 }}
-          icon={{
-            name: 'delete',
-            type: 'fontawesome',
-            size: 25,
-            color: 'white',
-          }}
-          iconRight
-          containerStyle={styles.buttonContainer}
-          buttonStyle={styles.deleteButton}
-          onPress={() => {
-            handleDelete(params.$id);
-          }}
-        />
-      </View> */}
     </>
   );
 };
@@ -190,6 +206,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '45%',
+    borderRadius: 10,
+    borderWidth: 0,
   },
   icon: {
     marginLeft: 20,
@@ -203,8 +221,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'absolute',
-    bottom: 55,
+    bottom: '20%',
+    width: '95%',
+    borderWidth: 1,
+    borderColor: '#304D6D',
+    borderRadius: 10,
+    shadowColor: '#304D6D',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    backgroundColor: '#E1DFDF',
   },
+  modal: {},
 });
 
 export default Details;
