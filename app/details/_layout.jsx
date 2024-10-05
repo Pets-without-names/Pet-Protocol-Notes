@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 export default function DetailsLayout() {
-  //const [visible, setVisible] = useState(false);
   const { showEditButtons, setEditButtons } = useGlobalContext();
 
   return (
@@ -42,6 +41,7 @@ export default function DetailsLayout() {
           ),
         }}
       />
+      <Stack.Screen name='edit_modal' options={{ presentation: 'modal' }} />
     </Stack>
   );
 }

@@ -10,7 +10,7 @@ const Details = () => {
   const params = useLocalSearchParams();
   //array to hold the information to display:
   const [details, setDetails] = useState([]);
-  const [isEditVisible, setEditVisible] = useState(false);
+  const [updateTriggered, setUpdateTriggered] = useState(false);
   const detailsArray = [];
   //context for notes status change (add,update,delete):
   const { noteStatusChanged, setStatusChanged } = useGlobalContext();
@@ -71,11 +71,14 @@ const Details = () => {
     } catch (error) {
       console.log('delete error: ' + error.message);
       throw new Error(error);
+    } finally {
+      //code goes here:
     }
   };
 
-  const handleUpdate = async () => {
-    router.replace({
+  //this function only opens the update form.
+  const handleUpdate = () => {
+    router.push({
       pathname: '../(forms)/update_form',
       params: params,
     });
@@ -107,54 +110,63 @@ const Details = () => {
             );
           })}
         </Card>
-        <Modal
-          //Would like to have the modal cover ONLY a part of the screen: bottom half?
-          isVisible={showEditButtons}
-          swipeDirection={'down'}
-          onBackdropPress={() => setEditButtons(false)}
-          //onSwipeMove={() => setEditButtons(false)}
-          onSwipeComplete={() => setEditButtons(false)}
-          style={styles.modal}
-        >
-          <View style={styles.buttonView}>
-            <Button
-              title='Update'
-              raised
-              titleStyle={{ fontSize: 20 }}
-              icon={{
-                name: 'update',
-                type: 'fontawesome',
-                size: 25,
-                color: 'white',
-              }}
-              iconRight
-              containerStyle={styles.buttonContainer}
-              buttonStyle={styles.updateButton}
-              onPress={() => {
-                setEditButtons(false);
-                handleUpdate();
-              }}
-            />
-            <Button
-              title='Delete'
-              titleStyle={{ fontSize: 20 }}
-              icon={{
-                name: 'delete',
-                type: 'fontawesome',
-                size: 25,
-                color: 'white',
-              }}
-              iconRight
-              containerStyle={styles.buttonContainer}
-              buttonStyle={styles.deleteButton}
-              onPress={() => {
-                setEditButtons(false);
-                handleDelete(params.$id);
-              }}
-            />
-          </View>
-        </Modal>
       </ScrollView>
+      <Modal
+        isVisible={showEditButtons}
+        swipeDirection={'down'}
+        onBackdropPress={() => setEditButtons(false)}
+        onSwipeComplete={() => setEditButtons(false)}
+        onModalHide={() => {
+          //Needed set timeout to call handleUpdate so the modal
+          //has plenty of time to close prior to handling the update.
+          if (updateTriggered) {
+            setTimeout(() => {
+              handleUpdate();
+            }, 100);
+            setUpdateTriggered(false);
+          }
+        }}
+        style={styles.modal} //nothing set yet
+      >
+        <View style={styles.buttonView}>
+          <Button
+            title='Update'
+            raised
+            titleStyle={{ fontSize: 20 }}
+            icon={{
+              name: 'update',
+              type: 'fontawesome',
+              size: 25,
+              color: 'white',
+            }}
+            iconRight
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.updateButton}
+            onPress={() => {
+              setUpdateTriggered(true);
+              //Sets the visibility of the modal to false:
+              setEditButtons(false);
+            }}
+          />
+          <Button
+            title='Delete'
+            titleStyle={{ fontSize: 20 }}
+            icon={{
+              name: 'delete',
+              type: 'fontawesome',
+              size: 25,
+              color: 'white',
+            }}
+            iconRight
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.deleteButton}
+            onPress={() => {
+              setEditButtons(false);
+              handleDelete(params.$id);
+            }}
+          />
+        </View>
+      </Modal>
     </>
   );
 };
