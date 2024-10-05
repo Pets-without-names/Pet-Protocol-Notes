@@ -34,7 +34,6 @@ const RootLayout = () => {
         <Stack.Screen name='index' />
         <Stack.Screen name='(tabs)' />
         <Stack.Screen name='(forms)' options={{ presentation: 'modal' }} />
-        {/* <Stack.Screen name='(cards)' options={{ presentation: 'card' }} /> */}
       </Stack>
     </GlobalProvider>
   );
