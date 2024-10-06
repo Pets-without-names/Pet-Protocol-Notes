@@ -16,8 +16,8 @@ import { useGlobalContext } from '../../context/GlobalProvider';
 const ProtocolView = () => {
   const { data: notes, refetch, isLoading } = useAppwrite(getProtocolNotes);
   const [refreshing, setRefreshing] = useState(false);
-  const osName = Platform.OS;
   const { noteStatusChanged, setStatusChanged } = useGlobalContext();
+  const osName = Platform.OS;
 
   //refetch the data after a note has been added, updated, or deleted:
   useFocusEffect(

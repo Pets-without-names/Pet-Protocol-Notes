@@ -1,14 +1,19 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useCallback } from 'react';
 import { StyleSheet, ScrollView, Alert, View } from 'react-native';
 import { Card, Text, Button, ListItem } from '@rneui/themed';
-import { useLocalSearchParams, router } from 'expo-router';
-import { deleteNote } from '../../appwrite/connections';
+import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
+import {
+  deleteNote,
+  getProtocolDetails,
+  getPlusDetails,
+} from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import Modal from 'react-native-modal';
+import useAppwrite from '../../appwrite/useAppwrite';
 
 const Details = () => {
   const params = useLocalSearchParams();
-  //array to hold the information to display:
+  //array to hold the notes information to display:
   const [details, setDetails] = useState([]);
   const [updateTriggered, setUpdateTriggered] = useState(false);
   const detailsArray = [];
@@ -22,7 +27,8 @@ const Details = () => {
     month: 'short',
   })}-${date.getDate()}-${date.getFullYear()}`;
 
-  //Iterate over the protocol details:
+  //Iterate over the protocol details which sets
+  //the information displayed to the user:
   function compileDetails() {
     Object.entries(params).forEach((entry) => {
       const [key, value] = entry;
@@ -76,13 +82,20 @@ const Details = () => {
     }
   };
 
-  //this function only opens the update form.
-  const handleUpdate = () => {
-    router.push({
-      pathname: '../(forms)/update_form',
-      params: params,
-    });
-  };
+  //refetch the data after a note has been updated:
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const protocolCollection = '66a04db400070bffec78';
+  //     const plusCollection = '66a402a0003ddfe36884';
+  //     if (noteStatusChanged) {//may need to use updateTriggered
+  //       //need a function similar to refetch()
+  //       if(params.id === protocolCollection){
+
+  //       }
+  //       setStatusChanged(false);
+  //     }
+  //   }, [noteStatusChanged])
+  // );
 
   useEffect(() => {
     compileDetails();
@@ -121,7 +134,10 @@ const Details = () => {
           //has plenty of time to close prior to handling the update.
           if (updateTriggered) {
             setTimeout(() => {
-              handleUpdate();
+              router.replace({
+                pathname: '../(forms)/update_form',
+                params: params,
+              });
             }, 100);
             setUpdateTriggered(false);
           }
