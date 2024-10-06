@@ -9,7 +9,7 @@ const DogNote = ({ dogInfo }) => {
       style={styles.container}
       onPress={() => {
         router.push({
-          pathname: `../../details/${dogInfo.$id}`,
+          pathname: `../../(details)/${dogInfo.$id}`,
           params: dogInfo,
         });
       }}

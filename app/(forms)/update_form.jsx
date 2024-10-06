@@ -42,11 +42,11 @@ const UpdateForm = () => {
       const result = await updateNote(params.$collectionId, params.$id, form);
       Alert.alert(`${result.name} updated`);
       setStatusChanged(true);
-      router.back();
     } catch (error) {
       console.log(error);
     } finally {
       setSubmitting(false);
+      router.back();
     }
   };
 

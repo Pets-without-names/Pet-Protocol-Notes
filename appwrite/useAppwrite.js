@@ -11,19 +11,36 @@ const useAppwrite = (fn) => {
       const response = await fn();
       setData(response.documents);
     } catch (error) {
-      console.log('refetch error: ' + error);
-      Alert.alert('Error: ', error.message);
+      console.log('refetch notes error: ' + error);
       throw new Error(error);
     } finally {
       setIsLoading(false);
     }
   };
+
+  //function to fetch individual dog note detail after the
+  //user updates the note:
+  const fetchNote = async (id) => {
+    setIsLoading(true);
+    try {
+      const response = await fn();
+      setData(response.documents);
+    } catch (error) {
+      console.log('refetch note error: ' + error);
+      throw new Error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
+    fetchNote();
     fetchNotes();
   }, []);
 
+  const refetchNote = () => fetchNote();
   const refetch = () => fetchNotes();
-  return { data, isLoading, refetch };
+  return { data, isLoading, refetch, refetchNote };
 };
 
 export default useAppwrite;
