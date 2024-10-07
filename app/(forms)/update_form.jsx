@@ -1,4 +1,4 @@
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { React, useState } from 'react';
 import {
   CheckBox,
@@ -64,13 +64,23 @@ const UpdateForm = () => {
             }}
           />
         }
-        centerComponent={<Text style={styles.header}>{params.name}</Text>}
+        rightComponent={
+          <TouchableOpacity
+            style={styles.headerButton}
+            onPress={() => submit()}
+          >
+            <Text style={{ color: 'white', fontSize: 20 }}>Update</Text>
+          </TouchableOpacity>
+        }
+        rightContainerStyle={{
+          justifyContent: 'center',
+        }}
       />
       <KeyboardAwareScrollView extraScrollHeight={120}>
         <View style={styles.container}>
-          <Text h3 style={styles.nameText}>
-            {params.name}
-          </Text>
+          <Card containerStyle={styles.nameContainer}>
+            <Text style={styles.name}>{params.name}</Text>
+          </Card>
           <Divider />
           <DateTimePicker
             mode='single'
@@ -215,9 +225,23 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
-  card: {
-    padding: 10,
+  nameContainer: {
+    width: '95%',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 10,
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
     marginBottom: 20,
+  },
+  name: {
+    fontFamily: 'ConcertOne-Regular',
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#304D6D',
+    textAlign: 'center',
   },
   label: {
     textAlign: 'center',
@@ -226,15 +250,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  nameText: {
-    width: '90%',
-    textAlign: 'center',
-    marginBottom: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 10,
   },
   button: {
     backgroundColor: '#6A8E7F',
@@ -247,5 +262,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     backgroundColor: '#304D6D',
+  },
+  headerButton: {
+    backgroundColor: '#304D6D',
+    color: 'white',
+    padding: 0,
   },
 });
