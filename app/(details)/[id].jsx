@@ -82,21 +82,6 @@ const Details = () => {
     }
   };
 
-  //refetch the data after a note has been updated:
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     const protocolCollection = '66a04db400070bffec78';
-  //     const plusCollection = '66a402a0003ddfe36884';
-  //     if (noteStatusChanged) {//may need to use updateTriggered
-  //       //need a function similar to refetch()
-  //       if(params.id === protocolCollection){
-
-  //       }
-  //       setStatusChanged(false);
-  //     }
-  //   }, [noteStatusChanged])
-  // );
-
   useEffect(() => {
     compileDetails();
   }, []);
