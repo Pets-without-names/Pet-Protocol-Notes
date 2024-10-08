@@ -4,7 +4,7 @@ import { Button } from '@rneui/base';
 import { router } from 'expo-router';
 import Modal from 'react-native-modal';
 
-const EditModal = () => {
+const DeleteModal = () => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-export default EditModal;
+export default DeleteModal;

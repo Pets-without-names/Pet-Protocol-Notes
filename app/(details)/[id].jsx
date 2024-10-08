@@ -1,15 +1,10 @@
-import { React, useState, useEffect, useCallback } from 'react';
+import { React, useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, Alert, View } from 'react-native';
 import { Card, Text, Button, ListItem } from '@rneui/themed';
-import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
-import {
-  deleteNote,
-  getProtocolDetails,
-  getPlusDetails,
-} from '../../appwrite/connections';
+import { useLocalSearchParams, router } from 'expo-router';
+import { deleteNote } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import Modal from 'react-native-modal';
-import useAppwrite from '../../appwrite/useAppwrite';
 
 const Details = () => {
   const params = useLocalSearchParams();
@@ -69,6 +64,7 @@ const Details = () => {
   }
 
   const handleDelete = async (documentID) => {
+    setEditButtons(false);
     try {
       await deleteNote(params.$collectionId, documentID);
       Alert.alert(`${params.name} deleted`);
@@ -80,6 +76,22 @@ const Details = () => {
     } finally {
       //code goes here:
     }
+  };
+
+  const handleUpdate = () => {
+    setEditButtons(false);
+    setUpdateTriggered(true);
+  };
+
+  const deleteDialog = () => {
+    Alert.alert('Confirm Delete', 'Confirm you want to deleted this note.', [
+      { text: 'Cancel', onPress: () => setEditButtons(false), style: 'cancel' },
+      {
+        text: 'Delete',
+        onPress: () => handleDelete(params.$id),
+        style: 'destructive',
+      },
+    ]);
   };
 
   useEffect(() => {
@@ -94,7 +106,7 @@ const Details = () => {
             <Text style={styles.name}>{params.name}</Text>
           </Card>
           <Text
-            style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold' }}
+            style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}
           >
             Protocol date: {formattedDate}
           </Text>
@@ -102,7 +114,7 @@ const Details = () => {
             return (
               <ListItem key={i} bottomDivider>
                 <ListItem.Content style={{ alignItems: 'center' }}>
-                  <Text style={styles.text}>{item.note}</Text>
+                  <Text style={styles.item}>{item.note}</Text>
                 </ListItem.Content>
               </ListItem>
             );
@@ -111,6 +123,8 @@ const Details = () => {
       </ScrollView>
       <Modal
         isVisible={showEditButtons}
+        animationIn={'fadeInRight'}
+        animationOut={'slideOutRight'}
         swipeDirection={'down'}
         onBackdropPress={() => setEditButtons(false)}
         onSwipeComplete={() => setEditButtons(false)}
@@ -133,40 +147,43 @@ const Details = () => {
           <Button
             title='Update'
             raised
-            titleStyle={{ fontSize: 20 }}
+            titleStyle={{ fontSize: 20, color: 'black' }}
             icon={{
               name: 'update',
               type: 'fontawesome',
               size: 25,
-              color: 'white',
+              //color: 'white',
             }}
             iconRight
             containerStyle={styles.buttonContainer}
             buttonStyle={styles.updateButton}
             onPress={() => {
-              setUpdateTriggered(true);
-              //Sets the visibility of the modal to false:
-              setEditButtons(false);
+              //
+              handleUpdate();
             }}
           />
           <Button
             title='Delete'
-            titleStyle={{ fontSize: 20 }}
+            titleStyle={{ fontSize: 20, color: 'black' }}
             icon={{
               name: 'delete',
               type: 'fontawesome',
               size: 25,
-              color: 'white',
+              color: 'black',
             }}
             iconRight
             containerStyle={styles.buttonContainer}
             buttonStyle={styles.deleteButton}
             onPress={() => {
-              setEditButtons(false);
-              handleDelete(params.$id);
+              //setEditButtons(false);
+              deleteDialog();
+              //handleDelete(params.$id);
             }}
           />
         </View>
+      </Modal>
+      <Modal>
+        <View></View>
       </Modal>
     </>
   );
@@ -206,36 +223,37 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   updateButton: {
-    backgroundColor: '#6A8E7F',
-    borderColor: 'transparent',
-    borderWidth: 0,
-    borderRadius: 10,
+    //backgroundColor: '#6A8E7F',
+    backgroundColor: '#E1DFDF',
+    // borderColor: 'transparent',
+    // borderWidth: 0,
+    // borderRadius: 10,
   },
   deleteButton: {
-    backgroundColor: '#AA767C',
-    borderColor: 'transparent',
-    borderWidth: 0,
-    borderRadius: 10,
+    //backgroundColor: '#AA767C',
+    backgroundColor: '#E1DFDF',
+    // borderColor: 'transparent',
+    // borderWidth: 0,
+    // borderRadius: 10,
+    marginTop: 2,
   },
   buttonContainer: {
-    width: '45%',
-    borderRadius: 10,
-    borderWidth: 0,
+    // borderRadius: 10,
+    // borderWidth: 0,
   },
   icon: {
     marginLeft: 20,
   },
-  text: {
+  item: {
     fontFamily: 'Urbanist-Medium',
-    fontSize: 20,
+    fontSize: 18,
   },
   buttonView: {
-    alignSelf: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     position: 'absolute',
-    bottom: '20%',
-    width: '95%',
+    top: '10%',
+    right: 0,
+    width: '55%',
     borderWidth: 1,
     borderColor: '#304D6D',
     borderRadius: 10,
@@ -243,8 +261,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
-    paddingVertical: 20,
-    paddingHorizontal: 10,
+    // paddingVertical: 20,
+    // paddingHorizontal: 10,
     backgroundColor: '#E1DFDF',
   },
   modal: {},
