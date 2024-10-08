@@ -69,7 +69,7 @@ const UpdateForm = () => {
             style={styles.headerButton}
             onPress={() => submit()}
           >
-            <Text style={{ color: 'white', fontSize: 20 }}>Update</Text>
+            <Text style={{ color: 'white', fontSize: 16 }}>Update</Text>
           </TouchableOpacity>
         }
         rightContainerStyle={{
