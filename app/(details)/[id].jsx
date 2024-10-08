@@ -1,11 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  Alert,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, ScrollView, Alert, View } from 'react-native';
 import { Card, Text, Button, ListItem } from '@rneui/themed';
 import { useLocalSearchParams, router } from 'expo-router';
 import { deleteNote } from '../../appwrite/connections';
@@ -87,6 +81,17 @@ const Details = () => {
   const handleUpdate = () => {
     setEditButtons(false);
     setUpdateTriggered(true);
+  };
+
+  const deleteDialog = () => {
+    Alert.alert('Confirm Delete', 'Confirm you want to deleted this note.', [
+      { text: 'Cancel', onPress: () => setEditButtons(false), style: 'cancel' },
+      {
+        text: 'Delete',
+        onPress: () => handleDelete(params.$id),
+        style: 'destructive',
+      },
+    ]);
   };
 
   useEffect(() => {
@@ -171,10 +176,14 @@ const Details = () => {
             buttonStyle={styles.deleteButton}
             onPress={() => {
               //setEditButtons(false);
-              handleDelete(params.$id);
+              deleteDialog();
+              //handleDelete(params.$id);
             }}
           />
         </View>
+      </Modal>
+      <Modal>
+        <View></View>
       </Modal>
     </>
   );
