@@ -1,4 +1,5 @@
-import { View, StyleSheet, SafeAreaView, Platform } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { Text, Button, Card, Divider } from '@rneui/themed';
 import { signOut } from '../../appwrite/connections';

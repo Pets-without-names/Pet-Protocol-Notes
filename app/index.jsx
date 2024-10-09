@@ -1,5 +1,6 @@
 import { Redirect, router } from 'expo-router';
-import { View, SafeAreaView, StyleSheet, Image, Platform } from 'react-native';
+import { View, StyleSheet, Image, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@rneui/themed';
 import { Text } from '@rneui/base';
 import { useGlobalContext } from '../context/GlobalProvider';
