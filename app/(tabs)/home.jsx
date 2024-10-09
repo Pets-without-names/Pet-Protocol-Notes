@@ -1,4 +1,4 @@
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import { View, StyleSheet, SafeAreaView, Platform } from 'react-native';
 import { useState } from 'react';
 import { Text, Button, Card, Divider } from '@rneui/themed';
 import { signOut } from '../../appwrite/connections';
@@ -39,7 +39,7 @@ const Home = () => {
           buttonStyle={styles.button}
           containerStyle={styles.buttonContainer}
           title='Sign Out'
-          titleStyle={{ marginRight: 15 }}
+          titleStyle={styles.titleStyle}
           icon={<FontAwesome name='sign-out' size={24} color='white' />}
           iconRight
           onPress={() => logOut()}
@@ -114,5 +114,12 @@ const styles = StyleSheet.create({
     width: '85%',
     margin: 10,
     opacity: 0.65,
+  },
+  titleStyle: {
+    fontFamily: 'Urbanist-Medium',
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
+    fontWeight: '600',
+    paddingVertical: 2,
+    marginRight: 15,
   },
 });

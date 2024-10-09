@@ -1,10 +1,11 @@
-import { SafeAreaView, StyleSheet, View, Alert, Platform } from 'react-native';
+import { StyleSheet, View, Alert, Platform } from 'react-native';
 import { Input, Button, Text, Divider } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { getAccount, signIn } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import validator from 'validator';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const SignIn = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
@@ -195,7 +196,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#68AE7F',
   },
   titleStyle: {
-    fontSize: Platform.OS === 'ios' ? 20 : 24,
+    fontFamily: 'Urbanist-Medium',
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
     fontWeight: '600',
     paddingVertical: 2,
   },
