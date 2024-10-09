@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Alert,
   TouchableOpacity,
-  TouchableOpacity,
 } from 'react-native';
 import { React, useState } from 'react';
 import {
