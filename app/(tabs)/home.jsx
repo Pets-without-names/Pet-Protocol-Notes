@@ -6,34 +6,19 @@ import { signOut } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { router } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { getAvatar } from '../../appwrite/connections';
 
 const Home = () => {
   const { user, setUser, isLogged, setIsLogged } = useGlobalContext();
   const [isSubmitting, setSubmitting] = useState(false);
-  const [avatar, setAvatar] = useState();
-  const osName = Platform.OS;
 
   const logOut = async () => {
     setSubmitting(true);
     await signOut();
     setUser(null);
     setIsLogged(false);
-    router.replace('/');
     setSubmitting(false);
+    router.replace('/');
   };
-
-  useEffect(() => {
-    const getInitials = async () => {
-      try {
-        const result = await getAvatar(user.name);
-        setAvatar(result);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getInitials();
-  }, []);
 
   return (
     <SafeAreaView>
@@ -93,19 +78,18 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#6A8E7F',
-    borderRadius: 8,
+    borderRadius: 5,
+  },
+  buttonContainer: {
+    padding: 10,
+    marginTop: 25,
+    width: 190,
     shadowColor: 'grey',
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
-    elevation: 10,
-    padding: 10,
-  },
-  buttonContainer: {
-    padding: 10,
-    width: '55%',
     position: 'absolute',
-    bottom: 45,
+    bottom: 35,
   },
   card: {
     backgroundColor: '#304D6D',
@@ -118,7 +102,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 4,
     marginTop: 20,
-    elevation: 10,
   },
   title: {
     padding: 10,
@@ -127,34 +110,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Urbanist-Medium',
     fontSize: 20,
     fontWeight: '600',
-    marginLeft: 5,
-  },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
-  textWrap: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  divider: {
-    width: '85%',
-    margin: 10,
-    opacity: 0.65,
-  },
-  divider: {
-    width: '85%',
-    margin: 10,
-    opacity: 0.65,
-  },
-  titleStyle: {
-    fontFamily: 'Urbanist-Medium',
-    fontSize: Platform.OS === 'ios' ? 20 : 22,
-    fontWeight: '600',
-    paddingVertical: 2,
-    marginRight: 15,
   },
   divider: {
     width: '85%',
