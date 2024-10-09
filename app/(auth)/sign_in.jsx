@@ -202,4 +202,10 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#68AE7F',
   },
+  titleStyle: {
+    fontFamily: 'Urbanist-Medium',
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
+    fontWeight: '600',
+    paddingVertical: 2,
+  },
 });
