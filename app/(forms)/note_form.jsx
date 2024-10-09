@@ -14,7 +14,7 @@ import DateTimePicker from 'react-native-ui-datepicker';
 import { createNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const AddNoteForm = () => {
@@ -66,7 +66,7 @@ const AddNoteForm = () => {
   };
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaView>
       <Header
         containerStyle={styles.header}
         leftComponent={
@@ -249,7 +249,7 @@ const AddNoteForm = () => {
           submit();
         }}
       /> */}
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 };
 
