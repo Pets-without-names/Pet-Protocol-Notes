@@ -1,4 +1,10 @@
-import { View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import { React, useState } from 'react';
 import {
   CheckBox,
@@ -51,14 +57,14 @@ const UpdateForm = () => {
   };
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaView>
       <Header
         containerStyle={styles.header}
         leftComponent={
           <Icon
             name='close'
             color='#F6F4F3'
-            size={34}
+            size={30}
             onPress={() => {
               router.back();
             }}
@@ -212,7 +218,7 @@ const UpdateForm = () => {
           />
         </View>
       </KeyboardAwareScrollView>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 };
 

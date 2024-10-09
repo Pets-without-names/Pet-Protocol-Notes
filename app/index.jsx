@@ -3,6 +3,7 @@ import { View, SafeAreaView, StyleSheet, Image, Platform } from 'react-native';
 import { Button } from '@rneui/themed';
 import { Text } from '@rneui/base';
 import { useGlobalContext } from '../context/GlobalProvider';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Loader from '../components/Loader';
 
 const Welcome = () => {

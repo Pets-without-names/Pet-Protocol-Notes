@@ -10,6 +10,7 @@ const FormLayout = () => {
     >
       <Stack.Screen name='note_form' />
       <Stack.Screen name='update_form' />
+      <Stack.Screen name='recover_password' />
     </Stack>
   );
 };

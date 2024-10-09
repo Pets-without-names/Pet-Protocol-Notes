@@ -25,7 +25,7 @@ const SignIn = () => {
   const [emailError, setEmailError] = useState('');
 
   const handlePasswordRecovery = () => {
-    router.push('/recovery')
+    router.push('/recover_password');
   };
 
   const submit = async () => {
@@ -74,9 +74,7 @@ const SignIn = () => {
         <Text h3 style={styles.header}>
           Account Log-in
         </Text>
-        <Text h4 style={styles.subHeader}>
-          Welcome back!
-        </Text>
+        <Text style={styles.subHeader}>Welcome back!</Text>
       </View>
       <View style={styles.inputContainer}>
         <Input
@@ -139,9 +137,7 @@ const SignIn = () => {
 
       <View style={styles.accountContainer}>
         <Divider width={2} color='#4357AD' style={styles.divider} />
-        <Text h4 style={styles.subHeader}>
-          Don't have an account?
-        </Text>
+        <Text style={styles.subHeader}>Don't have an account?</Text>
         <Button
           title='Create Account'
           buttonStyle={styles.buttonStyle}
@@ -190,6 +186,7 @@ const styles = StyleSheet.create({
     fontFamily: 'ConcertOne-Regular',
   },
   subHeader: {
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
     color: 'white',
     marginTop: 5,
     fontFamily: 'Urbanist-Regular',
@@ -208,7 +205,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#F6F4F3',
   },
-  loginButton: {
+  buttonStyle: {
     borderRadius: 10,
     padding: 10,
     backgroundColor: '#68AE7F',

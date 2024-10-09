@@ -1,4 +1,4 @@
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert, SafeAreaView } from 'react-native';
 import {
   CheckBox,
   Card,
@@ -7,14 +7,12 @@ import {
   Header,
   Icon,
   Text,
-  FAB,
 } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
 import { createNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const AddNoteForm = () => {
@@ -66,14 +64,14 @@ const AddNoteForm = () => {
   };
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaView>
       <Header
         containerStyle={styles.header}
         leftComponent={
           <Icon
             name='close'
             color='#F6F4F3'
-            size={34}
+            size={30}
             onPress={() => {
               router.back();
             }}
@@ -233,23 +231,7 @@ const AddNoteForm = () => {
           />
         </View>
       </KeyboardAwareScrollView>
-      {/* <FAB
-        title='Submit'
-        color='#6A8E7F'
-        size='large'
-        // placement='right'
-        icon={{
-          name: 'check',
-          type: 'fontawesome',
-          size: 25,
-          color: 'white',
-        }}
-        style={styles.fab}
-        onPress={() => {
-          submit();
-        }}
-      /> */}
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 };
 
