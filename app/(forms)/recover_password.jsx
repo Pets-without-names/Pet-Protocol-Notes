@@ -1,6 +1,5 @@
 import {
   View,
-  SafeAreaView,
   StyleSheet,
   Platform,
   Alert,
@@ -11,7 +10,7 @@ import { Text, Input, Button, Header, Icon } from '@rneui/base';
 import { router } from 'expo-router';
 import validator from 'validator';
 import { createPwordRecovery } from '../../appwrite/connections';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const Recovery = () => {

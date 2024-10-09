@@ -1,7 +1,8 @@
 import {
   View,
   StyleSheet,
-  Alert, TouchableOpacity,
+  Alert,
+  TouchableOpacity,
   TouchableOpacity,
 } from 'react-native';
 import { React, useState } from 'react';
@@ -19,7 +20,7 @@ import DateTimePicker from 'react-native-ui-datepicker';
 import { updateNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const UpdateForm = () => {

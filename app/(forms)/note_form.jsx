@@ -1,4 +1,4 @@
-import { View, StyleSheet, Alert, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import {
   CheckBox,
   Card,
@@ -8,6 +8,7 @@ import {
   Icon,
   Text,
 } from '@rneui/themed';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
 import { createNote } from '../../appwrite/connections';
