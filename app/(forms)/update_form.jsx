@@ -1,9 +1,8 @@
 import {
   View,
   StyleSheet,
-  Alert,
+  Alert, TouchableOpacity,
   TouchableOpacity,
-  SafeAreaView,
 } from 'react-native';
 import { React, useState } from 'react';
 import {

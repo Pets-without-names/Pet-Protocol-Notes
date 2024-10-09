@@ -1,5 +1,6 @@
 import { Redirect, router } from 'expo-router';
-import { View, SafeAreaView, StyleSheet, Image, Platform } from 'react-native';
+import { View, StyleSheet, Image, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@rneui/themed';
 import { Text } from '@rneui/base';
 import { useGlobalContext } from '../context/GlobalProvider';
@@ -39,11 +40,7 @@ const Welcome = () => {
         containerStyle={styles.buttonContainer}
         buttonStyle={styles.button}
         raised
-        titleStyle={{
-          color: 'white',
-          fontSize: 22,
-          fontFamily: 'Urbanist-Medium',
-        }}
+        titleStyle={styles.titelStyle}
         onPress={() => {
           router.push('/sign_in');
         }}
@@ -85,6 +82,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 100,
     borderRadius: 10,
+  },
+  titelStyle: {
+    fontFamily: 'Urbanist-Medium',
+    fontSize: Platform.OS === 'ios' ? 20 : 24,
+    fontWeight: '600',
+    paddingVertical: 2,
   },
   image: {
     width: 150,

@@ -1,11 +1,11 @@
 import { React, useState, useEffect, useCallback } from 'react';
 import {
   FlatList,
-  SafeAreaView,
   StyleSheet,
   ActivityIndicator,
   Platform,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
 import DogNote from '../../components/DogNote';
 import EmptyState from '../../components/EmptyState';

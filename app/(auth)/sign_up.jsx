@@ -1,10 +1,11 @@
-import { SafeAreaView, StyleSheet, View, Alert, Platform } from 'react-native';
+import { StyleSheet, View, Alert, Platform } from 'react-native';
 import { Input, Button, Text, Divider } from '@rneui/themed';
 import { React, useState } from 'react';
 import { router } from 'expo-router';
 import { createAccount } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import isEmail from 'validator/es/lib/isEmail';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -188,7 +189,7 @@ const SignUp = () => {
         <Button
           title='Create an account'
           buttonStyle={styles.buttonStyle}
-          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          titleStyle={styles.titleStyle}
           containerStyle={styles.buttonContainer}
           loading={isSubmitting}
           onPress={() => {
@@ -204,7 +205,7 @@ const SignUp = () => {
         <Button
           title='Sign In'
           buttonStyle={styles.buttonStyle}
-          titleStyle={{ fontWeight: '600', paddingVertical: 2 }}
+          titleStyle={styles.titleStyle}
           containerStyle={styles.buttonContainer}
           onPress={() => router.replace('sign_in')}
         />
@@ -248,6 +249,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     backgroundColor: '#68AE7F',
+  },
+  titleStyle: {
+    fontFamily: 'Urbanist-Medium',
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
+    fontWeight: '600',
+    paddingVertical: 2,
   },
   divider: {
     width: '85%',

@@ -1,17 +1,11 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Alert,
-  Platform,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Alert, Platform } from 'react-native';
 import { Input, Button, Text, Divider } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { getAccount, signIn } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import validator from 'validator';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const SignIn = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
@@ -119,10 +113,7 @@ const SignIn = () => {
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
-        <TouchableOpacity onPress={handlePasswordRecovery}>
-          <Text style={styles.forgot}>forgot password?</Text>
-        </TouchableOpacity>
-
+        {/* <CheckBox title='Remember Me' /> */}
         <Button
           title='Log in'
           buttonStyle={styles.buttonStyle}
@@ -201,18 +192,14 @@ const styles = StyleSheet.create({
     margin: 10,
     opacity: 0.65,
   },
-  forgot: {
-    fontSize: 18,
-    color: '#F6F4F3',
-  },
-  buttonStyle: {
+  loginButton: {
     borderRadius: 10,
     padding: 10,
     backgroundColor: '#68AE7F',
   },
-  titleStyle: {
-    fontSize: Platform.OS === 'ios' ? 20 : 24,
-    fontWeight: '600',
-    paddingVertical: 2,
+  createButton: {
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: '#68AE7F',
   },
 });

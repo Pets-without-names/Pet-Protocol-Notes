@@ -1,13 +1,7 @@
-import {
-  View,
-  StyleSheet,
-  SafeAreaView,
-  Image,
-  ActivityIndicator,
-  Platform,
-} from 'react-native';
-import { useState, useEffect } from 'react';
-import { Text, Button, Card } from '@rneui/themed';
+import { View, StyleSheet, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useState } from 'react';
+import { Text, Button, Card, Divider } from '@rneui/themed';
 import { signOut } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { router } from 'expo-router';
@@ -43,44 +37,31 @@ const Home = () => {
 
   return (
     <SafeAreaView>
-      {isSubmitting ? (
-        <ActivityIndicator
-          size={osName === 'ios' ? 'large' : 50}
-          color='blue'
-          style={styles.activity}
+      <View style={styles.container}>
+        <Text h2 style={styles.heading}>
+          Protocol Notes
+        </Text>
+        <Divider width={2} color='#304D6D' style={styles.divider} />
+        <Text h4 style={styles.text}>
+          Create and update dog walking protocols!
+        </Text>
+        <Card containerStyle={styles.card}>
+          <Text style={styles.title}>
+            Please check-in with the ACE staff to verify the proper protocols
+            and dates
+          </Text>
+        </Card>
+        <Button
+          buttonStyle={styles.button}
+          containerStyle={styles.buttonContainer}
+          title='Sign Out'
+          titleStyle={styles.titleStyle}
+          icon={<FontAwesome name='sign-out' size={24} color='white' />}
+          iconRight
+          onPress={() => logOut()}
+          loading={isSubmitting}
         />
-      ) : (
-        <View style={styles.container}>
-          <Text h2 style={styles.heading}>
-            Protocol Notes
-          </Text>
-          <Text h4 style={styles.text}>
-            Create and update dog walking protocols!
-          </Text>
-          <Card containerStyle={styles.card}>
-            <Card.Title style={styles.title}>
-              <View style={styles.textWrap}>
-                <Image style={styles.avatar} src={`${avatar}`} />
-                <Text style={styles.title}> Welcome {user.name}!</Text>
-              </View>
-            </Card.Title>
-            <Text style={styles.title}>
-              Please check-in with the staff to verify the proper protocols and
-              dates!
-            </Text>
-          </Card>
-          <Button
-            buttonStyle={styles.button}
-            containerStyle={styles.buttonContainer}
-            title='Sign Out'
-            titleStyle={{ marginRight: 15 }}
-            icon={<FontAwesome name='sign-out' size={24} color='white' />}
-            iconRight
-            onPress={() => logOut()}
-            loading={isSubmitting}
-          />
-        </View>
-      )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -141,7 +122,6 @@ const styles = StyleSheet.create({
   },
   title: {
     padding: 10,
-    fontSize: 18,
     color: 'white',
     textAlign: 'center',
     fontFamily: 'Urbanist-Medium',
@@ -163,5 +143,29 @@ const styles = StyleSheet.create({
     width: '85%',
     margin: 10,
     opacity: 0.65,
+  },
+  divider: {
+    width: '85%',
+    margin: 10,
+    opacity: 0.65,
+  },
+  titleStyle: {
+    fontFamily: 'Urbanist-Medium',
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
+    fontWeight: '600',
+    paddingVertical: 2,
+    marginRight: 15,
+  },
+  divider: {
+    width: '85%',
+    margin: 10,
+    opacity: 0.65,
+  },
+  titleStyle: {
+    fontFamily: 'Urbanist-Medium',
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
+    fontWeight: '600',
+    paddingVertical: 2,
+    marginRight: 15,
   },
 });
