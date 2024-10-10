@@ -8,7 +8,7 @@ import {
   Icon,
   Text,
 } from '@rneui/themed';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
 import { createNote } from '../../appwrite/connections';
@@ -65,7 +65,7 @@ const AddNoteForm = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaProvider>
       <Header
         containerStyle={styles.header}
         leftComponent={
@@ -232,7 +232,7 @@ const AddNoteForm = () => {
           />
         </View>
       </KeyboardAwareScrollView>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
@@ -268,10 +268,5 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#304D6D',
-  },
-  fab: {
-    position: 'absolute',
-    right: 30,
-    bottom: 30,
   },
 });

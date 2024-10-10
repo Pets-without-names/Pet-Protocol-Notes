@@ -1,9 +1,4 @@
-import {
-  View,
-  StyleSheet,
-  Alert,
-  TouchableOpacity,
-} from 'react-native';
+import { View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { React, useState } from 'react';
 import {
   CheckBox,
@@ -19,7 +14,7 @@ import DateTimePicker from 'react-native-ui-datepicker';
 import { updateNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const UpdateForm = () => {
@@ -56,9 +51,10 @@ const UpdateForm = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaProvider>
       <Header
         containerStyle={styles.header}
+        elevated
         leftComponent={
           <Icon
             name='close'
@@ -79,6 +75,7 @@ const UpdateForm = () => {
         }
         rightContainerStyle={{
           justifyContent: 'center',
+          alignItems: 'center',
         }}
       />
       <KeyboardAwareScrollView extraScrollHeight={120}>
@@ -217,7 +214,7 @@ const UpdateForm = () => {
           />
         </View>
       </KeyboardAwareScrollView>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
@@ -264,8 +261,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: { width: 250, marginBottom: 25 },
   header: {
-    color: 'white',
-    fontSize: 20,
     backgroundColor: '#304D6D',
   },
   headerButton: {

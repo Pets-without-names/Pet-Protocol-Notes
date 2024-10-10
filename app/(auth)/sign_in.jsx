@@ -192,12 +192,7 @@ const styles = StyleSheet.create({
     margin: 10,
     opacity: 0.65,
   },
-  loginButton: {
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: '#68AE7F',
-  },
-  createButton: {
+  buttonStyle: {
     borderRadius: 10,
     padding: 10,
     backgroundColor: '#68AE7F',
