@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   container: {},
   card: {
     backgroundColor: '#304D6D',
-    cornerRadius: '10',
+    cornerRadius: 10,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 10,
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
   },
   name: {
     fontFamily: 'ConcertOne-Regular',
-    fontSize: '24',
-    fontWeight: '600',
+    fontSize: 24,
+    fontWeight: 600,
     letterSpacing: 1.5,
     color: 'white',
     textAlign: 'center',
