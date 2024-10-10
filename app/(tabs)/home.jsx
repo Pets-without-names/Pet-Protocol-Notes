@@ -1,15 +1,23 @@
-import { View, StyleSheet, Platform } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Platform,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Text, Button, Card, Divider } from '@rneui/themed';
 import { signOut } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { router } from 'expo-router';
+import { getAvatar } from '../../appwrite/connections';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Home = () => {
   const { user, setUser, isLogged, setIsLogged } = useGlobalContext();
   const [isSubmitting, setSubmitting] = useState(false);
+  const [avatar, setAvatar] = useState();
 
   const logOut = async () => {
     setSubmitting(true);
@@ -20,33 +28,57 @@ const Home = () => {
     router.replace('/');
   };
 
+  useEffect(() => {
+    const getInitials = async () => {
+      try {
+        const result = await getAvatar(user.name);
+        setAvatar(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getInitials();
+  }, []);
+
   return (
     <SafeAreaView>
-      <View style={styles.container}>
-        <Text h2 style={styles.heading}>
-          Protocol Notes
-        </Text>
-        <Divider width={2} color='#304D6D' style={styles.divider} />
-        <Text h4 style={styles.text}>
-          Create and update dog walking protocols!
-        </Text>
-        <Card containerStyle={styles.card}>
-          <Text style={styles.title}>
-            Please check-in with the ACE staff to verify the proper protocols
-            and dates
-          </Text>
-        </Card>
-        <Button
-          buttonStyle={styles.button}
-          containerStyle={styles.buttonContainer}
-          title='Sign Out'
-          titleStyle={styles.titleStyle}
-          icon={<FontAwesome name='sign-out' size={24} color='white' />}
-          iconRight
-          onPress={() => logOut()}
-          loading={isSubmitting}
+      {isSubmitting ? (
+        <ActivityIndicator
+          size={Platform.OS === 'ios' ? 'large' : 50}
+          color='blue'
+          style={styles.activity}
         />
-      </View>
+      ) : (
+        <View style={styles.container}>
+          <Text h2 style={styles.heading}>
+            Protocol Notes
+          </Text>
+          <Divider width={2} color='#304D6D' style={styles.divider} />
+          <Text h4 style={styles.text}>
+            Create and update dog walking protocols!
+          </Text>
+          <Card containerStyle={styles.card}>
+            <View style={styles.textWrap}>
+              <Image style={styles.avatar} src={`${avatar}`} />
+              <Text style={styles.title}> Welcome {user.name}!</Text>
+            </View>
+            <Text style={styles.title}>
+              Please check-in with the ACE staff to verify the proper protocols
+              and dates
+            </Text>
+          </Card>
+          <Button
+            buttonStyle={styles.button}
+            containerStyle={styles.buttonContainer}
+            title='Sign Out'
+            titleStyle={styles.titleStyle}
+            icon={<FontAwesome name='sign-out' size={24} color='white' />}
+            iconRight
+            onPress={() => logOut()}
+            loading={isSubmitting}
+          />
+        </View>
+      )}
     </SafeAreaView>
   );
 };
@@ -122,5 +154,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     paddingVertical: 2,
     marginRight: 15,
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  textWrap: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
