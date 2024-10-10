@@ -58,6 +58,10 @@ const Home = () => {
             Create and update dog walking protocols!
           </Text>
           <Card containerStyle={styles.card}>
+            <View style={styles.textWrap}>
+              <Image style={styles.avatar} src={`${avatar}`} />
+              <Text style={styles.title}> Welcome {user.name}!</Text>
+            </View>
             <Text style={styles.title}>
               Please check-in with the ACE staff to verify the proper protocols
               and dates
