@@ -47,7 +47,7 @@ const AddNoteForm = () => {
   const submit = async () => {
     // Check for blank form fields:
     if (form.name === '') {
-      Alert.alert('please enter a name');
+      Alert.alert('Please enter a name');
       setNameError(true);
       return;
     }
