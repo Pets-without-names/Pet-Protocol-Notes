@@ -14,7 +14,7 @@ import DateTimePicker from 'react-native-ui-datepicker';
 import { updateNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const UpdateForm = () => {
@@ -51,14 +51,14 @@ const UpdateForm = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaProvider>
       <Header
         containerStyle={styles.header}
         leftComponent={
           <Icon
             name='close'
             color='#F6F4F3'
-            size={34}
+            size={30}
             onPress={() => {
               router.back();
             }}
@@ -69,11 +69,12 @@ const UpdateForm = () => {
             style={styles.headerButton}
             onPress={() => submit()}
           >
-            <Text style={{ color: 'white', fontSize: 16 }}>Update</Text>
+            <Text style={{ color: 'white', fontSize: 18 }}>Update</Text>
           </TouchableOpacity>
         }
         rightContainerStyle={{
           justifyContent: 'center',
+          alignItems: 'center',
         }}
       />
       <KeyboardAwareScrollView extraScrollHeight={120}>
@@ -212,7 +213,7 @@ const UpdateForm = () => {
           />
         </View>
       </KeyboardAwareScrollView>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

@@ -1,4 +1,4 @@
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import {
   CheckBox,
   Card,
@@ -14,7 +14,7 @@ import DateTimePicker from 'react-native-ui-datepicker';
 import { createNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const AddNoteForm = () => {
@@ -66,19 +66,32 @@ const AddNoteForm = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaProvider>
       <Header
         containerStyle={styles.header}
+        elevated
         leftComponent={
           <Icon
             name='close'
             color='#F6F4F3'
-            size={34}
+            size={30}
             onPress={() => {
               router.back();
             }}
           />
         }
+        rightComponent={
+          <TouchableOpacity
+            style={styles.headerButton}
+            onPress={() => submit()}
+          >
+            <Text style={{ color: 'white', fontSize: 18 }}>Submit</Text>
+          </TouchableOpacity>
+        }
+        rightContainerStyle={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       />
       <KeyboardAwareScrollView extraScrollHeight={120}>
         <View style={styles.container}>
@@ -249,7 +262,7 @@ const AddNoteForm = () => {
           submit();
         }}
       /> */}
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
@@ -286,9 +299,9 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#304D6D',
   },
-  fab: {
-    position: 'absolute',
-    right: 30,
-    bottom: 30,
+  headerButton: {
+    backgroundColor: '#304D6D',
+    color: 'white',
+    padding: 0,
   },
 });
