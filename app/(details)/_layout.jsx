@@ -36,7 +36,7 @@ export default function DetailsLayout() {
               color='#4357AD'
               onPress={() => setEditButtons(true)}
             >
-              Edit
+              Edit / Delete
             </FontAwesome.Button>
           ),
         }}

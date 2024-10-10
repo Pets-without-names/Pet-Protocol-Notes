@@ -152,13 +152,11 @@ const Details = () => {
               name: 'update',
               type: 'fontawesome',
               size: 25,
-              //color: 'white',
             }}
             iconRight
             containerStyle={styles.buttonContainer}
             buttonStyle={styles.updateButton}
             onPress={() => {
-              //
               handleUpdate();
             }}
           />
@@ -169,15 +167,12 @@ const Details = () => {
               name: 'delete',
               type: 'fontawesome',
               size: 25,
-              color: 'black',
             }}
             iconRight
             containerStyle={styles.buttonContainer}
             buttonStyle={styles.deleteButton}
             onPress={() => {
-              //setEditButtons(false);
               deleteDialog();
-              //handleDelete(params.$id);
             }}
           />
         </View>
@@ -223,24 +218,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   updateButton: {
-    //backgroundColor: '#6A8E7F',
     backgroundColor: '#E1DFDF',
-    // borderColor: 'transparent',
-    // borderWidth: 0,
-    // borderRadius: 10,
   },
   deleteButton: {
-    //backgroundColor: '#AA767C',
     backgroundColor: '#E1DFDF',
-    // borderColor: 'transparent',
-    // borderWidth: 0,
-    // borderRadius: 10,
     marginTop: 2,
   },
-  buttonContainer: {
-    // borderRadius: 10,
-    // borderWidth: 0,
-  },
+  buttonContainer: {},
   icon: {
     marginLeft: 20,
   },
@@ -261,8 +245,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
-    // paddingVertical: 20,
-    // paddingHorizontal: 10,
     backgroundColor: '#E1DFDF',
   },
   modal: {},
