@@ -123,6 +123,7 @@ const Details = () => {
       </ScrollView>
       <Modal
         isVisible={showEditButtons}
+        backdropOpacity={0.8}
         animationIn={'fadeInRight'}
         animationOut={'slideOutRight'}
         swipeDirection={'down'}
