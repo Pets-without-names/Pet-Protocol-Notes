@@ -177,9 +177,6 @@ const Details = () => {
           />
         </View>
       </Modal>
-      <Modal>
-        <View></View>
-      </Modal>
     </>
   );
 };
