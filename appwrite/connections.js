@@ -68,7 +68,7 @@ export async function signIn(email, password) {
 
 export async function recoverPassword(email) {
   try {
-    const recovery = account.createRecovery(email, 'localhost:8081');
+    const recovery = account.createRecovery(email, 'http://localhost:8000');
   } catch (error) {
     console.log(error);
     throw new Error(error);
