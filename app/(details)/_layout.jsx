@@ -41,7 +41,6 @@ export default function DetailsLayout() {
           ),
         }}
       />
-      {/* <Stack.Screen name='edit_modal' options={{ presentation: 'modal' }} /> */}
     </Stack>
   );
 }
