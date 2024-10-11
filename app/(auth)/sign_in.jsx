@@ -1,4 +1,10 @@
-import { StyleSheet, View, Alert, Platform } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Alert,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
 import { Input, Button, Text, Divider } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
@@ -58,6 +64,11 @@ const SignIn = () => {
     }
   };
 
+  const handleForgotPassword = () => {
+    console.log('handle password button pressed');
+    Alert.alert('Forgot password is beieng worked on!');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -111,6 +122,12 @@ const SignIn = () => {
           inputStyle={{ color: 'white', padding: 5 }}
           inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
         />
+        <TouchableOpacity
+          style={{ backgroundColor: 'green', padding: 5 }}
+          onPress={() => handleForgotPassword}
+        >
+          <Text style={styles.password}>forgot password?</Text>
+        </TouchableOpacity>
         <Button
           title='Log in'
           buttonStyle={styles.buttonStyle}
@@ -201,4 +218,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     paddingVertical: 2,
   },
+  password: { color: 'white', fontSize: 18 },
 });
