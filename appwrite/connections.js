@@ -2,7 +2,6 @@ import { ID } from 'react-native-appwrite';
 import { databases, account, avatars } from './config';
 import { DATABASE_ID } from '@env';
 import db from './databases';
-import { useState } from 'react';
 
 // Register a new user:
 export async function createAccount(firstName, lastName, email, password) {
@@ -64,6 +63,29 @@ export async function signIn(email, password) {
     } else {
       throw new Error(error);
     }
+  }
+}
+
+export async function recoverPassword(email) {
+  try {
+    const recovery = account.createRecovery(email, 'localhost:8081');
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+}
+
+export async function resetPassword(useID, secret, password1, password2) {
+  try {
+    const response = account.updateRecovery(
+      useID,
+      secret,
+      password1,
+      password2
+    );
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
   }
 }
 

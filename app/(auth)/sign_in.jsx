@@ -8,7 +8,11 @@ import {
 import { Input, Button, Text, Divider } from '@rneui/themed';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { getAccount, signIn } from '../../appwrite/connections';
+import {
+  getAccount,
+  signIn,
+  recoverPassword,
+} from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import validator from 'validator';
@@ -20,28 +24,38 @@ const SignIn = () => {
     email: '',
     password: '',
   });
+  const [recoveryEmail, setRecoveryEmail] = useState('');
   const [emailFocused, setEmailFocus] = useState(false);
   const [pwordFocused, setPwordFocus] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [emailError, setEmailError] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
 
-  const submit = async () => {
+  const validateEmail = (email) => {
     //Check for blank email input:
-    if (validator.isEmpty(form.email)) {
+    if (validator.isEmpty(email)) {
       Alert.alert('Enter your email address');
       setEmailFocus(true);
+      setValidEmail(false);
       return;
     }
     //Validate the submitted email format:
-    if (!validator.isEmail(form.email)) {
+    if (!validator.isEmail(email)) {
       Alert.alert('Enter a valid email address');
+      setValidEmail(false);
       setEmailError('Enter a valid email address');
       setEmailFocus(true);
       return;
     } else {
       setEmailError('');
+      setValidEmail(true);
     }
+  };
+
+  const submit = async () => {
+    validateEmail(form.email);
+    if (!validEmail) return;
 
     //Password validations:
     if (validator.isEmpty(form.password)) {
@@ -63,11 +77,24 @@ const SignIn = () => {
       Alert.alert(error.message);
     } finally {
       setSubmitting(false);
+      setValidEmail(false);
     }
   };
 
-  const handleForgotPassword = () => {
-    setShowModal(false);
+  const passwordRecovery = async () => {
+    validateEmail(recoveryEmail);
+    setSubmitting(true);
+    try {
+      //need to create file for redirect
+      await recoverPassword(recoveryEmail);
+      Alert.alert('check your email for password reset instructions');
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false);
+      setValidEmail(false);
+      setShowModal(false);
+    }
   };
 
   return (
@@ -125,7 +152,7 @@ const SignIn = () => {
             inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
           />
           <TouchableOpacity
-            style={{ backgroundColor: 'green', padding: 5 }}
+            style={{ padding: 5 }}
             onPress={() => setShowModal(true)}
           >
             <Text style={styles.password}>forgot password?</Text>
@@ -163,14 +190,17 @@ const SignIn = () => {
         animationIn={'fadeInRight'}
         animationOut={'slideOutRight'}
         backdropOpacity={0.9}
-        onBackdropPress={() => showModal(false)}
+        onBackdropPress={() => setShowModal(false)}
       >
-        <View>
-          <Text style={{ color: 'white' }}>
+        <View style={styles.modalView}>
+          <Text
+            h4
+            style={{ color: 'white', textAlign: 'center', marginBottom: 25 }}
+          >
             Please enter your account email to reset your password
           </Text>
           <Input
-            value={form.email}//need to change
+            value={recoveryEmail}
             label='email'
             labelStyle={styles.label}
             errorMessage={emailError}
@@ -178,13 +208,13 @@ const SignIn = () => {
               if (validator.isEmail(text)) {
                 setEmailError('');
               }
-              setForm({ ...form, email: text });//need to change
+              setRecoveryEmail(text);
             }}
             placeholder='  email address'
-            // onFocus={() => {
-            //   setEmailFocus(true);
-            // }}
-            //onBlur={() => setEmailFocus(false)}
+            onFocus={() => {
+              setEmailFocus(true);
+            }}
+            onBlur={() => setEmailFocus(false)}
             keyboardType='email-address'
             style={{
               borderWidth: 1,
@@ -194,7 +224,14 @@ const SignIn = () => {
             inputStyle={{ color: 'white', padding: 5 }}
             inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
           />
-          <Button onPress={handleForgotPassword}>Submit</Button>
+          <Button
+            title='Submit'
+            buttonStyle={styles.buttonStyle}
+            titleStyle={styles.titleStyle}
+            containerStyle={styles.buttonContainer}
+            loading={isSubmitting}
+            onPress={passwordRecovery}
+          />
         </View>
       </Modal>
     </>
@@ -261,4 +298,9 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
   },
   password: { color: 'white', fontSize: 18 },
+  modalView: {
+    alignItems: 'center',
+    position: 'absolute',
+    top: '20%',
+  },
 });
