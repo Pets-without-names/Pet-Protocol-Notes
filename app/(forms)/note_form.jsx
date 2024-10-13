@@ -20,7 +20,7 @@ const AddNoteForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [nameError, setNameError] = useState(false);
   const params = useLocalSearchParams();
-  const { noteStatusChanged, setStatusChanged, creatorAvatar } =
+  const { noteStatusChanged, setStatusChanged, creatorAvatar, user } =
     useGlobalContext();
 
   const [form, setForm] = useState({
@@ -37,6 +37,7 @@ const AddNoteForm = () => {
     door_routine: false,
     place_routine: false,
     creator_avatar: creatorAvatar,
+    creator_name: user.name,
   });
 
   //Validate user input to only allow certain characters:
