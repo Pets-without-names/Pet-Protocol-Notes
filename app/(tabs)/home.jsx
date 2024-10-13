@@ -8,16 +8,16 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect } from 'react';
 import { Text, Button, Card, Divider } from '@rneui/themed';
-import { signOut } from '../../appwrite/connections';
+import { signOut, getAvatar } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { router } from 'expo-router';
-import { getAvatar } from '../../appwrite/connections';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Home = () => {
-  const { user, setUser, isLogged, setIsLogged } = useGlobalContext();
+  const { user, setUser, isLogged, setIsLogged, setCreatorAvatar } =
+    useGlobalContext();
   const [isSubmitting, setSubmitting] = useState(false);
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState(null);
 
   const logOut = async () => {
     setSubmitting(true);
@@ -33,6 +33,7 @@ const Home = () => {
       try {
         const result = await getAvatar(user.name);
         setAvatar(result);
+        setCreatorAvatar(result);
       } catch (error) {
         console.log(error);
       }
