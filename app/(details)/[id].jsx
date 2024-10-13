@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, Alert, View } from 'react-native';
+import { StyleSheet, ScrollView, Alert, View, Image } from 'react-native';
 import { Card, Text, Button, ListItem } from '@rneui/themed';
 import { useLocalSearchParams, router } from 'expo-router';
 import { deleteNote } from '../../appwrite/connections';
@@ -13,8 +13,8 @@ const Details = () => {
   const [updateTriggered, setUpdateTriggered] = useState(false);
   const detailsArray = [];
   //context for notes status change (add,update,delete):
-  const { noteStatusChanged, setStatusChanged } = useGlobalContext();
-  const { showEditButtons, setEditButtons } = useGlobalContext();
+  const { showEditButtons, setEditButtons, setStatusChanged } =
+    useGlobalContext();
 
   //Format the protocol date:
   const date = new Date(Date.parse(params.protocol_date));
@@ -105,11 +105,10 @@ const Details = () => {
           <Card containerStyle={styles.nameContainer}>
             <Text style={styles.name}>{params.name}</Text>
           </Card>
-          <Text
-            style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}
-          >
-            Protocol date: {formattedDate}
-          </Text>
+          <View style={styles.textWrap}>
+            <Image style={styles.avatar} src={`${params.creator_avatar}`} />
+            <Text style={styles.date}>Protocol date: {formattedDate}</Text>
+          </View>
           {details.map((item, i) => {
             return (
               <ListItem key={i} bottomDivider>
@@ -246,6 +245,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#E1DFDF',
   },
   modal: {},
+  avatar: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+  },
+  textWrap: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  date: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 10,
+  },
 });
 
 export default Details;

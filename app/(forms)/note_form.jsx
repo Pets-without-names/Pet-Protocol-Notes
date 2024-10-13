@@ -7,7 +7,6 @@ import {
   Header,
   Icon,
   Text,
-  FAB,
 } from '@rneui/themed';
 import { React, useState } from 'react';
 import DateTimePicker from 'react-native-ui-datepicker';
@@ -15,9 +14,15 @@ import { createNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useGlobalContext } from '../../context/GlobalProvider';
+import { useGlobalContext, creatorAvatar } from '../../context/GlobalProvider';
 
 const AddNoteForm = () => {
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const params = useLocalSearchParams();
+  const { noteStatusChanged, setStatusChanged, creatorAvatar } =
+    useGlobalContext();
+
   const [form, setForm] = useState({
     name: '',
     barrier_reactive: false,
@@ -31,12 +36,8 @@ const AddNoteForm = () => {
     jumpy_mouthy: false,
     door_routine: false,
     place_routine: false,
+    creator_avatar: creatorAvatar,
   });
-
-  const [isSubmitting, setSubmitting] = useState(false);
-  const [nameError, setNameError] = useState(false);
-  const params = useLocalSearchParams();
-  const { noteStatusChanged, setStatusChanged } = useGlobalContext();
 
   //Validate user input to only allow certain characters:
   const handleInput = (text) => {
