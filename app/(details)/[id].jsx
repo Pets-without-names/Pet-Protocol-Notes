@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, Alert, View, Image } from 'react-native';
-import { Card, Text, Button, ListItem } from '@rneui/themed';
+import { Card, Text, Button, ListItem, Tooltip } from '@rneui/themed';
 import { useLocalSearchParams, router } from 'expo-router';
 import { deleteNote } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
@@ -12,6 +12,7 @@ const Details = () => {
   const [details, setDetails] = useState([]);
   const [updateTriggered, setUpdateTriggered] = useState(false);
   const detailsArray = [];
+  const [openTooltip, setTooltip] = useState(false);
   //context for notes status change (add,update,delete):
   const { showEditButtons, setEditButtons, setStatusChanged } =
     useGlobalContext();
@@ -106,7 +107,14 @@ const Details = () => {
             <Text style={styles.name}>{params.name}</Text>
           </Card>
           <View style={styles.textWrap}>
-            <Image style={styles.avatar} src={`${params.creator_avatar}`} />
+            <Tooltip
+              popover={<Text>Initials of the protocol walker.</Text>}
+              visible={openTooltip}
+              onOpen={() => setTooltip(true)}
+              onClose={() => setTooltip(false)}
+            >
+              <Image style={styles.avatar} src={`${params.creator_avatar}`} />
+            </Tooltip>
             <Text style={styles.date}>Protocol date: {formattedDate}</Text>
           </View>
           {details.map((item, i) => {
