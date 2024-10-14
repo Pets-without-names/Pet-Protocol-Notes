@@ -108,7 +108,9 @@ const Details = () => {
           </Card>
           <View style={styles.textWrap}>
             <Tooltip
-              popover={<Text>Initials of the protocol walker.</Text>}
+              popover={
+                <Text style={{ color: 'white' }}>{params.creator_name}</Text>
+              }
               visible={openTooltip}
               onOpen={() => setTooltip(true)}
               onClose={() => setTooltip(false)}
