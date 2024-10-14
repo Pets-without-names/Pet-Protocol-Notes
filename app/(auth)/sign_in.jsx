@@ -17,6 +17,7 @@ import { useGlobalContext } from '../../context/GlobalProvider';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import validator from 'validator';
 import Modal from 'react-native-modal';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const SignIn = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
@@ -98,8 +99,12 @@ const SignIn = () => {
   };
 
   return (
-    <>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <KeyboardAwareScrollView
+        extraScrollHeight={120}
+        style={{ width: '100%' }}
+        contentContainerStyle={{ alignItems: 'center' }}
+      >
         <View>
           <Text h3 style={styles.header}>
             Account Log-in
@@ -151,12 +156,6 @@ const SignIn = () => {
             inputStyle={{ color: 'white', padding: 5 }}
             inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
           />
-          <TouchableOpacity
-            style={{ padding: 5 }}
-            onPress={() => setShowModal(true)}
-          >
-            <Text style={styles.password}>forgot password?</Text>
-          </TouchableOpacity>
           <Button
             title='Log in'
             buttonStyle={styles.buttonStyle}
@@ -261,7 +260,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: 'ConcertOne-Regular',
-    fontSize: Platform.OS === 'ios' ? 22 : 24,
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
     marginBottom: 5,
     color: 'white',
     opacity: 0.75,
@@ -276,6 +275,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontFamily: 'Urbanist-Regular',
     textAlign: 'center',
+    opacity: 0.8,
   },
   buttonContainer: {
     width: '75%',
