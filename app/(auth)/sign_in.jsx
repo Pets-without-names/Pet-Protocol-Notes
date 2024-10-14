@@ -100,90 +100,91 @@ const SignIn = () => {
 
   return (
     <>
-    <SafeAreaView style={styles.container}>
-      <KeyboardAwareScrollView
-        extraScrollHeight={120}
-        style={{ width: '100%' }}
-        contentContainerStyle={{ alignItems: 'center' }}
-      >
-        <View>
-          <Text h3 style={styles.header}>
-            Account Log-in
-          </Text>
-          <Text h4 style={styles.subHeader}>
-            Welcome back!
-          </Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <Input
-            value={form.email}
-            label='email'
-            labelStyle={styles.label}
-            errorMessage={emailError}
-            onChangeText={(text) => {
-              if (validator.isEmail(text)) {
-                setEmailError('');
-              }
-              setForm({ ...form, email: text });
-            }}
-            placeholder='  email address'
-            onFocus={() => {
-              setEmailFocus(true);
-            }}
-            onBlur={() => setEmailFocus(false)}
-            keyboardType='email-address'
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              borderColor: emailFocused ? 'orange' : 'black',
-            }}
-            inputStyle={{ color: 'white', padding: 5 }}
-            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-          />
-          <Input
-            value={form.password}
-            label='Password'
-            labelStyle={styles.label}
-            onChangeText={(text) => setForm({ ...form, password: text })}
-            placeholder='  password'
-            onFocus={() => setPwordFocus(true)}
-            onBlur={() => setPwordFocus(false)}
-            secureTextEntry={true}
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              borderColor: pwordFocused ? 'orange' : 'black',
-            }}
-            inputStyle={{ color: 'white', padding: 5 }}
-            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-          />
-          <Button
-            title='Log in'
-            buttonStyle={styles.buttonStyle}
-            titleStyle={styles.titleStyle}
-            containerStyle={styles.buttonContainer}
-            loading={isSubmitting}
-            onPress={() => {
-              submit();
-            }}
-          />
-        </View>
+      <SafeAreaView style={styles.container}>
+        <KeyboardAwareScrollView
+          extraScrollHeight={120}
+          style={{ width: '100%' }}
+          contentContainerStyle={{ alignItems: 'center' }}
+        >
+          <View>
+            <Text h3 style={styles.header}>
+              Account Log-in
+            </Text>
+            <Text h4 style={styles.subHeader}>
+              Welcome back!
+            </Text>
+          </View>
+          <View style={styles.inputContainer}>
+            <Input
+              value={form.email}
+              label='email'
+              labelStyle={styles.label}
+              errorMessage={emailError}
+              onChangeText={(text) => {
+                if (validator.isEmail(text)) {
+                  setEmailError('');
+                }
+                setForm({ ...form, email: text });
+              }}
+              placeholder='  email address'
+              onFocus={() => {
+                setEmailFocus(true);
+              }}
+              onBlur={() => setEmailFocus(false)}
+              keyboardType='email-address'
+              style={{
+                borderWidth: 1,
+                borderRadius: 10,
+                borderColor: emailFocused ? 'orange' : 'black',
+              }}
+              inputStyle={{ color: 'white', padding: 5 }}
+              inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+            />
+            <Input
+              value={form.password}
+              label='Password'
+              labelStyle={styles.label}
+              onChangeText={(text) => setForm({ ...form, password: text })}
+              placeholder='  password'
+              onFocus={() => setPwordFocus(true)}
+              onBlur={() => setPwordFocus(false)}
+              secureTextEntry={true}
+              style={{
+                borderWidth: 1,
+                borderRadius: 10,
+                borderColor: pwordFocused ? 'orange' : 'black',
+              }}
+              inputStyle={{ color: 'white', padding: 5 }}
+              inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+            />
+            <Button
+              title='Log in'
+              buttonStyle={styles.buttonStyle}
+              titleStyle={styles.titleStyle}
+              containerStyle={styles.buttonContainer}
+              loading={isSubmitting}
+              onPress={() => {
+                submit();
+              }}
+            />
+          </View>
 
-        <View style={styles.accountContainer}>
-          <Divider width={2} color='#4357AD' style={styles.divider} />
-          <Text h4 style={styles.subHeader}>
-            Don't have an account?
-          </Text>
-          <Button
-            title='Create Account'
-            buttonStyle={styles.buttonStyle}
-            titleStyle={styles.titleStyle}
-            containerStyle={styles.buttonContainer}
-            onPress={() => {
-              router.replace('/sign_up');
-            }}
-          />
-        </View>
+          <View style={styles.accountContainer}>
+            <Divider width={2} color='#4357AD' style={styles.divider} />
+            <Text h4 style={styles.subHeader}>
+              Don't have an account?
+            </Text>
+            <Button
+              title='Create Account'
+              buttonStyle={styles.buttonStyle}
+              titleStyle={styles.titleStyle}
+              containerStyle={styles.buttonContainer}
+              onPress={() => {
+                router.replace('/sign_up');
+              }}
+            />
+          </View>
+        </KeyboardAwareScrollView>
       </SafeAreaView>
       <Modal
         isVisible={showModal}
