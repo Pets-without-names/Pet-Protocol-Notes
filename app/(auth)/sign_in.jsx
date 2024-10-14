@@ -82,19 +82,23 @@ const SignIn = () => {
     }
   };
 
-  const passwordRecovery = async () => {
+  const handlePwordRecovery = async () => {
     validateEmail(recoveryEmail);
-    setSubmitting(true);
-    try {
-      //need to create file for redirect
-      await recoverPassword(recoveryEmail);
-      Alert.alert('check your email for password reset instructions');
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setSubmitting(false);
-      setValidEmail(false);
-      setShowModal(false);
+    if (!validEmail) {
+      return;
+    } else {
+      setSubmitting(true);
+      try {
+        //need to create file for redirect
+        await recoverPassword(recoveryEmail);
+        Alert.alert('check your email for password reset instructions');
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setSubmitting(false);
+        setValidEmail(false);
+        setShowModal(false);
+      }
     }
   };
 
@@ -157,6 +161,9 @@ const SignIn = () => {
               inputStyle={{ color: 'white', padding: 5 }}
               inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
             />
+            <TouchableOpacity onPress={() => setShowModal(true)}>
+              <Text style={styles.password}>Forgot Password?</Text>
+            </TouchableOpacity>
             <Button
               title='Log in'
               buttonStyle={styles.buttonStyle}
@@ -168,7 +175,6 @@ const SignIn = () => {
               }}
             />
           </View>
-
           <View style={styles.accountContainer}>
             <Divider width={2} color='#4357AD' style={styles.divider} />
             <Text h4 style={styles.subHeader}>
@@ -231,7 +237,7 @@ const SignIn = () => {
             titleStyle={styles.titleStyle}
             containerStyle={styles.buttonContainer}
             loading={isSubmitting}
-            onPress={passwordRecovery}
+            onPress={handlePwordRecovery}
           />
         </View>
       </Modal>
