@@ -6,6 +6,7 @@ import { getAccount, signIn } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import validator from 'validator';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const SignIn = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
@@ -60,84 +61,90 @@ const SignIn = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Text h3 style={styles.header}>
-          Account Log-in
-        </Text>
-        <Text h4 style={styles.subHeader}>
-          Welcome back!
-        </Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <Input
-          value={form.email}
-          label='email'
-          labelStyle={styles.label}
-          errorMessage={emailError}
-          onChangeText={(text) => {
-            if (validator.isEmail(text)) {
-              setEmailError('');
-            }
-            setForm({ ...form, email: text });
-          }}
-          placeholder='  email address'
-          onFocus={() => {
-            setEmailFocus(true);
-          }}
-          onBlur={() => setEmailFocus(false)}
-          keyboardType='email-address'
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: emailFocused ? 'orange' : 'black',
-          }}
-          inputStyle={{ color: 'white', padding: 5 }}
-          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-        />
-        <Input
-          value={form.password}
-          label='Password'
-          labelStyle={styles.label}
-          onChangeText={(text) => setForm({ ...form, password: text })}
-          placeholder='  password'
-          onFocus={() => setPwordFocus(true)}
-          onBlur={() => setPwordFocus(false)}
-          secureTextEntry={true}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: pwordFocused ? 'orange' : 'black',
-          }}
-          inputStyle={{ color: 'white', padding: 5 }}
-          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-        />
-        <Button
-          title='Log in'
-          buttonStyle={styles.buttonStyle}
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.buttonContainer}
-          loading={isSubmitting}
-          onPress={() => {
-            submit();
-          }}
-        />
-      </View>
+      <KeyboardAwareScrollView
+        extraScrollHeight={120}
+        style={{ width: '100%' }}
+        contentContainerStyle={{ alignItems: 'center' }}
+      >
+        <View>
+          <Text h3 style={styles.header}>
+            Account Log-in
+          </Text>
+          <Text h4 style={styles.subHeader}>
+            Welcome back!
+          </Text>
+        </View>
+        <View style={styles.inputContainer}>
+          <Input
+            value={form.email}
+            label='email'
+            labelStyle={styles.label}
+            errorMessage={emailError}
+            onChangeText={(text) => {
+              if (validator.isEmail(text)) {
+                setEmailError('');
+              }
+              setForm({ ...form, email: text });
+            }}
+            placeholder='  email address'
+            onFocus={() => {
+              setEmailFocus(true);
+            }}
+            onBlur={() => setEmailFocus(false)}
+            keyboardType='email-address'
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: emailFocused ? 'orange' : 'black',
+            }}
+            inputStyle={{ color: 'white', padding: 5 }}
+            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+          />
+          <Input
+            value={form.password}
+            label='Password'
+            labelStyle={styles.label}
+            onChangeText={(text) => setForm({ ...form, password: text })}
+            placeholder='  password'
+            onFocus={() => setPwordFocus(true)}
+            onBlur={() => setPwordFocus(false)}
+            secureTextEntry={true}
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: pwordFocused ? 'orange' : 'black',
+            }}
+            inputStyle={{ color: 'white', padding: 5 }}
+            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+          />
+          <Button
+            title='Log in'
+            buttonStyle={styles.buttonStyle}
+            titleStyle={styles.titleStyle}
+            containerStyle={styles.buttonContainer}
+            loading={isSubmitting}
+            onPress={() => {
+              submit();
+            }}
+          />
+        </View>
 
-      <View style={styles.accountContainer}>
-        <Divider width={2} color='#4357AD' style={styles.divider} />
-        <Text h4 style={styles.subHeader}>
-          Don't have an account?
-        </Text>
-        <Button
-          title='Create Account'
-          buttonStyle={styles.buttonStyle}
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.buttonContainer}
-          onPress={() => {
-            router.replace('/sign_up');
-          }}
-        />
-      </View>
+        <View style={styles.accountContainer}>
+          <Divider width={2} color='#4357AD' style={styles.divider} />
+          <Text h4 style={styles.subHeader}>
+            Don't have an account?
+          </Text>
+          <Button
+            title='Create Account'
+            buttonStyle={styles.buttonStyle}
+            titleStyle={styles.titleStyle}
+            containerStyle={styles.buttonContainer}
+            onPress={() => {
+              router.replace('/sign_up');
+            }}
+          />
+        </View>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };
@@ -165,7 +172,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: 'ConcertOne-Regular',
-    fontSize: Platform.OS === 'ios' ? 22 : 24,
+    fontSize: Platform.OS === 'ios' ? 20 : 22,
     marginBottom: 5,
     color: 'white',
     opacity: 0.75,
@@ -180,6 +187,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontFamily: 'Urbanist-Regular',
     textAlign: 'center',
+    opacity: 0.8,
   },
   buttonContainer: {
     width: '75%',
