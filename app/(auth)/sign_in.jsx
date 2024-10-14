@@ -99,6 +99,7 @@ const SignIn = () => {
   };
 
   return (
+    <>
     <SafeAreaView style={styles.container}>
       <KeyboardAwareScrollView
         extraScrollHeight={120}
