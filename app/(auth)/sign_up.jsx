@@ -6,6 +6,7 @@ import { createAccount } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import isEmail from 'validator/es/lib/isEmail';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -87,129 +88,133 @@ const SignUp = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.inputContainer}>
-        <Input
-          value={form.firstName}
-          label='First Name'
-          labelStyle={styles.label}
-          onChangeText={(text) => setForm({ ...form, firstName: text })}
-          placeholder='  First name'
-          autoFocus={true}
-          onFocus={() => {
-            setfnameFocused(true);
-          }}
-          onBlur={() => setfnameFocused(false)}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: fnameFocused ? 'orange' : 'black',
-          }}
-          inputStyle={{ color: 'white', padding: 5 }}
-          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-        />
-        <Input
-          value={form.lastName}
-          label='Last Name'
-          labelStyle={styles.label}
-          onChangeText={(text) => setForm({ ...form, lastName: text })}
-          placeholder='  Last Name'
-          onFocus={() => {
-            setlnameFocused(true);
-          }}
-          onBlur={() => setlnameFocused(false)}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: lnameFocused ? 'orange' : 'black',
-          }}
-          inputStyle={{ color: 'white', padding: 5 }}
-          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-        />
-        <Input
-          value={form.email}
-          label='email'
-          labelStyle={styles.label}
-          onChangeText={(text) => {
-            setForm({ ...form, email: text });
-          }}
-          placeholder='  email address'
-          onFocus={() => {
-            setEmailFocused(true);
-          }}
-          onBlur={() => setEmailFocused(false)}
-          enablesReturnKeyAutomatically={true}
-          errorMessage={emailError}
-          inputMode='email'
-          keyboardType='email-address'
-          textContentType='emailAdress'
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: emailFocused ? 'orange' : 'black',
-          }}
-          inputStyle={{ color: 'white', padding: 5 }}
-          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-        />
-        <Input
-          value={form.password}
-          label='Password'
-          labelStyle={styles.label}
-          onChangeText={(text) => setForm({ ...form, password: text })}
-          placeholder='  password'
-          onFocus={() => setPwordFocused(true)}
-          onBlur={() => setPwordFocused(false)}
-          enablesReturnKeyAutomatically={true}
-          secureTextEntry={true}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: pwordFocused ? 'orange' : 'black',
-          }}
-          inputStyle={{ color: 'white', padding: 5 }}
-          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-        />
-        <Input
-          value={form.passwordConfirm}
-          label='Confirm Password'
-          labelStyle={styles.label}
-          onChangeText={(text) => setForm({ ...form, passwordConfirm: text })}
-          placeholder='  password'
-          onFocus={() => setPword2Focused(true)}
-          onBlur={() => setPword2Focused(false)}
-          enablesReturnKeyAutomatically={true}
-          secureTextEntry={true}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: pword2Focused ? 'orange' : 'black',
-          }}
-          inputStyle={{ color: 'white', padding: 5 }}
-          inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-        />
-        <Button
-          title='Create an account'
-          buttonStyle={styles.buttonStyle}
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.buttonContainer}
-          loading={isSubmitting}
-          onPress={() => {
-            submit();
-          }}
-        />
-      </View>
-      <View style={styles.accountContainer}>
-        <Divider width={2} color='#2089DC' style={styles.divider} />
-        <Text h4 style={styles.label}>
-          Already have an account?
-        </Text>
-        <Button
-          title='Sign In'
-          buttonStyle={styles.buttonStyle}
-          titleStyle={styles.titleStyle}
-          containerStyle={styles.buttonContainer}
-          onPress={() => router.replace('sign_in')}
-        />
-      </View>
+      <KeyboardAwareScrollView
+        extraScrollHeight={120}
+        style={{ width: '100%' }}
+        contentContainerStyle={{ alignItems: 'center' }}
+      >
+        <View style={styles.inputContainer}>
+          <Input
+            value={form.firstName}
+            label='First Name'
+            labelStyle={styles.label}
+            onChangeText={(text) => setForm({ ...form, firstName: text })}
+            placeholder='  First name'
+            autoFocus={true}
+            onFocus={() => {
+              setfnameFocused(true);
+            }}
+            onBlur={() => setfnameFocused(false)}
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: fnameFocused ? 'orange' : 'black',
+            }}
+            inputStyle={{ color: 'white', padding: 5 }}
+            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+          />
+          <Input
+            value={form.lastName}
+            label='Last Name'
+            labelStyle={styles.label}
+            onChangeText={(text) => setForm({ ...form, lastName: text })}
+            placeholder='  Last Name'
+            onFocus={() => {
+              setlnameFocused(true);
+            }}
+            onBlur={() => setlnameFocused(false)}
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: lnameFocused ? 'orange' : 'black',
+            }}
+            inputStyle={{ color: 'white', padding: 5 }}
+            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+          />
+          <Input
+            value={form.email}
+            label='email'
+            labelStyle={styles.label}
+            onChangeText={(text) => {
+              setForm({ ...form, email: text });
+            }}
+            placeholder='  email address'
+            onFocus={() => {
+              setEmailFocused(true);
+            }}
+            onBlur={() => setEmailFocused(false)}
+            enablesReturnKeyAutomatically={true}
+            errorMessage={emailError}
+            inputMode='email'
+            keyboardType='email-address'
+            textContentType='emailAdress'
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: emailFocused ? 'orange' : 'black',
+            }}
+            inputStyle={{ color: 'white', padding: 5 }}
+            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+          />
+          <Input
+            value={form.password}
+            label='Password'
+            labelStyle={styles.label}
+            onChangeText={(text) => setForm({ ...form, password: text })}
+            placeholder='  password'
+            onFocus={() => setPwordFocused(true)}
+            onBlur={() => setPwordFocused(false)}
+            enablesReturnKeyAutomatically={true}
+            secureTextEntry={true}
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: pwordFocused ? 'orange' : 'black',
+            }}
+            inputStyle={{ color: 'white', padding: 5 }}
+            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+          />
+          <Input
+            value={form.passwordConfirm}
+            label='Confirm Password'
+            labelStyle={styles.label}
+            onChangeText={(text) => setForm({ ...form, passwordConfirm: text })}
+            placeholder='  password'
+            onFocus={() => setPword2Focused(true)}
+            onBlur={() => setPword2Focused(false)}
+            enablesReturnKeyAutomatically={true}
+            secureTextEntry={true}
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: pword2Focused ? 'orange' : 'black',
+            }}
+            inputStyle={{ color: 'white', padding: 5 }}
+            inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+          />
+          <Button
+            title='Create account'
+            buttonStyle={styles.buttonStyle}
+            titleStyle={styles.titleStyle}
+            containerStyle={styles.buttonContainer}
+            loading={isSubmitting}
+            onPress={() => {
+              submit();
+            }}
+          />
+        </View>
+        <View style={styles.accountContainer}>
+          <Divider width={2} color='#2089DC' style={styles.divider} />
+          <Text style={styles.subHeader}>Already have an account?</Text>
+          <Button
+            title='Sign In'
+            buttonStyle={styles.buttonStyle}
+            titleStyle={styles.titleStyle}
+            containerStyle={styles.buttonContainer}
+            onPress={() => router.replace('sign_in')}
+          />
+        </View>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };
@@ -225,7 +230,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: 'ConcertOne-Regular',
-    fontSize: 22,
+    fontSize: 18,
     marginBottom: 5,
     color: 'white',
     opacity: 0.75,
@@ -260,5 +265,13 @@ const styles = StyleSheet.create({
     width: '85%',
     margin: 10,
     opacity: 0.65,
+  },
+  subHeader: {
+    fontSize: 20,
+    color: 'white',
+    marginTop: 5,
+    fontFamily: 'Urbanist-Regular',
+    textAlign: 'center',
+    opacity: 0.8,
   },
 });
