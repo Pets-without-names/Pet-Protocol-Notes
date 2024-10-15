@@ -1,12 +1,13 @@
 import { StyleSheet, View, Alert, Platform } from 'react-native';
 import { Input, Button, Text, Divider } from '@rneui/themed';
-import { React, useState } from 'react';
+import { React, useState, useRef } from 'react';
 import { router } from 'expo-router';
 import { createAccount } from '../../appwrite/connections';
 import { useGlobalContext } from '../../context/GlobalProvider';
-import isEmail from 'validator/es/lib/isEmail';
+import { validator, isEmail } from 'validator/es/lib/isEmail';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import FormInput from '../../components/FormInput';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -25,6 +26,12 @@ const SignUp = () => {
   const [pword2Focused, setPword2Focused] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
+
+  //will pass to the costum input component to determine
+  //focused input
+  const inputRef = useRef(false);
+
+  const validateFields = (field) => {};
 
   const submit = async () => {
     //check form input fields are not null:
@@ -94,7 +101,12 @@ const SignUp = () => {
         contentContainerStyle={{ alignItems: 'center' }}
       >
         <View style={styles.inputContainer}>
-          <Input
+          <FormInput
+            label='First Name'
+            placeholder='   First name'
+            ref={inputRef.current.isFocused()}
+          />
+          {/* <Input
             value={form.firstName}
             label='First Name'
             labelStyle={styles.label}
@@ -191,7 +203,7 @@ const SignUp = () => {
             }}
             inputStyle={{ color: 'white', padding: 5 }}
             inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
-          />
+          /> */}
           <Button
             title='Create account'
             buttonStyle={styles.buttonStyle}
