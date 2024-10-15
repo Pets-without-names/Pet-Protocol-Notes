@@ -1,31 +1,41 @@
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Input } from '@rneui/themed';
-import React from 'react';
+import { React, forwardRef, useState } from 'react';
 
-const FormInput = ({
-  label,
-  value,
-  placeholder,
-  onChangeText,
-  secureTextEntry,
-  textContentType,
-  inputMode,
-  isFocused,
-}) => {
-  const inputRef = React.useRef(null);
+const FormInput = forwardRef(function FormInput(props, inputRef) {
+  const {
+    label,
+    value,
+    placeholder,
+    onChangeText,
+    secureTextEntry,
+    textContentType,
+    inputMode,
+    autoFocus,
+  } = props;
+
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
     <View style={styles.containerStyle}>
       <Input
-        ref={isFocused}
+        ref={inputRef}
         label={label}
         labelStyle={styles.labelStyle}
         value={value}
         placeholder={placeholder}
         onChangeText={onChangeText}
+        autoFocus={autoFocus}
         secureTextEntry={secureTextEntry}
         textContentType={textContentType}
         inputMode={inputMode}
-        inputContainerStyle={{ borderWidth: 1, borderRadius: 10 }}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        inputContainerStyle={{
+          borderWidth: 1,
+          borderRadius: 10,
+          width: '100%',
+        }}
         style={{
           borderWidth: 1,
           borderRadius: 10,
@@ -35,7 +45,7 @@ const FormInput = ({
       />
     </View>
   );
-};
+});
 
 export default FormInput;
 

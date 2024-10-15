@@ -29,7 +29,7 @@ const SignUp = () => {
 
   //will pass to the costum input component to determine
   //focused input
-  const inputRef = useRef(false);
+  const inputRef = useRef('');
 
   const validateFields = (field) => {};
 
@@ -102,9 +102,18 @@ const SignUp = () => {
       >
         <View style={styles.inputContainer}>
           <FormInput
+            value={form.firstName}
             label='First Name'
             placeholder='   First name'
-            ref={inputRef.current.isFocused()}
+            ref={inputRef}
+            autoFocus={true}
+          />
+          <FormInput
+            value={form.lastName}
+            label='Last Name'
+            placeholder='   Last Name'
+            ref={inputRef}
+            autoFocus={false}
           />
           {/* <Input
             value={form.firstName}
