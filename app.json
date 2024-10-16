@@ -1,7 +1,9 @@
 {
   "expo": {
-    "name": "protocol_notes",
-    "slug": "test",
+    "name": "Protocaol Notes",
+    "slug": "protocolNotes",
+    "privacy": "public",
+    "description": "A collaborative notes application to track dog walking protocols.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/artie.png",
@@ -14,13 +16,15 @@
     },
     "ios": {
       "supportsTablet": true,
-      "packages": "com.petswithoutnames.protocols"
+      "packages": "com.petswithoutnames.protocols",
+      "bundleIdentifier": "com.geboyd.protocolNotes"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.geboyd.protocolNotes"
     },
     "web": {
       "bundler": "metro",
@@ -33,15 +37,26 @@
         "expo-font",
         {
           "fonts": [
-            "../assets/fonts/Ubanist-Regular",
-            "../assets/fonts/Urbanist-Medium",
-            "../assets/fonts/ConcertOne-Regular"
+            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Regular.ttf",
+            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Medium.ttf",
+            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/ConcertOne-Regular.ttf"
           ]
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b021999d-e879-491c-9f26-e7ae957251a1"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/71fdda4f-1de0-40b2-b2a0-d6107a81e767"
     }
   }
 }
