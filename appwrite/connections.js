@@ -42,7 +42,7 @@ export async function getAccount() {
     if (!currentAccount) throw Error;
     return currentAccount;
   } catch (error) {
-    console.log('Getting account error: ' + error);
+    console.log('Getting account error: ' + error.code + ' ' + error);
     return null;
   }
 }
@@ -71,6 +71,7 @@ export async function signIn(email, password) {
 export async function signOut() {
   try {
     const session = await account.deleteSession('current');
+    console.log(session);
     return session;
   } catch (error) {
     throw new Error(error);
