@@ -1,6 +1,6 @@
 import { ID } from 'react-native-appwrite';
 import { databases, account, avatars } from './config';
-import { DATABASE_ID } from '@env';
+import { EXPO_PUBLIC_DATABASE_ID } from '@env';
 import db from './databases';
 import { useState } from 'react';
 
@@ -121,7 +121,7 @@ export async function getProtocolPlusNotes() {
 export const createNote = async (collID, data, docID = ID.unique()) => {
   try {
     const response = await databases.createDocument(
-      DATABASE_ID,
+      EXPO_PUBLIC_DATABASE_ID,
       collID,
       docID,
       data
@@ -136,7 +136,7 @@ export const createNote = async (collID, data, docID = ID.unique()) => {
 export const updateNote = async (collID, docID, data) => {
   try {
     const response = await databases.updateDocument(
-      DATABASE_ID,
+      EXPO_PUBLIC_DATABASE_ID,
       collID,
       docID,
       data
@@ -151,7 +151,7 @@ export const updateNote = async (collID, docID, data) => {
 export async function deleteNote(collID, documentID) {
   try {
     const result = await databases.deleteDocument(
-      DATABASE_ID,
+      EXPO_PUBLIC_DATABASE_ID,
       collID,
       documentID
     );

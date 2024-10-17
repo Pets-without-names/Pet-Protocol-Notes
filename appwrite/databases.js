@@ -1,18 +1,22 @@
 import { databases } from './config';
 import { ID } from 'react-native-appwrite';
-import { DATABASE_ID, PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
+import {
+  EXPO_PUBLIC_DATABASE_ID,
+  EXPO_PUBLIC_PROTOCOL_COLL_ID,
+  EXPO_PUBLIC_PROTOCOL_PLUS_COLL_ID,
+} from '@env';
 
 const db = {};
 
 const collections = [
   {
-    databaseID: DATABASE_ID,
-    id: PROTOCOL_COLL_ID,
+    databaseID: EXPO_PUBLIC_DATABASE_ID,
+    id: EXPO_PUBLIC_PROTOCOL_COLL_ID,
     name: 'protocol',
   },
   {
-    databaseID: DATABASE_ID,
-    id: PROTOCOL_PLUS_COLL_ID,
+    databaseID: EXPO_PUBLIC_DATABASE_ID,
+    id: EXPO_PUBLIC_PROTOCOL_PLUS_COLL_ID,
     name: 'protocolPlus',
   },
 ];

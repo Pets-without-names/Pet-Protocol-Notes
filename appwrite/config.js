@@ -1,10 +1,17 @@
 import { Client, Account, Databases, Avatars } from 'react-native-appwrite';
-import { ENDPOINT, PROJECT_ID, PLATFORM } from '@env';
+import {
+  EXPO_PUBLIC_ENDPOINT,
+  EXPO_PUBLIC_PROJECT_ID,
+  EXPO_PUBLIC_PLATFORM,
+} from '@env';
 
 // Init your React Native SDK
 const client = new Client();
 
-client.setEndpoint(ENDPOINT).setProject(PROJECT_ID).setPlatform(PLATFORM);
+client
+  .setEndpoint(EXPO_PUBLIC_ENDPOINT)
+  .setProject(EXPO_PUBLIC_PROJECT_ID)
+  .setPlatform(EXPO_PUBLIC_PLATFORM);
 
 const account = new Account(client);
 const databases = new Databases(client);

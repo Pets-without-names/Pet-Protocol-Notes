@@ -6,7 +6,7 @@
     "description": "A collaborative notes application to track dog walking protocols.",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/artie.png",
+    "icon": "./assets/images/appIcon.png", //App icon shold be 1064 x 1064?
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -16,7 +16,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "packages": "com.petswithoutnames.protocols",
+      // "packages": "com.petswithoutnames.protocols",
       "bundleIdentifier": "com.geboyd.protocolNotes"
     },
     "android": {
@@ -37,9 +37,12 @@
         "expo-font",
         {
           "fonts": [
-            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Regular.ttf",
-            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Medium.ttf",
-            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/ConcertOne-Regular.ttf"
+            "../assets/fonts/Urbanist-Regular.ttf",
+            "../assets/fonts/Urbanist-Medium.ttf",
+            "../assets/fonts/ConcertOne-Regular.ttf"
+            // "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Regular.ttf",
+            // "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Medium.ttf",
+            // "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/ConcertOne-Regular.ttf"
           ]
         }
       ]

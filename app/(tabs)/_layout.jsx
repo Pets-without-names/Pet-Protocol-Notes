@@ -2,7 +2,10 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Tabs, router, Redirect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { PROTOCOL_COLL_ID, PROTOCOL_PLUS_COLL_ID } from '@env';
+import {
+  EXPO_PUBLIC_PROTOCOL_COLL_ID,
+  EXPO_PUBLIC_PROTOCOL_PLUS_COLL_ID,
+} from '@env';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import Loader from '../../components/Loader';
 
@@ -38,7 +41,7 @@ export default function TabLayout() {
                 onPress={() =>
                   router.push({
                     pathname: '../(forms)/note_form',
-                    params: { collID: PROTOCOL_COLL_ID },
+                    params: { collID: EXPO_PUBLIC_PROTOCOL_COLL_ID },
                   })
                 }
               >
@@ -65,7 +68,7 @@ export default function TabLayout() {
                 onPress={() => {
                   router.push({
                     pathname: '../(forms)/note_form',
-                    params: { collID: PROTOCOL_PLUS_COLL_ID },
+                    params: { collID: EXPO_PUBLIC_PROTOCOL_PLUS_COLL_ID },
                   });
                 }}
               >
