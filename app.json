@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Protocaol Notes",
+    "name": "Protocol Notes",
     "slug": "protocolNotes",
     "privacy": "public",
     "description": "A collaborative notes application to track dog walking protocols.",
