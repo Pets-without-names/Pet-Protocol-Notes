@@ -1,20 +1,22 @@
 {
   "expo": {
     "name": "protocol_notes",
-    "slug": "test",
+    "slug": "protocolNotes",
+    "owner": "Gregory Boyd",
     "version": "1.0.0",
+    "platforms": ["ios", "android"],
     "orientation": "portrait",
-    "icon": "./assets/images/artie.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "icon": "./assets/images/walk-the-pet.png",
+    "scheme": "basic",
+    "userInterfaceStyle": "light",
     "splash": {
-      "image": "",
+      "image": "./assets/images/pawprint.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F6F4F3s"
     },
     "ios": {
-      "supportsTablet": true,
-      "packages": "com.petswithoutnames.protocols"
+      "supportsTablet": true
+      //"packages": "com.petswithoutnames.protocols"
     },
     "android": {
       "adaptiveIcon": {
