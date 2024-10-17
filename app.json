@@ -39,10 +39,10 @@
           "fonts": [
             "../assets/fonts/Urbanist-Regular.ttf",
             "../assets/fonts/Urbanist-Medium.ttf",
-            "../assets/fonts/ConcertOne-Regular.ttf"
-            // "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Regular.ttf",
-            // "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Medium.ttf",
-            // "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/ConcertOne-Regular.ttf"
+            "../assets/fonts/ConcertOne-Regular.ttf",
+            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Regular.ttf",
+            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/Urbanist-Medium.ttf",
+            "/Users/gboyd69/Developer/React_Projects/protocol_notes/assets/fonts/ConcertOne-Regular.ttf"
           ]
         }
       ]
