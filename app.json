@@ -15,14 +15,15 @@
       "backgroundColor": "#F6F4F3s"
     },
     "ios": {
-      "supportsTablet": true
-      //"packages": "com.petswithoutnames.protocols"//error
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pets.protocolNotes"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.pets.protocolNotes"
     },
     "web": {
       "bundler": "metro",
@@ -37,7 +38,10 @@
           "fonts": [
             "../assets/fonts/Ubanist-Regular",
             "../assets/fonts/Urbanist-Medium",
-            "../assets/fonts/ConcertOne-Regular"
+            "../assets/fonts/ConcertOne-Regular",
+            "/Users/gboyd69/Developer/React_Projects/assets/fonts/ConcertOne-Regular.ttf",
+            "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Medium.ttf",
+            "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Regular.ttf"
           ]
         }
       ]
