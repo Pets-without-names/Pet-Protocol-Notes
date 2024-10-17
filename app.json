@@ -6,17 +6,17 @@
     "version": "1.0.0",
     "platforms": ["ios", "android"],
     "orientation": "portrait",
-    "icon": "./assets/images/walk-the-pet.png",
+    "icon": "./assets/icons/walk-the-pet.png",
     "scheme": "basic",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/pawprint.png",
+      "image": "./assets/images/pawprint200.png",
       "resizeMode": "contain",
       "backgroundColor": "#F6F4F3s"
     },
     "ios": {
       "supportsTablet": true
-      //"packages": "com.petswithoutnames.protocols"
+      //"packages": "com.petswithoutnames.protocols"//error
     },
     "android": {
       "adaptiveIcon": {
