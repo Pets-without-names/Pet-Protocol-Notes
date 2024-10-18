@@ -71,7 +71,6 @@ export async function signIn(email, password) {
 export async function signOut() {
   try {
     const session = await account.deleteSession('current');
-    console.log(session);
     return session;
   } catch (error) {
     throw new Error(error);
@@ -110,7 +109,6 @@ export async function getProtocolNotes() {
 export async function getProtocolPlusNotes() {
   try {
     const response = await db.protocolPlus.list();
-    // return response.documents;
     return response;
   } catch (error) {
     console.log(error);

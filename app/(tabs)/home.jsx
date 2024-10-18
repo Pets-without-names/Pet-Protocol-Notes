@@ -32,7 +32,6 @@ const Home = () => {
       try {
         const result = await getAvatar(user.name);
         setAvatar(result);
-        //setCreatorAvatar(result);
       } catch (error) {
         console.log(error);
       }
