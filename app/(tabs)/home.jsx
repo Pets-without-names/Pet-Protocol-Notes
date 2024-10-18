@@ -14,10 +14,9 @@ import { router } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Home = () => {
-  const { user, setUser, isLogged, setIsLogged, setCreatorAvatar } =
-    useGlobalContext();
+  const { user, setUser, setIsLogged, avatar, setAvatar } = useGlobalContext();
   const [isSubmitting, setSubmitting] = useState(false);
-  const [avatar, setAvatar] = useState(null);
+  //const [avatar, setAvatar] = useState(null);
 
   const logOut = async () => {
     setSubmitting(true);
@@ -33,7 +32,7 @@ const Home = () => {
       try {
         const result = await getAvatar(user.name);
         setAvatar(result);
-        setCreatorAvatar(result);
+        //setCreatorAvatar(result);
       } catch (error) {
         console.log(error);
       }
