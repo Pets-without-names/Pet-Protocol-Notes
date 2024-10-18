@@ -36,12 +36,9 @@
         "expo-font",
         {
           "fonts": [
-            "./assets/fonts/Ubanist-Regular",
-            "./assets/fonts/Urbanist-Medium",
-            "./assets/fonts/ConcertOne-Regular"
-            // "/Users/gboyd69/Developer/React_Projects/assets/fonts/ConcertOne-Regular.ttf",
-            // "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Medium.ttf",
-            // "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Regular.ttf"
+            "./assets/fonts/Ubanist-Regular.ttf",
+            "./assets/fonts/Urbanist-Medium.ttf",
+            "./assets/fonts/ConcertOne-Regular.ttf"
           ]
         }
       ]
