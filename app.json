@@ -4,10 +4,7 @@
     "slug": "protocolNotes",
     "owner": "geboyd",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "orientation": "portrait",
     "icon": "./assets/icons/walk-the-pet.png",
     "scheme": "basic",
@@ -39,9 +36,12 @@
         "expo-font",
         {
           "fonts": [
-            "/Users/gboyd69/Developer/React_Projects/assets/fonts/ConcertOne-Regular.ttf",
-            "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Medium.ttf",
-            "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Regular.ttf"
+            "../assets/fonts/Ubanist-Regular",
+            "../assets/fonts/Urbanist-Medium",
+            "../assets/fonts/ConcertOne-Regular"
+            // "/Users/gboyd69/Developer/React_Projects/assets/fonts/ConcertOne-Regular.ttf",
+            // "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Medium.ttf",
+            // "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Regular.ttf"
           ]
         }
       ]
