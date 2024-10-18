@@ -35,7 +35,7 @@
         "expo-font",
         {
           "fonts": [
-            "./assets/fonts/Ubanist-Regular.ttf",
+            "./assets/fonts/Urbanist-Regular.ttf",
             "./assets/fonts/Urbanist-Medium.ttf",
             "./assets/fonts/ConcertOne-Regular.ttf"
           ]

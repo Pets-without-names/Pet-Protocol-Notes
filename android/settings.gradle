@@ -44,7 +44,7 @@ if (getRNMinorVersion() >= 75) {
   }
 }
 
-rootProject.name = 'protocol_notes'
+rootProject.name = 'protocolnotes'
 
 dependencyResolutionManagement {
   versionCatalogs {

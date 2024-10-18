@@ -1,4 +1,4 @@
-package com.pets.protocolNotes
+package com.protocolnotes
 
 import android.os.Build
 import android.os.Bundle
