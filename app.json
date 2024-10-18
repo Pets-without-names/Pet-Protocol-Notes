@@ -31,7 +31,6 @@
       "favicon": ""
     },
     "plugins": [
-      "expo-router",
       [
         "expo-font",
         {
@@ -43,6 +42,19 @@
         }
       ]
     ],
+    // "plugins": [
+    //   "expo-router",
+    //   [
+    //     "expo-font",
+    //     {
+    //       "fonts": [
+    //         "./assets/fonts/Ubanist-Regular.ttf",
+    //         "./assets/fonts/Urbanist-Medium.ttf",
+    //         "./assets/fonts/ConcertOne-Regular.ttf"
+    //       ]
+    //     }
+    //   ]
+    // ],
     "experiments": {
       "typedRoutes": true
     },
