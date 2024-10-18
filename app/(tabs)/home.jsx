@@ -16,7 +16,6 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 const Home = () => {
   const { user, setUser, setIsLogged, avatar, setAvatar } = useGlobalContext();
   const [isSubmitting, setSubmitting] = useState(false);
-  //const [avatar, setAvatar] = useState(null);
 
   const logOut = async () => {
     setSubmitting(true);

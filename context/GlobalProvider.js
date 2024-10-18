@@ -25,7 +25,7 @@ const GlobalProvider = ({ children }) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(`getting account error: ${error}`);
       })
       .finally(() => {
         setLoading(false);
