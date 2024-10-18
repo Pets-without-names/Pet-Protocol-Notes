@@ -20,8 +20,7 @@ const AddNoteForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [nameError, setNameError] = useState(false);
   const params = useLocalSearchParams();
-  const { noteStatusChanged, setStatusChanged, creatorAvatar, user } =
-    useGlobalContext();
+  const { setStatusChanged, creatorAvatar, user } = useGlobalContext();
 
   const [form, setForm] = useState({
     name: '',
