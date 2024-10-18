@@ -20,8 +20,7 @@ const AddNoteForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [nameError, setNameError] = useState(false);
   const params = useLocalSearchParams();
-  const { noteStatusChanged, setStatusChanged, creatorAvatar, user } =
-    useGlobalContext();
+  const { setStatusChanged, avatar, user } = useGlobalContext();
 
   const [form, setForm] = useState({
     name: '',
@@ -36,7 +35,7 @@ const AddNoteForm = () => {
     jumpy_mouthy: false,
     door_routine: false,
     place_routine: false,
-    creator_avatar: creatorAvatar,
+    creator_avatar: avatar,
     creator_name: user.name,
   });
 

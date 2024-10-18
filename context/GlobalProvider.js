@@ -11,7 +11,7 @@ const GlobalProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [noteStatusChanged, setStatusChanged] = useState(false);
   const [showEditButtons, setEditButtons] = useState(false);
-  const [creatorAvatar, setCreatorAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
     getAccount()
@@ -44,8 +44,8 @@ const GlobalProvider = ({ children }) => {
         setStatusChanged,
         showEditButtons,
         setEditButtons,
-        creatorAvatar,
-        setCreatorAvatar,
+        avatar,
+        setAvatar,
       }}
     >
       {children}

@@ -14,12 +14,15 @@ import DateTimePicker from 'react-native-ui-datepicker';
 import { updateNote } from '../../appwrite/connections';
 import { router, useLocalSearchParams } from 'expo-router';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const UpdateForm = () => {
   const params = useLocalSearchParams();
-  // console.log(params);
+  const [isSubmitting, setSubmitting] = useState(false);
+  const { setStatusChanged, avatar, user } = useGlobalContext();
+
+  //Form data:
   const [form, setForm] = useState({
     barrier_reactive: params.barrier_reactive === 'true' ? true : false,
     dog_reactive: params.dog_reactive === 'true' ? true : false,
@@ -32,9 +35,9 @@ const UpdateForm = () => {
     jumpy_mouthy: params.jumpy_mouthy === 'true' ? true : false,
     door_routine: params.door_routine === 'true' ? true : false,
     place_routine: params.place_routine === 'true' ? true : false,
+    creator_avatar: avatar,
+    creator_name: user.name,
   });
-  const [isSubmitting, setSubmitting] = useState(false);
-  const { noteStatusChanged, setStatusChanged } = useGlobalContext();
 
   const submit = async () => {
     setSubmitting(true);
