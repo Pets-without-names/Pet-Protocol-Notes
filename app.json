@@ -2,9 +2,12 @@
   "expo": {
     "name": "protocol_notes",
     "slug": "protocolNotes",
-    "owner": "Gregory Boyd",
+    "owner": "geboyd",
     "version": "1.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./assets/icons/walk-the-pet.png",
     "scheme": "basic",
@@ -36,9 +39,6 @@
         "expo-font",
         {
           "fonts": [
-            // "../assets/fonts/Ubanist-Regular",
-            // "../assets/fonts/Urbanist-Medium",
-            // "../assets/fonts/ConcertOne-Regular",
             "/Users/gboyd69/Developer/React_Projects/assets/fonts/ConcertOne-Regular.ttf",
             "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Medium.ttf",
             "/Users/gboyd69/Developer/React_Projects/assets/fonts/Urbanist-Regular.ttf"
@@ -48,6 +48,15 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b021999d-e879-491c-9f26-e7ae957251a1"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/b021999d-e879-491c-9f26-e7ae957251a1"
     }
   }
 }
