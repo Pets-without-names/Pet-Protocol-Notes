@@ -1,21 +1,40 @@
 {
-  "cli": {
-    "version": ">= 12.5.3",
-    "appVersionSource": "remote"
-  },
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "development"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "preview"
     },
     "production": {
-      "autoIncrement": true
+      "channel": "production",
+      "env": {
+        "EXPO_PUBLIC_ENDPOINT": "https://cloud.appwrite.io/v1",
+        "EXPO_PUBLIC_PLATFORM": "com.petswithoutnames.protocols",
+        "EXPO_PUBLIC_PROJECT_ID": "66a04859001d3df0988d",
+        "EXPO_PUBLIC_DATABASE_ID": "66a04cba001cb48a5bd7",
+        "EXPO_PUBLIC_USER_COLL_ID": "66a04d64003d3e895244",
+        "EXPO_PUBLIC_PROTOCOL_COLL_ID": "66a04db400070bffec78",
+        "EXPO_PUBLIC_PROTOCOL_PLUS_COLL_ID": "66a402a0003ddfe36884",
+        "POSTS_COLL_ID": "66d8bdc000208bee6675",
+        "EXPO_PUBLIC_STORAGE_ID": "66a13ec900121c0b73fb"
+      }
+    },
+    "test": {
+      "env": {
+        "EXPO_PUBLIC_ENDPOINT": "https://cloud.appwrite.io/v1",
+        "EXPO_PUBLIC_PLATFORM": "com.petswithoutnames.protocols",
+        "EXPO_PUBLIC_PROJECT_ID": "66a04859001d3df0988d",
+        "EXPO_PUBLIC_DATABASE_ID": "66a04cba001cb48a5bd7",
+        "EXPO_PUBLIC_USER_COLL_ID": "66a04d64003d3e895244",
+        "EXPO_PUBLIC_PROTOCOL_COLL_ID": "66a04db400070bffec78",
+        "EXPO_PUBLIC_PROTOCOL_PLUS_COLL_ID": "66a402a0003ddfe36884",
+        "POSTS_COLL_ID": "66d8bdc000208bee6675",
+        "EXPO_PUBLIC_STORAGE_ID": "66a13ec900121c0b73fb"
+      }
     }
-  },
-  "submit": {
-    "production": {}
   }
 }
