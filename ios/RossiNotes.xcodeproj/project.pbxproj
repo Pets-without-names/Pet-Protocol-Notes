@@ -14,10 +14,10 @@
 		96905EF65AED1B983A6B3ABC /* libPods-RossiNotes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-RossiNotes.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C3DA189A06F0467685FC2745 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8D9F7DD91447EB2D34C80 /* noop-file.swift */; };
-		24C937A217924E0BA54077A3 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A1D76D4C05B4D3CADD092CD /* Urbanist-Regular.ttf */; };
-		899351B1BCD340BDA9E40BFE /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF161468CBC4438DABDAECD0 /* Urbanist-Medium.ttf */; };
-		E4487CA75E624C17B0AD733A /* ConcertOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 180886373C574F10B416143F /* ConcertOne-Regular.ttf */; };
+		716C68C1277B480E94D31679 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA0F6C20FA4416B635161F /* noop-file.swift */; };
+		51375F6D3F9045D3937655B4 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD3DE6F9D2B1448690EDB63A /* Urbanist-Regular.ttf */; };
+		31A8ECAE3C71411EBA27AF1C /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B224E741B8EB42E6B5F9A682 /* Urbanist-Medium.ttf */; };
+		767B5545E1D348A9B4108FE5 /* ConcertOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB830DDCDB2543A58CF4A2DA /* ConcertOne-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,11 +34,11 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RossiNotes/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		F6F8D9F7DD91447EB2D34C80 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "RossiNotes/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
-		50BF6B47E0DA4BC7928ADBAF /* RossiNotes-Bridging-Header.h */ = {isa = PBXFileReference; name = "RossiNotes-Bridging-Header.h"; path = "RossiNotes/RossiNotes-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		6A1D76D4C05B4D3CADD092CD /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; name = "Urbanist-Regular.ttf"; path = "../assets/fonts/Urbanist-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CF161468CBC4438DABDAECD0 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; name = "Urbanist-Medium.ttf"; path = "../assets/fonts/Urbanist-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		180886373C574F10B416143F /* ConcertOne-Regular.ttf */ = {isa = PBXFileReference; name = "ConcertOne-Regular.ttf"; path = "../assets/fonts/ConcertOne-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		21EA0F6C20FA4416B635161F /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "RossiNotes/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		56FAB0FEB8D84FA9920E727A /* RossiNotes-Bridging-Header.h */ = {isa = PBXFileReference; name = "RossiNotes-Bridging-Header.h"; path = "RossiNotes/RossiNotes-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		AD3DE6F9D2B1448690EDB63A /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; name = "Urbanist-Regular.ttf"; path = "../assets/fonts/Urbanist-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B224E741B8EB42E6B5F9A682 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; name = "Urbanist-Medium.ttf"; path = "../assets/fonts/Urbanist-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FB830DDCDB2543A58CF4A2DA /* ConcertOne-Regular.ttf */ = {isa = PBXFileReference; name = "ConcertOne-Regular.ttf"; path = "../assets/fonts/ConcertOne-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +63,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				F6F8D9F7DD91447EB2D34C80 /* noop-file.swift */,
-				50BF6B47E0DA4BC7928ADBAF /* RossiNotes-Bridging-Header.h */,
+				21EA0F6C20FA4416B635161F /* noop-file.swift */,
+				56FAB0FEB8D84FA9920E727A /* RossiNotes-Bridging-Header.h */,
 			);
 			name = RossiNotes;
 			sourceTree = "<group>";
@@ -94,7 +94,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				2045424A66F542CE928875D7 /* Resources */,
+				5C4C6F8EC2DE4669AAA04207 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -143,12 +143,12 @@
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
-		2045424A66F542CE928875D7 /* Resources */ = {
+		5C4C6F8EC2DE4669AAA04207 /* Resources */ = {
 			isa = "PBXGroup";
 			children = (
-				6A1D76D4C05B4D3CADD092CD /* Urbanist-Regular.ttf */,
-				CF161468CBC4438DABDAECD0 /* Urbanist-Medium.ttf */,
-				180886373C574F10B416143F /* ConcertOne-Regular.ttf */,
+				AD3DE6F9D2B1448690EDB63A /* Urbanist-Regular.ttf */,
+				B224E741B8EB42E6B5F9A682 /* Urbanist-Medium.ttf */,
+				FB830DDCDB2543A58CF4A2DA /* ConcertOne-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -216,10 +216,10 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				F038BCC9AC8E49FC92ECC2C9 /* RossiNotes-Bridging-Header.h in Resources */,
-				24C937A217924E0BA54077A3 /* Urbanist-Regular.ttf in Resources */,
-				899351B1BCD340BDA9E40BFE /* Urbanist-Medium.ttf in Resources */,
-				E4487CA75E624C17B0AD733A /* ConcertOne-Regular.ttf in Resources */,
+				5A298877ED9A48438A69CE3C /* RossiNotes-Bridging-Header.h in Resources */,
+				51375F6D3F9045D3937655B4 /* Urbanist-Regular.ttf in Resources */,
+				31A8ECAE3C71411EBA27AF1C /* Urbanist-Medium.ttf in Resources */,
+				767B5545E1D348A9B4108FE5 /* ConcertOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +295,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				C3DA189A06F0467685FC2745 /* noop-file.swift in Sources */,
+				716C68C1277B480E94D31679 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
