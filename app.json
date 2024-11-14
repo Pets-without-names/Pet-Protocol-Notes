@@ -15,7 +15,7 @@
       "backgroundColor": "#F6F4F3s"
     },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.pets.protocolNotes"
     },
     "android": {
