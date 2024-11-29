@@ -13,8 +13,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "packages": "com.petswithoutnames.protocols"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
